@@ -43,11 +43,11 @@ export const century21CanadaConfig: TenantConfig = {
     customNavigation: false,
   },
   localization: {
-    language: "en",
+    language: "fr", // Default to French for Century 21 Canada
     currency: "CAD", // Canadian Dollar
     dateFormat: "DD/MM/YYYY", // Canadian date format
     supportedLanguages: ["en", "fr"], // Support both English and French
-    defaultLanguage: "en",
+    defaultLanguage: "fr", // Default to French
     translations: {
       "ai-hub.title": "AI Hub",
       "marketing-hub.title": "Marketing Hub",

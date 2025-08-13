@@ -32,6 +32,23 @@ const empowerMarketingTools = [
   },
 ]
 
+const century21CanadaMarketingTools = [
+  {
+    title: "Dynamic Branded Content",
+    href: "/marketing-hub/dynamic-branded-content",
+    description: "Create custom branded content for any topic",
+    icon: Megaphone,
+    color: "bg-gradient-to-br from-purple-500 to-indigo-500",
+  },
+  {
+    title: "Real Estate Hot Takes",
+    href: "/marketing-hub/hot-takes",
+    description: "RSS feed of the latest real estate news and trends with sharing tools",
+    icon: TrendingUp,
+    color: "bg-gradient-to-br from-blue-500 to-cyan-500",
+  },
+]
+
 const begginsMarketingTools = [
   {
     title: "Dynamic Branded Content",
@@ -70,7 +87,9 @@ export default function MarketingHubPage() {
       ? begginsMarketingTools
       : tenantConfig?.id === "empower-ai" || tenantConfig?.id === "empower-beta"
         ? empowerMarketingTools
-        : marketingTools
+        : tenantConfig?.id === "century21-canada"
+          ? century21CanadaMarketingTools
+          : marketingTools
 
   return (
     <div className="min-h-screen bg-white py-12">

@@ -4,9 +4,12 @@ export const frenchTranslations = {
   "nav.marketing-hub": "Centre Marketing",
   "nav.prospecting-hub": "Centre Prospection",
   "nav.training-hub": "Centre Formation",
+  "nav.onboarding-hub": "Centre Intégration",
   "nav.services-hub": "Centre Services",
+  "nav.zillow-hub": "Centre Zillow",
   "nav.networking-hub": "Centre Réseautage",
   "nav.gear-hub": "Centre Équipement",
+  "nav.profile": "Profil",
 
   // Common Actions
   "action.login": "Connexion",
@@ -73,6 +76,27 @@ export const frenchTranslations = {
   "tool.goalscreen": "Écran d'objectifs IA",
   "tool.propbot": "Bot de propriété IA",
 
+  // AI Tool Descriptions
+  "tool.ideahub.description": "Génération de contenu pour réseaux sociaux",
+  "tool.realbio.description": "Création de bio d'agent professionnel",
+  "tool.listit.description": "Descriptions de propriétés",
+  "tool.scriptit.description": "Scripts immobiliers personnalisés",
+  "tool.roleplay.description": "Pratique de conversations vocales",
+  "tool.action.description": "Plans de prospection quotidiens",
+  "tool.realcoach.description": "Coaching d'affaires personnalisé",
+  "tool.bizplan.description": "Générateur de plan d'affaires 90 jours",
+  "tool.realdeal.description": "Analyse et résumé de contrats",
+  "tool.quickcma.description": "Outil d'analyse de marché comparative",
+  "tool.mymarket.description": "Analyse du marché immobilier et locatif",
+  "tool.whoswho.description": "Recherche de propriétaires",
+  "tool.goalscreen.description": "Créateur de fond d'écran d'objectifs quotidiens",
+  "tool.propbot.description": "Recherche et analyse intelligente de propriétés",
+
+  // AI Tool Categories
+  "tool.category.marketing": "── Marketing et Prospection IA ──",
+  "tool.category.planning": "── Planification et Coaching IA ──",
+  "tool.category.analysis": "── Analyse et Contrats IA ──",
+
   // Pricing
   "pricing.monthly": "Mensuel",
   "pricing.annual": "Annuel",
@@ -95,9 +119,136 @@ export const frenchTranslations = {
   "feature.dedicatedSupport": "Support dédié",
   "feature.volumeDiscounts": "Remises de volume disponibles",
 
+  // Prospecting Tools
+  "prospecting.fsbo": "Vente par le propriétaire",
+  "prospecting.absentee": "Propriétaires absents",
+  "prospecting.expired": "Annonces expirées",
+  "prospecting.probate": "Succession",
+  "prospecting.soi": "Sphère d'influence",
+  "prospecting.firstTime": "Premiers acheteurs",
+  "prospecting.investors": "Investisseurs immobiliers",
+  "prospecting.divorce": "Divorce",
+
+  // Prospecting Descriptions
+  "prospecting.fsbo.description": "Stratégies de génération de prospects FSBO",
+  "prospecting.absentee.description": "Cibler les propriétaires absents",
+  "prospecting.expired.description": "Convertir les annonces expirées",
+  "prospecting.probate.description": "Opportunités de propriétés en succession",
+  "prospecting.soi.description": "Cultivation de la sphère d'influence",
+  "prospecting.firstTime.description": "Programmes pour premiers acheteurs",
+  "prospecting.investors.description": "Prospects de propriétés d'investissement",
+  "prospecting.divorce.description": "Ventes de propriétés liées au divorce",
+
+  // Training Tools
+  "training.moxi": "Formation Moxi Works",
+  "training.script": "Maîtrise des scripts",
+  "training.buyer": "Processus d'acheteur (6P)",
+  "training.listing": "Processus de vente (7P)",
+  "training.disc": "Connexion DISC/VAK",
+  "training.morning": "Réunions matinales quotidiennes",
+  "training.buyerAgreement": "Formation accord acheteur-courtier",
+  "training.dotloop": "Formation Dotloop",
+
+  // Training Descriptions
+  "training.moxi.description": "Formation complète de la plateforme Moxi",
+  "training.script.description": "Maîtriser vos scripts de vente",
+  "training.buyer.description": "Processus de consultation d'acheteur en 6 étapes",
+  "training.listing.description": "Processus de consultation et présentation de vente en 7 étapes",
+  "training.disc.description": "Communication basée sur la personnalité",
+  "training.morning.description": "Accéder aux rediffusions de sessions de formation du lundi au vendredi",
+  "training.buyerAgreement.description": "Maîtriser les présentations et l'exécution d'accords acheteur-courtier",
+  "training.dotloop.description": "Formation complète de la plateforme Dotloop et meilleures pratiques",
+
   // Messages
   "message.success": "Succès",
   "message.error": "Erreur",
+  "message.loading": "Chargement...",
+  "message.saving": "Enregistrement...",
+  "message.deleting": "Suppression...",
+  "message.uploading": "Téléversement...",
+  "message.generating": "Génération...",
+  "message.analyzing": "Analyse...",
+
+  // Marketing Tools
+  "marketing.hotTakes": "Actualités immobilières",
+  "marketing.brokerageLogos": "Logos de courtage",
+  "marketing.dynamicContent": "Contenu dynamique personnalisé",
+  "marketing.beachToolkits": "Trousseaux de projets de plage",
+  "marketing.hotTakes.description": "Actualités et sujets tendance de l'industrie",
+  "marketing.brokerageLogos.description": "Accéder aux logos et actifs de marque Century 21 Beggins",
+  "marketing.dynamicContent.description": "Créer du contenu personnalisé pour n'importe quel sujet",
+  "marketing.beachToolkits.description": "Matériaux marketing pour projets de développement de plage premium",
+
+  // Services
+  "services.moxiDesign": "Services de design Moxi",
+  "services.brokerageConsulting": "Consultation de courtage",
+  "services.referralRelocation": "Référence/Réinstallation",
+  "services.moxiDesign.description": "Design et marketing professionnels",
+  "services.brokerageConsulting.description": "Consultation de croissance d'entreprise",
+  "services.referralRelocation.description": "Soumettre des références de clients et demandes de réinstallation",
+
+  // Onboarding
+  "onboarding.agentProfile": "Profil et configuration d'agent",
+  "onboarding.moxiSetup": "Configuration Moxi Works",
+  "onboarding.dotloopSetup": "Configuration Dotloop",
+  "onboarding.zoomSetup": "Configuration Zoom",
+  "onboarding.agentProfile.description": "Compléter votre profil d'agent et configuration initiale",
+  "onboarding.moxiSetup.description": "Configurer votre plateforme Moxi Works",
+  "onboarding.dotloopSetup.description": "Configurer votre gestion de transactions Dotloop",
+  "onboarding.zoomSetup.description": "Configurer Zoom pour les réunions clients",
+
+  // Zillow
+  "zillow.showcase": "Présentation Zillow",
+  "zillow.showcase.description": "Formation complète Zillow Showcase et ressources",
+
+  // Profile
+  "profile.creations": "Tableau de bord des créations",
+  "profile.branding": "Profil de marque",
+  "profile.creations.description": "Voir vos créations IA sauvegardées",
+  "profile.branding.description": "Gérer votre marque personnelle et préférences de logo",
+
+  // Support
+  "support.getSupport": "Obtenir de l'aide",
+  "support.contact": "Contact",
+  "support.help": "Aide",
+  "support.faq": "FAQ",
+
+  // Common UI Elements
+  "ui.exploreTool": "Explorer l'outil",
+  "ui.learnMore": "En savoir plus",
+  "ui.getStarted": "Commencer",
+  "ui.viewAll": "Voir tout",
+  "ui.back": "Retour",
+  "ui.next": "Suivant",
+  "ui.previous": "Précédent",
+  "ui.close": "Fermer",
+  "ui.open": "Ouvrir",
+  "ui.search": "Rechercher",
+  "ui.filter": "Filtrer",
+  "ui.sort": "Trier",
+  "ui.refresh": "Actualiser",
+  "ui.loadMore": "Charger plus",
+  "ui.noResults": "Aucun résultat",
+  "ui.emptyState": "État vide",
+  "ui.loadingState": "État de chargement",
+  "ui.errorState": "État d'erreur",
+  "ui.successState": "État de succès",
+
+  // Page Titles
+  "page.aiHub": "Centre IA - Outils et formation immobiliers",
+  "page.marketingHub": "Centre Marketing - Contenu et ressources",
+  "page.prospectingHub": "Centre Prospection - Stratégies de génération de prospects",
+  "page.trainingHub": "Centre Formation - Développement professionnel",
+  "page.servicesHub": "Centre Services - Solutions professionnelles",
+  "page.profile": "Profil - Gestion de compte",
+  "page.support": "Support - Aide et assistance",
+
+  // Footer
+  "footer.copyright": "© 2024 Century 21 Canada. Tous droits réservés.",
+  "footer.terms": "Conditions d'utilisation",
+  "footer.privacy": "Politique de confidentialité",
+  "footer.contact": "Contact",
+  "footer.support": "Support",
   "message.warning": "Avertissement",
   "message.info": "Information",
   "message.loading": "Chargement...",

@@ -15,31 +15,33 @@ const navigationItems = [
     href: "/ai-hub",
     submenu: [
       // AI Marketing & Prospecting Tools
-      { title: "── AI Marketing & Prospecting ──", href: "#", description: "", isHeader: true },
+      { title: "tool.category.marketing", href: "#", description: "", isHeader: true, translationKey: "tool.category.marketing" },
       {
-        title: "IdeaHub AI",
+        title: "tool.ideahub",
         href: "/ai-hub/ideahub-ai",
-        description: "Social Media Content Generation",
+        description: "tool.ideahub.description",
         begginsHref: "/ai-hub/ideahub-beggins",
         empowerHref: "/ai-hub/ideahub-empower",
+        translationKey: "tool.ideahub",
+        descriptionKey: "tool.ideahub.description",
       },
-      { title: "RealBio", href: "/ai-hub/realbio", description: "Professional Agent Bio Creation" },
-      { title: "ListIT", href: "/ai-hub/listit-ai", description: "Property Listing Descriptions" },
-      { title: "ScriptIT", href: "/ai-hub/scriptit-ai", description: "Custom Real Estate Scripts" },
-      { title: "QuickCMA AI", href: "/ai-hub/quickcma-ai", description: "Comparative Market Analysis Tool" },
-      { title: "MyMarket AI", href: "/ai-hub/mymarket-ai", description: "Housing & Rental Market Analysis" },
-      { title: "RolePlay AI", href: "/ai-hub/roleplay-ai", description: "Voice Conversation Practice" },
-      { title: "PropBot AI", href: "/ai-hub/propbot-ai", description: "Intelligent Property Search & Analysis" },
-      { title: "Who's Who AI", href: "/ai-hub/whos-who-ai", description: "Property Owner Skip Tracing" },
-      { title: "GoalScreen AI", href: "/ai-hub/goalscreen-ai", description: "Daily Contact Goal Wallpaper Creator" },
+      { title: "tool.realbio", href: "/ai-hub/realbio", description: "tool.realbio.description", translationKey: "tool.realbio", descriptionKey: "tool.realbio.description" },
+      { title: "tool.listit", href: "/ai-hub/listit-ai", description: "tool.listit.description", translationKey: "tool.listit", descriptionKey: "tool.listit.description" },
+      { title: "tool.scriptit", href: "/ai-hub/scriptit-ai", description: "tool.scriptit.description", translationKey: "tool.scriptit", descriptionKey: "tool.scriptit.description" },
+      { title: "tool.quickcma", href: "/ai-hub/quickcma-ai", description: "tool.quickcma.description", translationKey: "tool.quickcma", descriptionKey: "tool.quickcma.description" },
+      { title: "tool.mymarket", href: "/ai-hub/mymarket-ai", description: "tool.mymarket.description", translationKey: "tool.mymarket", descriptionKey: "tool.mymarket.description" },
+      { title: "tool.roleplay", href: "/ai-hub/roleplay-ai", description: "tool.roleplay.description", translationKey: "tool.roleplay", descriptionKey: "tool.roleplay.description" },
+      { title: "tool.propbot", href: "/ai-hub/propbot-ai", description: "tool.propbot.description", translationKey: "tool.propbot", descriptionKey: "tool.propbot.description" },
+      { title: "tool.whoswho", href: "/ai-hub/whos-who-ai", description: "tool.whoswho.description", translationKey: "tool.whoswho", descriptionKey: "tool.whoswho.description" },
+      { title: "tool.goalscreen", href: "/ai-hub/goalscreen-ai", description: "tool.goalscreen.description", translationKey: "tool.goalscreen", descriptionKey: "tool.goalscreen.description" },
       // AI Planning & Coaching Tools
-      { title: "── AI Planning & Coaching ──", href: "#", description: "", isHeader: true },
-      { title: "Action AI", href: "/ai-hub/action-ai", description: "Daily Prospecting Action Plans" },
-      { title: "RealCoach AI", href: "/ai-hub/realcoach-ai", description: "Personalized Business Coaching" },
-      { title: "BizPlan AI", href: "/ai-hub/bizplan-ai", description: "90-Day Business Plan Generator" },
+      { title: "tool.category.planning", href: "#", description: "", isHeader: true, translationKey: "tool.category.planning" },
+      { title: "tool.action", href: "/ai-hub/action-ai", description: "tool.action.description", translationKey: "tool.action", descriptionKey: "tool.action.description" },
+      { title: "tool.realcoach", href: "/ai-hub/realcoach-ai", description: "tool.realcoach.description", translationKey: "tool.realcoach", descriptionKey: "tool.realcoach.description" },
+      { title: "tool.bizplan", href: "/ai-hub/bizplan-ai", description: "tool.bizplan.description", translationKey: "tool.bizplan", descriptionKey: "tool.bizplan.description" },
       // AI Analysis & Contract Tools
-      { title: "── AI Analysis & Contract ──", href: "#", description: "", isHeader: true },
-      { title: "RealDeal AI", href: "/ai-hub/realdeal-ai", description: "Contract Analysis & Summarization" },
+      { title: "tool.category.analysis", href: "#", description: "", isHeader: true, translationKey: "tool.category.analysis" },
+      { title: "tool.realdeal", href: "/ai-hub/realdeal-ai", description: "tool.realdeal.description", translationKey: "tool.realdeal", descriptionKey: "tool.realdeal.description" },
     ],
   },
   {
@@ -229,8 +231,8 @@ export default function Navigation() {
         return null
       }
 
-      // For Beggins tenant, hide Networking Hub
-      if (item.title === "Networking Hub" && tenantConfig.id === "century21-beggins") {
+      // For Beggins tenant and Century 21 Canada, hide Networking Hub
+      if (item.title === "Networking Hub" && (tenantConfig.id === "century21-beggins" || tenantConfig.id === "century21-canada")) {
         return null
       }
 
@@ -360,11 +362,25 @@ export default function Navigation() {
       const translatedTitle = t(translationKey)
       const displayTitle = translatedTitle !== translationKey ? translatedTitle : item.title
 
-      return {
-        ...item,
-        title: displayTitle,
-        submenu: filteredSubmenu,
-      }
+      // Translate submenu items if they have translation keys
+      const translatedSubmenu = filteredSubmenu.map(subItem => {
+        if (subItem.translationKey) {
+          const translatedSubTitle = t(subItem.translationKey)
+          const translatedSubDescription = subItem.descriptionKey ? t(subItem.descriptionKey) : subItem.description
+          return {
+            ...subItem,
+            title: translatedSubTitle !== subItem.translationKey ? translatedSubTitle : subItem.title,
+            description: translatedSubDescription !== subItem.descriptionKey ? translatedSubDescription : subItem.description,
+          }
+        }
+        return subItem
+      })
+
+              return {
+          ...item,
+          title: displayTitle,
+          submenu: translatedSubmenu,
+        }
     })
     .filter(Boolean)
 

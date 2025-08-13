@@ -4,9 +4,12 @@ export const englishTranslations = {
   "nav.marketing-hub": "Marketing Hub",
   "nav.prospecting-hub": "Prospecting Hub",
   "nav.training-hub": "Training Hub",
+  "nav.onboarding-hub": "Onboarding Hub",
   "nav.services-hub": "Services Hub",
+  "nav.zillow-hub": "Zillow Hub",
   "nav.networking-hub": "Networking Hub",
   "nav.gear-hub": "Gear Hub",
+  "nav.profile": "Profile",
 
   // Common Actions
   "action.login": "Login",
@@ -58,20 +61,41 @@ export const englishTranslations = {
   "province.yt": "Yukon",
 
   // AI Tools
-  "tool.ideahub": "AI Idea Generator",
-  "tool.realbio": "AI Bio",
-  "tool.listit": "AI Listing",
-  "tool.scriptit": "AI Script",
-  "tool.roleplay": "AI Roleplay",
-  "tool.action": "AI Action Plan",
-  "tool.realcoach": "AI Coach",
-  "tool.bizplan": "AI Business Plan",
-  "tool.realdeal": "AI Deal",
-  "tool.quickcma": "AI Quick CMA",
-  "tool.mymarket": "AI My Market",
-  "tool.whoswho": "AI Who's Who",
-  "tool.goalscreen": "AI Goal Screen",
-  "tool.propbot": "AI Property Bot",
+  "tool.ideahub": "IdeaHub AI",
+  "tool.realbio": "RealBio",
+  "tool.listit": "ListIT",
+  "tool.scriptit": "ScriptIT",
+  "tool.roleplay": "RolePlay AI",
+  "tool.action": "Action AI",
+  "tool.realcoach": "RealCoach AI",
+  "tool.bizplan": "BizPlan AI",
+  "tool.realdeal": "RealDeal AI",
+  "tool.quickcma": "QuickCMA AI",
+  "tool.mymarket": "MyMarket AI",
+  "tool.whoswho": "Who's Who AI",
+  "tool.goalscreen": "GoalScreen AI",
+  "tool.propbot": "PropBot AI",
+
+  // AI Tool Descriptions
+  "tool.ideahub.description": "Social Media Content Generation",
+  "tool.realbio.description": "Professional Agent Bio Creation",
+  "tool.listit.description": "Property Listing Descriptions",
+  "tool.scriptit.description": "Custom Real Estate Scripts",
+  "tool.roleplay.description": "Voice Conversation Practice",
+  "tool.action.description": "Daily Prospecting Action Plans",
+  "tool.realcoach.description": "Personalized Business Coaching",
+  "tool.bizplan.description": "90-Day Business Plan Generator",
+  "tool.realdeal.description": "Contract Analysis & Summarization",
+  "tool.quickcma.description": "Comparative Market Analysis Tool",
+  "tool.mymarket.description": "Housing & Rental Market Analysis",
+  "tool.whoswho.description": "Property Owner Skip Tracing",
+  "tool.goalscreen.description": "Daily Contact Goal Wallpaper Creator",
+  "tool.propbot.description": "Intelligent Property Search & Analysis",
+
+  // AI Tool Categories
+  "tool.category.marketing": "── AI Marketing & Prospecting ──",
+  "tool.category.planning": "── AI Planning & Coaching ──",
+  "tool.category.analysis": "── AI Analysis & Contract ──",
 
   // Pricing
   "pricing.monthly": "Monthly",
@@ -101,9 +125,119 @@ export const englishTranslations = {
   "message.warning": "Warning",
   "message.info": "Information",
   "message.loading": "Loading...",
+  "message.saving": "Saving...",
+  "message.deleting": "Deleting...",
+  "message.uploading": "Uploading...",
+  "message.generating": "Generating...",
+  "message.analyzing": "Analyzing...",
   "message.noResults": "No results found",
   "message.tryAgain": "Please try again",
   "message.contactSupport": "Contact support",
+
+  // Prospecting Tools
+  "prospecting.fsbo": "For Sale By Owners",
+  "prospecting.absentee": "Absentee Owners",
+  "prospecting.expired": "Expired Listings",
+  "prospecting.probate": "Probate",
+  "prospecting.soi": "SOI",
+  "prospecting.firstTime": "First Time Home Buyers",
+  "prospecting.investors": "Real Estate Investors",
+  "prospecting.divorce": "Divorce",
+
+  // Prospecting Descriptions
+  "prospecting.fsbo.description": "FSBO lead generation strategies",
+  "prospecting.absentee.description": "Target absentee property owners",
+  "prospecting.expired.description": "Convert expired listings",
+  "prospecting.probate.description": "Probate property opportunities",
+  "prospecting.soi.description": "Sphere of influence cultivation",
+  "prospecting.firstTime.description": "First-time buyer programs",
+  "prospecting.investors.description": "Investment property leads",
+  "prospecting.divorce.description": "Divorce-related property sales",
+
+  // Training Tools
+  "training.moxi": "Moxi Works Training",
+  "training.script": "Script Mastery",
+  "training.buyer": "Buyer Process (6P's)",
+  "training.listing": "Listing Process (7P's)",
+  "training.disc": "DISC/VAK Connection",
+  "training.morning": "Daily Morning Huddles",
+  "training.buyerAgreement": "Buyer Broker Agreement Training",
+  "training.dotloop": "Dotloop Training",
+
+  // Training Descriptions
+  "training.moxi.description": "Complete Moxi platform training",
+  "training.script.description": "Master your sales scripts",
+  "training.buyer.description": "6-step buyer consultation process",
+  "training.listing.description": "7-step listing consultation and presentation process",
+  "training.disc.description": "Personality-based communication",
+  "training.morning.description": "Access daily training session replays Monday-Friday",
+  "training.buyerAgreement.description": "Master buyer broker agreement presentations and execution",
+  "training.dotloop.description": "Complete Dotloop platform training and best practices",
+
+  // Marketing Tools
+  "marketing.hotTakes": "Real Estate Hot Takes",
+  "marketing.brokerageLogos": "Brokerage Logos",
+  "marketing.dynamicContent": "Dynamic Branded Content",
+  "marketing.beachToolkits": "Beach Project Toolkits",
+  "marketing.hotTakes.description": "Industry news and trending topics",
+  "marketing.brokerageLogos.description": "Access Century 21 Beggins logos and branding assets",
+  "marketing.dynamicContent.description": "Create custom branded content for any topic",
+  "marketing.beachToolkits.description": "Marketing materials for premium beach development projects",
+
+  // Services
+  "services.moxiDesign": "Moxi Design Services",
+  "services.brokerageConsulting": "Brokerage Consulting",
+  "services.referralRelocation": "Referral/Relocation",
+  "services.moxiDesign.description": "Professional design and marketing",
+  "services.brokerageConsulting.description": "Business growth consulting",
+  "services.referralRelocation.description": "Submit client referrals and relocation requests",
+
+  // Onboarding
+  "onboarding.agentProfile": "Agent Profile & Set Up",
+  "onboarding.moxiSetup": "Moxi Works Set Up",
+  "onboarding.dotloopSetup": "Dotloop Set Up",
+  "onboarding.zoomSetup": "Zoom Set Up",
+  "onboarding.agentProfile.description": "Complete your agent profile and initial setup",
+  "onboarding.moxiSetup.description": "Configure your Moxi Works platform",
+  "onboarding.dotloopSetup.description": "Set up your Dotloop transaction management",
+  "onboarding.zoomSetup.description": "Configure Zoom for client meetings",
+
+  // Zillow
+  "zillow.showcase": "Zillow Showcase",
+  "zillow.showcase.description": "Complete Zillow Showcase training and resources",
+
+  // Profile
+  "profile.creations": "Creations Dashboard",
+  "profile.branding": "Branding Profile",
+  "profile.creations.description": "View your saved AI creations",
+  "profile.branding.description": "Manage your personal branding and logo preferences",
+
+  // Support
+  "support.getSupport": "Get Support",
+  "support.contact": "Contact",
+  "support.help": "Help",
+  "support.faq": "FAQ",
+
+  // Common UI Elements
+  "ui.exploreTool": "Explore Tool",
+  "ui.learnMore": "Learn More",
+  "ui.getStarted": "Get Started",
+  "ui.viewAll": "View All",
+  "ui.back": "Back",
+  "ui.next": "Next",
+  "ui.previous": "Previous",
+  "ui.close": "Close",
+  "ui.open": "Open",
+  "ui.search": "Search",
+  "ui.filter": "Filter",
+  "ui.sort": "Sort",
+  "ui.refresh": "Refresh",
+  "ui.loadMore": "Load More",
+  "ui.noResults": "No Results",
+  "ui.emptyState": "Empty State",
+  "ui.loadingState": "Loading State",
+  "ui.errorState": "Error State",
+  "ui.successState": "Success State",
 
   // Validation
   "validation.required": "This field is required",
@@ -120,6 +254,12 @@ export const englishTranslations = {
   "page.settings": "Settings",
   "page.help": "Help",
   "page.contact": "Contact",
+  "page.aiHub": "AI Hub - Real Estate Tools & Training",
+  "page.marketingHub": "Marketing Hub - Content & Resources",
+  "page.prospectingHub": "Prospecting Hub - Lead Generation Strategies",
+  "page.trainingHub": "Training Hub - Professional Development",
+  "page.servicesHub": "Services Hub - Professional Solutions",
+  "page.support": "Support - Help & Assistance",
 
   // Footer
   "footer.copyright": "© 2024 Century 21 Canada. All rights reserved.",

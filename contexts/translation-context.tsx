@@ -20,7 +20,7 @@ const translations = {
 }
 
 export function TranslationProvider({ children }: { children: React.ReactNode }) {
-  const [currentLanguage, setCurrentLanguage] = useState("en")
+  const [currentLanguage, setCurrentLanguage] = useState("fr") // Default to French
 
   // Load language preference from localStorage on mount
   useEffect(() => {
