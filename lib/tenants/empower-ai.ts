@@ -3,7 +3,7 @@ import type { TenantConfig } from "../types"
 export const empowerAiConfig: TenantConfig = {
   id: "empower-ai",
   name: "Empower AI",
-  domain: ["getempowerai.com", "www.getempowerai.com"],
+  domain: ["sample-empower-ai.com", "www.sample-empower-ai.com"],
   branding: {
     name: "Empower AI",
     logo: "/images/empower-ai-logo.png", // WHITE logo for consumer home page

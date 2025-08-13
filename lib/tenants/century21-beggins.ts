@@ -4,11 +4,11 @@ export const century21BegginsConfig: TenantConfig = {
   id: "century21-beggins",
   name: "Century 21 Beggins",
   domain: [
-    "begginsuniversity.com",
-    "www.begginsuniversity.com",
-    "beggins.thenextlevelu.com",
-    "begginsagents.com",
-    "www.begginsagents.com",
+    "sample-begginsuniversity.com",
+    "www.sample-begginsuniversity.com",
+    "sample-beggins.thenextlevelu.com",
+    "sample-begginsagents.com",
+    "www.sample-begginsagents.com",
   ],
   branding: {
     name: "Beggins University",

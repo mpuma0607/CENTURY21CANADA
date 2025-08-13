@@ -63,6 +63,10 @@ export default function HomePage() {
     } else if (hostname === 'getempowerai.com' ||
                hostname === 'www.getempowerai.com') {
       portalUrl = "https://getempowerai.com/portal"
+    } else if (hostname === 'empowerc21canada.com' ||
+               hostname === 'www.empowerc21canada.com' ||
+               hostname === 'century21canada.thenextlevelu.com') {
+      portalUrl = "https://empowerc21canada.com/portal"
     }
     
     console.log("Redirecting to portal:", portalUrl)
@@ -87,6 +91,10 @@ export default function HomePage() {
     } else if (hostname === 'getempowerai.com' ||
                hostname === 'www.getempowerai.com') {
       plansUrl = "https://getempowerai.com?msopen=/member/plans/aovbmu4gxb"
+    } else if (hostname === 'empowerc21canada.com' ||
+               hostname === 'www.empowerc21canada.com' ||
+               hostname === 'century21canada.thenextlevelu.com') {
+      plansUrl = "https://empowerc21canada.com?msopen=/member/plans/aovbmu4gxb"
     }
     
     console.log("Redirecting to plans:", plansUrl)
@@ -111,6 +119,10 @@ export default function HomePage() {
     } else if (hostname === 'getempowerai.com' ||
                hostname === 'www.getempowerai.com') {
       plansUrl = "https://getempowerai.com?msopen=/member/plans/aovbmu4gxb"
+    } else if (hostname === 'empowerc21canada.com' ||
+               hostname === 'www.empowerc21canada.com' ||
+               hostname === 'century21canada.thenextlevelu.com') {
+      plansUrl = "https://empowerc21canada.com?msopen=/member/plans/aovbmu4gxb"
     }
     
     console.log("Redirecting to plans:", plansUrl)
@@ -135,6 +147,10 @@ export default function HomePage() {
     } else if (hostname === 'getempowerai.com' ||
                hostname === 'www.getempowerai.com') {
       annualPlansUrl = "https://getempowerai.com?msopen=/member/plans/dkophgnbcp"
+    } else if (hostname === 'empowerc21canada.com' ||
+               hostname === 'www.empowerc21canada.com' ||
+               hostname === 'century21canada.thenextlevelu.com') {
+      annualPlansUrl = "https://empowerc21canada.com?msopen=/member/plans/dkophgnbcp"
     }
     
     console.log("Redirecting to annual plans:", annualPlansUrl)
@@ -842,7 +858,7 @@ export default function HomePage() {
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl text-white">Monthly</CardTitle>
                 <div className="text-4xl font-bold text-[#b6a888] mt-4">
-                  $29.99
+                  {tenantConfig.id === "century21-canada" ? "C$39.99" : "$29.99"}
                   <span className="text-lg text-gray-400 font-normal">/month</span>
                 </div>
                 <CardDescription className="text-gray-300">Perfect for getting started</CardDescription>
@@ -888,10 +904,12 @@ export default function HomePage() {
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl text-white">Annual</CardTitle>
                 <div className="text-4xl font-bold text-[#b6a888] mt-4">
-                  $252
+                  {tenantConfig.id === "century21-canada" ? "C$399" : "$252"}
                   <span className="text-lg text-gray-400 font-normal">/year</span>
                 </div>
-                <div className="text-green-400 font-medium">Only $21/month - Save $108!</div>
+                <div className="text-green-400 font-medium">
+                  {tenantConfig.id === "century21-canada" ? "Only C$33/month - Save C$80!" : "Only $21/month - Save $108!"}
+                </div>
                 <CardDescription className="text-gray-300">Best value for serious agents</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">

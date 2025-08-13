@@ -47,14 +47,21 @@ export default function RootLayout({
                             var subdomain = '';
                             
                             // Determine MemberSpace subdomain based on domain
-                            if (hostname === 'begginsagents.com' ||
-                                 hostname === 'www.begginsagents.com' ||
-                                 hostname === 'beggins.thenextlevelu.com' ||
-                                 hostname === 'begginsuniversity.com' ||
-                                 hostname === 'www.begginsuniversity.com') {
+                            if (hostname === 'sample-begginsagents.com' ||
+                                 hostname === 'www.sample-begginsagents.com' ||
+                                 hostname === 'sample-beggins.thenextlevelu.com' ||
+                                 hostname === 'sample-begginsuniversity.com' ||
+                                 hostname === 'www.sample-begginsuniversity.com') {
                               subdomain = 'begginsuniversity';
+                            } else if (hostname === 'empowerc21canada.com' ||
+                                       hostname === 'www.empowerc21canada.com' ||
+                                       hostname === 'century21canada.thenextlevelu.com') {
+                              subdomain = 'empower21canada';
+                            } else if (hostname === 'sample-empower-ai.com' ||
+                                       hostname === 'www.sample-empower-ai.com') {
+                              subdomain = 'getempowerai';
                             } else {
-                              // For getempowerai.com and all other domains, use getempowerai
+                              // For all other domains, use getempowerai
                               subdomain = 'getempowerai';
                             }
                             
@@ -86,14 +93,18 @@ export default function RootLayout({
                             var title = 'Empower AI - Real Estate Platform'; // Default
                             
                             // Set title based on domain
-                            if (hostname === 'begginsagents.com' ||
-                                 hostname === 'www.begginsagents.com' ||
-                                 hostname === 'beggins.thenextlevelu.com' ||
-                                 hostname === 'begginsuniversity.com' ||
-                                 hostname === 'www.begginsuniversity.com') {
+                            if (hostname === 'sample-begginsagents.com' ||
+                                 hostname === 'www.sample-begginsagents.com' ||
+                                 hostname === 'sample-beggins.thenextlevelu.com' ||
+                                 hostname === 'sample-begginsuniversity.com' ||
+                                 hostname === 'www.sample-begginsuniversity.com') {
                               title = 'Beggins University - Real Estate Platform';
-                            } else if (hostname === 'getempowerai.com' ||
-                                       hostname === 'www.getempowerai.com') {
+                            } else if (hostname === 'empowerc21canada.com' ||
+                                       hostname === 'www.empowerc21canada.com' ||
+                                       hostname === 'century21canada.thenextlevelu.com') {
+                              title = 'Century 21 Canada - Real Estate Platform';
+                            } else if (hostname === 'sample-empower-ai.com' ||
+                                       hostname === 'www.sample-empower-ai.com') {
                               title = 'Empower AI - Real Estate Platform';
                             }
                             
@@ -125,11 +136,11 @@ export default function RootLayout({
                             var hostname = window.location.hostname;
                             
                             // Only load Beggins University chatbot for Beggins domains
-                            if (hostname === 'begginsagents.com' ||
-                                 hostname === 'www.begginsagents.com' ||
-                                 hostname === 'beggins.thenextlevelu.com' ||
-                                 hostname === 'begginsuniversity.com' ||
-                                 hostname === 'www.begginsuniversity.com') {
+                            if (hostname === 'sample-begginsagents.com' ||
+                                 hostname === 'www.sample-begginsagents.com' ||
+                                 hostname === 'sample-beggins.thenextlevelu.com' ||
+                                 hostname === 'sample-begginsuniversity.com' ||
+                                 hostname === 'www.sample-begginsuniversity.com') {
                               
                               // Add the Beggins University Fastbots script
                               var script = document.createElement('script');
@@ -160,9 +171,9 @@ export default function RootLayout({
                             // Only skip on consumer home page
                             if (typeof window !== 'undefined' && (
                               window.location.pathname === '/' || 
-                              window.location.hostname.includes('beggins') ||
-                              window.location.hostname === 'begginsagents.com' ||
-                              window.location.hostname === 'www.begginsagents.com'
+                              window.location.hostname.includes('sample-beggins') ||
+                              window.location.hostname === 'sample-begginsagents.com' ||
+                              window.location.hostname === 'www.sample-begginsagents.com'
                             )) {
                               return;
                             }

@@ -34,6 +34,9 @@ const empowerAiBrandOptions: BrandOption[] = [
 // Beggins tenant only has Century 21
 const begginsBrandOptions: BrandOption[] = [{ value: "century21", label: "Century 21", publicId: "century21" }]
 
+// Century 21 Canada tenant only has Century 21
+const century21CanadaBrandOptions: BrandOption[] = [{ value: "century21", label: "Century 21", publicId: "century21" }]
+
 // Default fallback
 const defaultBrandOptions: BrandOption[] = [{ value: "century21", label: "Century 21", publicId: "century21" }]
 
@@ -44,6 +47,8 @@ export function getBrandOptionsForTenant(tenantConfig: TenantConfig): BrandOptio
       return empowerAiBrandOptions
     case "century21-beggins":
       return begginsBrandOptions
+    case "century21-canada":
+      return century21CanadaBrandOptions
     default:
       return defaultBrandOptions
   }

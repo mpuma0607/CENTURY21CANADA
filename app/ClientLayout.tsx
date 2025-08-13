@@ -3,6 +3,7 @@
 import type React from "react"
 import { usePathname } from "next/navigation"
 import { TenantProvider } from "@/contexts/tenant-context"
+import { TranslationProvider } from "@/contexts/translation-context"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { Toaster } from "@/components/ui/toaster"
@@ -25,15 +26,17 @@ export default function ClientLayout({
 
   return (
     <TenantProvider>
-      <TrackingWrapper>
-        <div className="min-h-screen flex flex-col">
-          {!isHomePage && !isBegginsHomePage && <Navigation />}
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <TenantSwitcher />
-          <Toaster />
-        </div>
-      </TrackingWrapper>
+      <TranslationProvider>
+        <TrackingWrapper>
+          <div className="min-h-screen flex flex-col">
+            {!isHomePage && !isBegginsHomePage && <Navigation />}
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <TenantSwitcher />
+            <Toaster />
+          </div>
+        </TrackingWrapper>
+      </TranslationProvider>
     </TenantProvider>
   )
 }

@@ -247,12 +247,13 @@ export default function Navigation() {
           return true
         }) || []
 
-      // Add Dynamic Branded Content for Empower AI and Beggins tenants
+      // Add Dynamic Branded Content for Empower AI, Beggins, and Century 21 Canada tenants
       if (
         item.title === "Marketing Hub" &&
         (tenantConfig.id === "empower-ai" ||
           tenantConfig.id === "empower-beta" ||
-          tenantConfig.id === "century21-beggins")
+          tenantConfig.id === "century21-beggins" ||
+          tenantConfig.id === "century21-canada")
       ) {
         // Add Dynamic Branded Content as the first item
         filteredSubmenu.unshift({
@@ -332,8 +333,8 @@ export default function Navigation() {
         )
       }
 
-      // Add Empower AI-specific profile links
-      if (item.title === "Profile" && (tenantConfig.id === "empower-ai" || tenantConfig.id === "empower-beta")) {
+      // Add Empower AI and Century 21 Canada profile links
+      if (item.title === "Profile" && (tenantConfig.id === "empower-ai" || tenantConfig.id === "empower-beta" || tenantConfig.id === "century21-canada")) {
         // Add Branding Profile as the first item
         filteredSubmenu.unshift({
           title: "Branding Profile",
@@ -374,6 +375,9 @@ export default function Navigation() {
     }
     if (tenantConfig.id === "century21-beggins") {
       return "/images/beggins-university-black.png" // Black logo for light background
+    }
+    if (tenantConfig.id === "century21-canada") {
+      return "/images/century21-canada-logo.svg" // Century 21 Canada logo
     }
     if (tenantConfig.id === "default") {
       return "/images/nlu-logo-dark-new.png"
