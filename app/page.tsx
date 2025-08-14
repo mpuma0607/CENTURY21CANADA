@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import TenantSwitcher from "@/components/tenant-switcher"
 import { LanguageSwitcher } from "@/components/language-switcher"
+import { useTranslation } from "@/contexts/translation-context"
 
 export default function HomePage() {
   const [showVideoModal, setShowVideoModal] = useState(false)
@@ -33,6 +34,7 @@ export default function HomePage() {
   const tenantConfig = useTenantConfig()
   const router = useRouter()
   const { trackEvent } = useTracking()
+  const { t } = useTranslation()
 
   // Redirect to custom home page if tenant has one
   useEffect(() => {
@@ -48,27 +50,10 @@ export default function HomePage() {
 
   const handleLogin = () => {
     trackEvent("button_click", { button: "sign_in", location: "header" })
-    console.log("Sign In clicked - redirecting to portal")
+    console.log("Sign In clicked - redirecting to Century 21 Canada portal")
     
-    // Get current domain and redirect to appropriate portal
-    const hostname = window.location.hostname
-    let portalUrl = "https://getempowerai.com/portal" // Default
-    
-    // Set portal URL based on domain
-    if (hostname === 'begginsagents.com' ||
-        hostname === 'www.begginsagents.com' ||
-        hostname === 'beggins.thenextlevelu.com' ||
-        hostname === 'begginsuniversity.com' ||
-        hostname === 'www.begginsuniversity.com') {
-      portalUrl = "https://begginsuniversity.com/portal"
-    } else if (hostname === 'getempowerai.com' ||
-               hostname === 'www.getempowerai.com') {
-      portalUrl = "https://getempowerai.com/portal"
-    } else if (hostname === 'empowerc21canada.com' ||
-               hostname === 'www.empowerc21canada.com' ||
-               hostname === 'century21canada.thenextlevelu.com') {
-      portalUrl = "https://empowerc21canada.com/portal"
-    }
+    // Always redirect to Century 21 Canada portal
+    const portalUrl = "https://empowerc21canada.com/portal"
     
     console.log("Redirecting to portal:", portalUrl)
     window.location.href = portalUrl
@@ -76,27 +61,10 @@ export default function HomePage() {
 
   const handleSignup = () => {
     trackEvent("button_click", { button: "get_started", location: "header" })
-    console.log("Signup clicked - redirecting to plans page")
+    console.log("Signup clicked - redirecting to Century 21 Canada plans page")
     
-    // Get current domain and redirect to appropriate plans page
-    const hostname = window.location.hostname
-    let plansUrl = "https://getempowerai.com?msopen=/member/plans/aovbmu4gxb" // Default
-    
-    // Set plans URL based on domain
-    if (hostname === 'begginsagents.com' ||
-        hostname === 'www.begginsagents.com' ||
-        hostname === 'beggins.thenextlevelu.com' ||
-        hostname === 'begginsuniversity.com' ||
-        hostname === 'www.begginsuniversity.com') {
-      plansUrl = "https://begginsuniversity.com?msopen=/member/plans/aovbmu4gxb"
-    } else if (hostname === 'getempowerai.com' ||
-               hostname === 'www.getempowerai.com') {
-      plansUrl = "https://getempowerai.com?msopen=/member/plans/aovbmu4gxb"
-    } else if (hostname === 'empowerc21canada.com' ||
-               hostname === 'www.empowerc21canada.com' ||
-               hostname === 'century21canada.thenextlevelu.com') {
-      plansUrl = "https://empowerc21canada.com?msopen=/member/plans/aovbmu4gxb"
-    }
+    // Always redirect to Century 21 Canada plans page
+    const plansUrl = "https://empowerc21canada.com?msopen=/member/plans/aovbmu4gxb"
     
     console.log("Redirecting to plans:", plansUrl)
     window.location.href = plansUrl
@@ -104,27 +72,10 @@ export default function HomePage() {
 
   const handlePricing = () => {
     trackEvent("button_click", { button: "pricing", location: "pricing_section" })
-    console.log("Pricing clicked - redirecting to plans page")
+    console.log("Pricing clicked - redirecting to Century 21 Canada plans page")
     
-    // Get current domain and redirect to appropriate plans page
-    const hostname = window.location.hostname
-    let plansUrl = "https://getempowerai.com?msopen=/member/plans/aovbmu4gxb" // Default
-    
-    // Set plans URL based on domain
-    if (hostname === 'begginsagents.com' ||
-        hostname === 'www.begginsagents.com' ||
-        hostname === 'beggins.thenextlevelu.com' ||
-        hostname === 'begginsuniversity.com' ||
-        hostname === 'www.begginsuniversity.com') {
-      plansUrl = "https://begginsuniversity.com?msopen=/member/plans/aovbmu4gxb"
-    } else if (hostname === 'getempowerai.com' ||
-               hostname === 'www.getempowerai.com') {
-      plansUrl = "https://getempowerai.com?msopen=/member/plans/aovbmu4gxb"
-    } else if (hostname === 'empowerc21canada.com' ||
-               hostname === 'www.empowerc21canada.com' ||
-               hostname === 'century21canada.thenextlevelu.com') {
-      plansUrl = "https://empowerc21canada.com?msopen=/member/plans/aovbmu4gxb"
-    }
+    // Always redirect to Century 21 Canada plans page
+    const plansUrl = "https://empowerc21canada.com?msopen=/member/plans/aovbmu4gxb"
     
     console.log("Redirecting to plans:", plansUrl)
     window.location.href = plansUrl
@@ -132,27 +83,10 @@ export default function HomePage() {
 
   const handleAnnualPricing = () => {
     trackEvent("button_click", { button: "annual_pricing", location: "pricing_section" })
-    console.log("Annual pricing clicked - redirecting to annual plan")
+    console.log("Annual pricing clicked - redirecting to Century 21 Canada annual plan")
     
-    // Get current domain and redirect to appropriate annual plans page
-    const hostname = window.location.hostname
-    let annualPlansUrl = "https://getempowerai.com?msopen=/member/plans/dkophgnbcp" // Default
-    
-    // Set annual plans URL based on domain
-    if (hostname === 'begginsagents.com' ||
-        hostname === 'www.begginsagents.com' ||
-        hostname === 'beggins.thenextlevelu.com' ||
-        hostname === 'begginsuniversity.com' ||
-        hostname === 'www.begginsuniversity.com') {
-      annualPlansUrl = "https://begginsuniversity.com?msopen=/member/plans/dkophgnbcp"
-    } else if (hostname === 'getempowerai.com' ||
-               hostname === 'www.getempowerai.com') {
-      annualPlansUrl = "https://getempowerai.com?msopen=/member/plans/dkophgnbcp"
-    } else if (hostname === 'empowerc21canada.com' ||
-               hostname === 'www.empowerc21canada.com' ||
-               hostname === 'century21canada.thenextlevelu.com') {
-      annualPlansUrl = "https://empowerc21canada.com?msopen=/member/plans/dkophgnbcp"
-    }
+    // Always redirect to Century 21 Canada annual plans page
+    const annualPlansUrl = "https://empowerc21canada.com?msopen=/member/plans/dkophgnbcp"
     
     console.log("Redirecting to annual plans:", annualPlansUrl)
     window.location.href = annualPlansUrl
@@ -274,19 +208,19 @@ export default function HomePage() {
               className="object-contain"
             />
           </div>
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-gray-300 hover:text-[#b6a888] transition-colors">
-              Features
-            </a>
-            <a href="#about" className="text-gray-300 hover:text-[#b6a888] transition-colors">
-              About
-            </a>
-            <a href="#pricing" className="text-gray-300 hover:text-[#b6a888] transition-colors">
-              Pricing
-            </a>
-            <a href="#testimonials" className="text-gray-300 hover:text-[#b6a888] transition-colors">
-              Testimonials
-            </a>
+                     <nav className="hidden md:flex items-center space-x-8">
+             <a href="#features" className="text-gray-300 hover:text-[#b6a888] transition-colors">
+               {t('navigation.features')}
+             </a>
+             <a href="#about" className="text-gray-300 hover:text-[#b6a888] transition-colors">
+               {t('navigation.about')}
+             </a>
+             <a href="#pricing" className="text-gray-300 hover:text-[#b6a888] transition-colors">
+               {t('navigation.pricing')}
+             </a>
+             <a href="#testimonials" className="text-gray-300 hover:text-[#b6a888] transition-colors">
+               {t('navigation.testimonials')}
+             </a>
             <div className="flex items-center space-x-4">
               <LanguageSwitcher />
               <button
@@ -323,15 +257,14 @@ export default function HomePage() {
       <section className="py-20 px-4">
         <div className="container mx-auto text-center">
           <Badge className="mb-6 bg-[#b6a888]/20 text-[#b6a888] border-[#b6a888]/30">
-            🚀 Transform Your Real Estate Business
+            🚀 {t('hero.badge')}
           </Badge>
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
             {tenantConfig.branding.name}
-            <span className="block text-[#b6a888]">Real Estate Platform</span>
+            <span className="block text-[#b6a888]">{t('hero.subtitle')}</span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Unlock your potential with our AI-powered tools, comprehensive training, marketing resources, and a thriving
-            community of real estate professionals.
+            {t('hero.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -339,7 +272,7 @@ export default function HomePage() {
               onClick={scrollToPricing}
               className="bg-[#b6a888] hover:bg-[#a39577] text-black font-semibold text-lg px-8 py-4"
             >
-              Start Your Journey
+              {t('hero.startJourney')}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button
@@ -349,7 +282,7 @@ export default function HomePage() {
               className="border-[#b6a888] text-[#b6a888] hover:bg-[#b6a888] hover:text-black text-lg px-8 py-4 bg-transparent"
             >
               <Play className="mr-2 h-5 w-5" />
-              Watch Demo
+              {t('hero.watchDemo')}
             </Button>
           </div>
         </div>

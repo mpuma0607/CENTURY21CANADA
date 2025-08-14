@@ -1,5 +1,16 @@
 export const englishTranslations = {
+  // Hero Section
+  "hero.badge": "Transform Your Real Estate Business",
+  "hero.subtitle": "Real Estate Platform",
+  "hero.description": "Unlock your potential with our AI-powered tools, comprehensive training, marketing resources, and a thriving community of real estate professionals.",
+  "hero.startJourney": "Start Your Journey",
+  "hero.watchDemo": "Watch Demo",
+
   // Navigation
+  "navigation.features": "Features",
+  "navigation.about": "About",
+  "navigation.pricing": "Pricing",
+  "navigation.testimonials": "Testimonials",
   "nav.ai-hub": "AI Hub",
   "nav.marketing-hub": "Marketing Hub",
   "nav.prospecting-hub": "Prospecting Hub",

@@ -1,5 +1,16 @@
 export const frenchTranslations = {
+  // Hero Section
+  "hero.badge": "Transformez Votre Entreprise Immobilière",
+  "hero.subtitle": "Plateforme Immobilière",
+  "hero.description": "Libérez votre potentiel avec nos outils alimentés par l'IA, une formation complète, des ressources marketing et une communauté florissante de professionnels immobiliers.",
+  "hero.startJourney": "Commencez Votre Voyage",
+  "hero.watchDemo": "Regarder la Démo",
+
   // Navigation
+  "navigation.features": "Fonctionnalités",
+  "navigation.about": "À Propos",
+  "navigation.pricing": "Tarification",
+  "navigation.testimonials": "Témoignages",
   "nav.ai-hub": "Centre IA",
   "nav.marketing-hub": "Centre Marketing",
   "nav.prospecting-hub": "Centre Prospection",
