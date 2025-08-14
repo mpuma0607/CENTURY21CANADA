@@ -764,4 +764,102 @@ export const frenchTranslations = {
   "form.realbio.error.voice.notSupported.description": "La reconnaissance vocale n'est pas supportée dans votre navigateur. Veuillez essayer Chrome ou Safari.",
   "form.realbio.error.microphone.title": "Accès Microphone Requis",
   "form.realbio.error.microphone.description": "Veuillez autoriser l'accès au microphone pour utiliser la saisie vocale.",
+  
+  // Branding Profile Page
+  "page.branding.title": "Profil de Marque",
+  "page.branding.description": "Personnalisez vos informations de marque et logo pour utilisation dans tous les outils IA",
+  "page.branding.loading": "Chargement du profil de marque...",
+  
+  // Form Fields
+  "page.branding.field.brand.label": "Marque",
+  "page.branding.field.brand.placeholder": "Sélectionnez votre marque",
+  "page.branding.field.brokerage.label": "Courtage",
+  "page.branding.field.brokerage.placeholder": "ex: Century 21 Beggins Enterprises",
+  
+  // Other Brand Instructions
+  "page.branding.other.instructions": "Puisque vous avez sélectionné 'Autre', veuillez entrer le nom de votre courtage dans le champ 'Courtage' ci-dessous et télécharger votre logo en utilisant la section 'Logo' ci-dessous.",
+  
+  // Logo Section
+  "page.branding.logo.title": "Logo",
+  "page.branding.logo.upload.click": "Cliquez pour télécharger votre logo",
+  "page.branding.logo.upload.formats": "PNG, JPG jusqu'à 5MB",
+  "page.branding.logo.current.title": "Logo Actuel",
+  "page.branding.logo.current.description": "Le logo est actif et sera utilisé dans vos outils IA",
+  "page.branding.logo.change": "Changer le Logo",
+  "page.branding.logo.uploading": "Téléchargement...",
+  
+  // Actions
+  "page.branding.action.save": "Sauvegarder le Profil",
+  "page.branding.action.saving": "Sauvegarde...",
+  "page.branding.action.delete": "Supprimer le Profil",
+  
+  // Messages
+  "page.branding.message.logoUploaded.title": "Logo téléchargé",
+  "page.branding.message.logoUploaded.description": "Votre logo a été téléchargé avec succès. Cliquez sur 'Sauvegarder le Profil' pour sauvegarder les modifications.",
+  "page.branding.message.profileSaved.title": "Profil sauvegardé",
+  "page.branding.message.profileSaved.description": "Votre profil de marque a été sauvegardé avec succès",
+  "page.branding.message.profileDeleted.title": "Profil supprimé",
+  "page.branding.message.profileDeleted.description": "Votre profil de marque a été supprimé",
+  
+  // Errors
+  "page.branding.error.invalidFile.title": "Type de fichier invalide",
+  "page.branding.error.invalidFile.description": "Veuillez sélectionner un fichier image",
+  "page.branding.error.fileTooLarge.title": "Fichier trop volumineux",
+  "page.branding.error.fileTooLarge.description": "Veuillez sélectionner une image de moins de 5MB",
+  "page.branding.error.uploadFailed.title": "Échec du téléchargement",
+  "page.branding.error.uploadFailed.description": "Échec du téléchargement du logo",
+  "page.branding.error.saveFailed.title": "Échec de la sauvegarde",
+  "page.branding.error.saveFailed.description": "Échec de la sauvegarde du profil",
+  "page.branding.error.deleteFailed.title": "Échec de la suppression",
+  "page.branding.error.deleteFailed.description": "Échec de la suppression du profil",
+  "page.branding.error.missingUser.title": "Erreur",
+  "page.branding.error.missingUser.description": "Les informations utilisateur sont manquantes",
+  
+  // Confirmations
+  "page.branding.confirm.delete": "Êtes-vous sûr de vouloir supprimer votre profil de marque ? Cela supprimera également votre logo téléchargé.",
+  
+  // Creation Dashboard Page
+  "page.creationsDashboard.title": "Mes Créations",
+  "page.creationsDashboard.description": "Consultez et téléchargez tout votre contenu généré par IA sauvegardé",
+  "page.creationsDashboard.loading": "Chargement de vos créations...",
+  "page.creationsDashboard.loginRequired.title": "Connexion Requise",
+  "page.creationsDashboard.loginRequired.description": "Veuillez vous connecter pour consulter vos créations sauvegardées.",
+  "page.creationsDashboard.error.title": "Erreur",
+  "page.creationsDashboard.error.tryAgain": "Réessayer",
+  "page.creationsDashboard.noCreations.title": "Aucune Création Encore",
+  "page.creationsDashboard.noCreations.description": "Commencez à utiliser nos outils IA pour créer du contenu, et vos créations sauvegardées apparaîtront ici.",
+  
+  // Tool Names
+  "page.creationsDashboard.tool.ideahub": "IdeaHub IA",
+  "page.creationsDashboard.tool.scriptit": "ScriptIt IA",
+  "page.creationsDashboard.tool.listit": "ListIt IA",
+  "page.creationsDashboard.tool.realbio": "RealBio",
+  "page.creationsDashboard.tool.action": "Action IA",
+  "page.creationsDashboard.tool.bizplan": "BizPlan IA",
+  "page.creationsDashboard.tool.goalscreen": "GoalScreen IA",
+  "page.creationsDashboard.tool.quickcma": "QuickCMA IA",
+  "page.creationsDashboard.tool.whoswho": "WhosWho IA",
+  "page.creationsDashboard.tool.propbot": "PropBot IA",
+  "page.creationsDashboard.tool.realcoach": "RealCoach IA",
+  "page.creationsDashboard.tool.realdeal": "RealDeal IA",
+  
+  // Actions
+  "page.creationsDashboard.action.view": "Voir",
+  "page.creationsDashboard.action.download": "Télécharger",
+  "page.creationsDashboard.action.downloadPDF": "Télécharger PDF",
+  "page.creationsDashboard.action.generatingPDF": "Génération du PDF...",
+  "page.creationsDashboard.action.close": "Fermer",
+  
+  // Modal Sections
+  "page.creationsDashboard.modal.content": "Contenu",
+  "page.creationsDashboard.modal.additionalDetails": "Détails Supplémentaires",
+  "page.creationsDashboard.modal.formData": "Données du Formulaire",
+  
+  // Metadata
+  "page.creationsDashboard.metadata.contentType": "Type de Contenu",
+  "page.creationsDashboard.metadata.language": "Langue",
+  "page.creationsDashboard.metadata.hasImage": "Contient une Image",
+  
+  // Date Format
+  "page.creationsDashboard.dateFormat": "en-CA",
 }

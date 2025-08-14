@@ -1,6 +1,22 @@
-<svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
-  <rect width="200" height="80" fill="#000000"/>
-  <text x="100" y="35" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#B6A888">CENTURY 21</text>
-  <text x="100" y="55" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#B6A888">Canada</text>
-  <text x="130" y="25" font-family="Arial, sans-serif" font-size="12" fill="#B6A888">®</text>
+<svg width="300" height="120" viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main text group -->
+  <g>
+    <!-- CENTURY text -->
+    <text x="10" y="45" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#B6A888" text-anchor="start">
+      CENTURY
+    </text>
+    
+    <!-- 21 text (larger) -->
+    <text x="200" y="45" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#B6A888" text-anchor="start">
+      21
+    </text>
+    
+    <!-- Registered trademark symbol -->
+    <text x="240" y="25" font-family="Arial, sans-serif" font-size="16" fill="#B6A888" text-anchor="start">®</text>
+    
+    <!-- Canada text (smaller, lowercase except C) -->
+    <text x="10" y="75" font-family="Arial, sans-serif" font-size="24" font-weight="normal" fill="#B6A888" text-anchor="start">
+      Canada
+    </text>
+  </g>
 </svg>

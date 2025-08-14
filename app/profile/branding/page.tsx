@@ -12,6 +12,7 @@ import { Upload, User, Building2, ImageIcon } from "lucide-react"
 import { useMemberSpaceUser } from "@/hooks/use-memberspace-user"
 import { useTenantConfig } from "@/contexts/tenant-context"
 import { getBrandOptionsForTenant } from "@/lib/tenant-brand-options"
+import { useTranslation } from "@/contexts/translation-context"
 import {
   getUserBrandingProfile,
   saveUserBrandingProfile,
@@ -21,6 +22,7 @@ import {
 } from "./actions"
 
 export default function BrandingProfilePage() {
+  const { t } = useTranslation()
   const { user, loading: userLoading } = useMemberSpaceUser()
   const tenantConfig = useTenantConfig()
   const { toast } = useToast()
@@ -104,8 +106,8 @@ export default function BrandingProfilePage() {
 
     if (!file.type.startsWith("image/")) {
       toast({
-        title: "Invalid file type",
-        description: "Please select an image file",
+        title: t('page.branding.error.invalidFile.title'),
+        description: t('page.branding.error.invalidFile.description'),
         variant: "destructive",
       })
       return
@@ -113,8 +115,8 @@ export default function BrandingProfilePage() {
 
     if (file.size > 5 * 1024 * 1024) {
       toast({
-        title: "File too large",
-        description: "Please select an image smaller than 5MB",
+        title: t('page.branding.error.fileTooLarge.title'),
+        description: t('page.branding.error.fileTooLarge.description'),
         variant: "destructive",
       })
       return
@@ -139,8 +141,8 @@ export default function BrandingProfilePage() {
         )
 
         toast({
-          title: "Logo uploaded",
-          description: "Your logo has been uploaded successfully. Click 'Save Profile' to save changes.",
+          title: t('page.branding.message.logoUploaded.title'),
+          description: t('page.branding.message.logoUploaded.description'),
         })
       } else {
         throw new Error(result.error || "Upload failed")
@@ -148,8 +150,8 @@ export default function BrandingProfilePage() {
     } catch (error) {
       console.error("Error uploading logo:", error)
       toast({
-        title: "Upload failed",
-        description: error instanceof Error ? error.message : "Failed to upload logo",
+        title: t('page.branding.error.uploadFailed.title'),
+        description: error instanceof Error ? error.message : t('page.branding.error.uploadFailed.description'),
         variant: "destructive",
       })
     } finally {
@@ -167,8 +169,8 @@ export default function BrandingProfilePage() {
     if (!user?.id) {
       console.log("Missing user - cannot save")
       toast({
-        title: "Error",
-        description: "User information is missing",
+        title: t('page.branding.error.missingUser.title'),
+        description: t('page.branding.error.missingUser.description'),
         variant: "destructive",
       })
       return
@@ -198,8 +200,8 @@ export default function BrandingProfilePage() {
       if (result.success) {
         setProfile(result.data)
         toast({
-          title: "Profile saved",
-          description: "Your branding profile has been saved successfully",
+          title: t('page.branding.message.profileSaved.title'),
+          description: t('page.branding.message.profileSaved.description'),
         })
         console.log("Profile saved successfully")
       } else {
@@ -208,8 +210,8 @@ export default function BrandingProfilePage() {
     } catch (error) {
       console.error("Error saving profile:", error)
       toast({
-        title: "Save failed",
-        description: error instanceof Error ? error.message : "Failed to save profile",
+        title: t('page.branding.error.saveFailed.title'),
+        description: error instanceof Error ? error.message : t('page.branding.error.saveFailed.description'),
         variant: "destructive",
       })
     } finally {
@@ -220,7 +222,7 @@ export default function BrandingProfilePage() {
   const handleDeleteProfile = async () => {
     if (!user?.id) return
 
-    if (!confirm("Are you sure you want to delete your branding profile? This will also remove your uploaded logo.")) {
+    if (!confirm(t('page.branding.confirm.delete'))) {
       return
     }
 
@@ -236,8 +238,8 @@ export default function BrandingProfilePage() {
           brokerage: "",
         })
         toast({
-          title: "Profile deleted",
-          description: "Your branding profile has been deleted",
+          title: t('page.branding.message.profileDeleted.title'),
+          description: t('page.branding.message.profileDeleted.description'),
         })
       } else {
         throw new Error(result.error || "Delete failed")
@@ -245,8 +247,8 @@ export default function BrandingProfilePage() {
     } catch (error) {
       console.error("Error deleting profile:", error)
       toast({
-        title: "Delete failed",
-        description: error instanceof Error ? error.message : "Failed to delete profile",
+        title: t('page.branding.error.deleteFailed.title'),
+        description: error instanceof Error ? error.message : t('page.branding.error.deleteFailed.description'),
         variant: "destructive",
       })
     }
@@ -257,7 +259,7 @@ export default function BrandingProfilePage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading branding profile...</p>
+          <p className="text-gray-600">{t('page.branding.loading')}</p>
         </div>
       </div>
     )
@@ -273,20 +275,20 @@ export default function BrandingProfilePage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <User className="h-5 w-5" />
-              Branding Profile
+              {t('page.branding.title')}
             </CardTitle>
-            <CardDescription>Customize your brand information and logo for use across all AI tools</CardDescription>
+            <CardDescription>{t('page.branding.description')}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-4">
               <div>
                 <Label htmlFor="brand" className="flex items-center gap-2">
                   <Building2 className="h-4 w-4" />
-                  Brand
+                  {t('page.branding.field.brand.label')}
                 </Label>
                 <Select value={formData.brand} onValueChange={(value) => setFormData({ ...formData, brand: value })}>
                   <SelectTrigger id="brand">
-                    <SelectValue placeholder="Select your brand" />
+                    <SelectValue placeholder={t('page.branding.field.brand.placeholder')} />
                   </SelectTrigger>
                   <SelectContent>
                     {brandOptions.map((brand) => (
@@ -299,7 +301,7 @@ export default function BrandingProfilePage() {
                 {showOtherInput && (
                   <div className="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg">
                     <p className="text-sm text-blue-800">
-                      Since you selected "Other", please enter your brokerage name in the <strong>Brokerage</strong> field below and upload your logo using the <strong>Logo</strong> upload section below.
+                      {t('page.branding.other.instructions')}
                     </p>
                   </div>
                 )}
@@ -308,13 +310,13 @@ export default function BrandingProfilePage() {
               <div>
                 <Label htmlFor="brokerage" className="flex items-center gap-2">
                   <Building2 className="h-4 w-4" />
-                  Brokerage
+                  {t('page.branding.field.brokerage.label')}
                 </Label>
                 <Input
                   id="brokerage"
                   value={formData.brokerage}
                   onChange={(e) => setFormData({ ...formData, brokerage: e.target.value })}
-                  placeholder="e.g., Century 21 Beggins Enterprises"
+                  placeholder={t('page.branding.field.brokerage.placeholder')}
                 />
               </div>
             </div>
@@ -322,7 +324,7 @@ export default function BrandingProfilePage() {
             <div className="space-y-4">
               <Label className="flex items-center gap-2">
                 <ImageIcon className="h-4 w-4" />
-                Logo
+                {t('page.branding.logo.title')}
               </Label>
 
               {profile?.custom_logo_url ? (
@@ -334,8 +336,8 @@ export default function BrandingProfilePage() {
                       className="h-16 w-16 object-contain rounded border bg-white"
                     />
                     <div className="flex-1">
-                      <p className="font-medium">Current Logo</p>
-                      <p className="text-sm text-gray-600">Logo is active and will be used in your AI tools</p>
+                      <p className="font-medium">{t('page.branding.logo.current.title')}</p>
+                      <p className="text-sm text-gray-600">{t('page.branding.logo.current.description')}</p>
                     </div>
                     <div className="flex gap-2">
                       <Button
@@ -344,7 +346,7 @@ export default function BrandingProfilePage() {
                         onClick={() => document.getElementById("logo-upload")?.click()}
                         disabled={uploading}
                       >
-                        {uploading ? "Uploading..." : "Change Logo"}
+                        {uploading ? t('page.branding.logo.uploading') : t('page.branding.logo.change')}
                       </Button>
                     </div>
                   </div>
@@ -356,8 +358,8 @@ export default function BrandingProfilePage() {
                     onClick={() => document.getElementById("logo-upload")?.click()}
                   >
                     <Upload className="h-8 w-8 text-gray-400 mx-auto mb-2" />
-                    <p className="text-gray-600 mb-1">Click to upload your logo</p>
-                    <p className="text-sm text-gray-500">PNG, JPG up to 5MB</p>
+                    <p className="text-gray-600 mb-1">{t('page.branding.logo.upload.click')}</p>
+                    <p className="text-sm text-gray-500">{t('page.branding.logo.upload.formats')}</p>
                   </div>
                 </div>
               )}
@@ -374,11 +376,11 @@ export default function BrandingProfilePage() {
 
             <div className="flex gap-3 pt-4">
               <Button onClick={handleSave} disabled={saving || !formData.brand || !formData.brokerage}>
-                {saving ? "Saving..." : "Save Profile"}
+                {saving ? t('page.branding.action.saving') : t('page.branding.action.save')}
               </Button>
               {profile && (
                 <Button variant="outline" onClick={handleDeleteProfile}>
-                  Delete Profile
+                  {t('page.branding.action.delete')}
                 </Button>
               )}
             </div>

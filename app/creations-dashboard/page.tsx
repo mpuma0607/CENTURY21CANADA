@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Loader2, Download, FileText, Calendar, Palette, Eye, X } from "lucide-react"
 import { useMemberSpaceUser } from "@/hooks/use-memberspace-user"
+import { useTranslation } from "@/contexts/translation-context"
 
 interface UserCreation {
   id: string
@@ -20,6 +21,7 @@ interface UserCreation {
 }
 
 export default function CreationsDashboardPage() {
+  const { t } = useTranslation()
   const { user, isLoggedIn } = useMemberSpaceUser()
   const [creations, setCreations] = useState<UserCreation[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -138,36 +140,36 @@ export default function CreationsDashboardPage() {
   const getToolName = (toolType: string) => {
     switch (toolType) {
       case "ideahub-ai":
-        return "IdeaHub AI"
+        return t('page.creationsDashboard.tool.ideahub')
       case "scriptit-ai":
-        return "ScriptIt AI"
+        return t('page.creationsDashboard.tool.scriptit')
       case "listit-ai":
-        return "ListIt AI"
+        return t('page.creationsDashboard.tool.listit')
       case "realbio":
-        return "RealBio"
+        return t('page.creationsDashboard.tool.realbio')
       case "action-ai":
-        return "Action AI"
+        return t('page.creationsDashboard.tool.action')
       case "bizplan-ai":
-        return "BizPlan AI"
+        return t('page.creationsDashboard.tool.bizplan')
       case "goalscreen-ai":
-        return "GoalScreen AI"
+        return t('page.creationsDashboard.tool.goalscreen')
       case "quickcma-ai":
-        return "QuickCMA AI"
+        return t('page.creationsDashboard.tool.quickcma')
       case "whos-who-ai":
-        return "WhosWho AI"
+        return t('page.creationsDashboard.tool.whoswho')
       case "propbot-ai":
-        return "PropBot AI"
+        return t('page.creationsDashboard.tool.propbot')
       case "realcoach-ai":
-        return "RealCoach AI"
+        return t('page.creationsDashboard.tool.realcoach')
       case "realdeal-ai":
-        return "RealDeal AI"
+        return t('page.creationsDashboard.tool.realdeal')
       default:
         return toolType.replace("-", " ").replace(/\b\w/g, (l) => l.toUpperCase())
     }
   }
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
+    return new Date(dateString).toLocaleDateString(t('page.creationsDashboard.dateFormat'), {
       year: "numeric",
       month: "short",
       day: "numeric",
@@ -194,8 +196,8 @@ export default function CreationsDashboardPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <Card className="max-w-md mx-auto">
           <CardHeader className="text-center">
-            <CardTitle>Login Required</CardTitle>
-            <CardDescription>Please log in to view your saved creations.</CardDescription>
+            <CardTitle>{t('page.creationsDashboard.loginRequired.title')}</CardTitle>
+            <CardDescription>{t('page.creationsDashboard.loginRequired.description')}</CardDescription>
           </CardHeader>
         </Card>
       </div>
@@ -207,7 +209,7 @@ export default function CreationsDashboardPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4" />
-          <p className="text-gray-600">Loading your creations...</p>
+          <p className="text-gray-600">{t('page.creationsDashboard.loading')}</p>
         </div>
       </div>
     )
@@ -218,12 +220,12 @@ export default function CreationsDashboardPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <Card className="max-w-md mx-auto">
           <CardHeader className="text-center">
-            <CardTitle className="text-red-600">Error</CardTitle>
+            <CardTitle className="text-red-600">{t('page.creationsDashboard.error.title')}</CardTitle>
             <CardDescription>{error}</CardDescription>
           </CardHeader>
           <CardContent>
             <Button onClick={fetchUserCreations} className="w-full">
-              Try Again
+              {t('page.creationsDashboard.error.tryAgain')}
             </Button>
           </CardContent>
         </Card>
@@ -242,18 +244,18 @@ export default function CreationsDashboardPage() {
           <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
             <FileText className="h-8 w-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">My Creations</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">{t('page.creationsDashboard.title')}</h1>
           <p className="text-gray-600">
-            View and download all your saved AI-generated content ({creations.length} total)
+            {t('page.creationsDashboard.description')} ({creations.length} total)
           </p>
         </div>
 
         {creations.length === 0 ? (
           <Card className="max-w-2xl mx-auto text-center">
             <CardHeader>
-              <CardTitle>No Creations Yet</CardTitle>
+              <CardTitle>{t('page.creationsDashboard.noCreations.title')}</CardTitle>
               <CardDescription>
-                Start using our AI tools to create content, and your saved creations will appear here.
+                {t('page.creationsDashboard.noCreations.description')}
               </CardDescription>
             </CardHeader>
           </Card>
@@ -327,7 +329,7 @@ export default function CreationsDashboardPage() {
                                 {creation.metadata.language && (
                                   <Badge variant="secondary">{creation.metadata.language}</Badge>
                                 )}
-                                {creation.metadata.hasImage && <Badge variant="secondary">Has Image</Badge>}
+                                {creation.metadata.hasImage && <Badge variant="secondary">{t('page.creationsDashboard.metadata.hasImage')}</Badge>}
                               </div>
                             )}
                           </CardContent>
@@ -367,7 +369,7 @@ export default function CreationsDashboardPage() {
             <div className="space-y-6">
               {/* Content */}
               <div>
-                <h3 className="font-semibold text-lg mb-3">Content</h3>
+                <h3 className="font-semibold text-lg mb-3">{t('page.creationsDashboard.modal.content')}</h3>
                 <div className="bg-gray-50 p-4 rounded-lg whitespace-pre-wrap">
                   {selectedCreation.content}
                 </div>
@@ -376,7 +378,7 @@ export default function CreationsDashboardPage() {
               {/* Metadata */}
               {selectedCreation.metadata && Object.keys(selectedCreation.metadata).length > 0 && (
                 <div>
-                  <h3 className="font-semibold text-lg mb-3">Additional Details</h3>
+                  <h3 className="font-semibold text-lg mb-3">{t('page.creationsDashboard.modal.additionalDetails')}</h3>
                   <div className="grid grid-cols-2 gap-4">
                     {Object.entries(selectedCreation.metadata).map(([key, value]) => (
                       <div key={key} className="bg-gray-50 p-3 rounded">
@@ -393,7 +395,7 @@ export default function CreationsDashboardPage() {
               {/* Form Data */}
               {selectedCreation.form_data && Object.keys(selectedCreation.form_data).length > 0 && (
                 <div>
-                  <h3 className="font-semibold text-lg mb-3">Form Data</h3>
+                  <h3 className="font-semibold text-lg mb-3">{t('page.creationsDashboard.modal.formData')}</h3>
                   <div className="grid grid-cols-2 gap-4">
                     {Object.entries(selectedCreation.form_data).map(([key, value]) => (
                       <div key={key} className="bg-gray-50 p-3 rounded">
@@ -417,12 +419,12 @@ export default function CreationsDashboardPage() {
                   {isDownloading === selectedCreation.id ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                      Generating PDF...
+                      {t('page.creationsDashboard.action.generatingPDF')}
                     </>
                   ) : (
                     <>
                       <Download className="h-4 w-4 mr-2" />
-                      Download PDF
+                      {t('page.creationsDashboard.action.downloadPDF')}
                     </>
                   )}
                 </Button>

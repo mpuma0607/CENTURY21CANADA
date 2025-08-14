@@ -752,4 +752,102 @@ export const englishTranslations = {
   "form.realbio.error.voice.notSupported.description": "Voice recognition is not supported in your browser. Please try Chrome or Safari.",
   "form.realbio.error.microphone.title": "Microphone Access Required",
   "form.realbio.error.microphone.description": "Please allow microphone access to use voice input.",
+  
+  // Branding Profile Page
+  "page.branding.title": "Branding Profile",
+  "page.branding.description": "Customize your brand information and logo for use across all AI tools",
+  "page.branding.loading": "Loading branding profile...",
+  
+  // Form Fields
+  "page.branding.field.brand.label": "Brand",
+  "page.branding.field.brand.placeholder": "Select your brand",
+  "page.branding.field.brokerage.label": "Brokerage",
+  "page.branding.field.brokerage.placeholder": "e.g., Century 21 Beggins Enterprises",
+  
+  // Other Brand Instructions
+  "page.branding.other.instructions": "Since you selected 'Other', please enter your brokerage name in the 'Brokerage' field below and upload your logo using the 'Logo' upload section below.",
+  
+  // Logo Section
+  "page.branding.logo.title": "Logo",
+  "page.branding.logo.upload.click": "Click to upload your logo",
+  "page.branding.logo.upload.formats": "PNG, JPG up to 5MB",
+  "page.branding.logo.current.title": "Current Logo",
+  "page.branding.logo.current.description": "Logo is active and will be used in your AI tools",
+  "page.branding.logo.change": "Change Logo",
+  "page.branding.logo.uploading": "Uploading...",
+  
+  // Actions
+  "page.branding.action.save": "Save Profile",
+  "page.branding.action.saving": "Saving...",
+  "page.branding.action.delete": "Delete Profile",
+  
+  // Messages
+  "page.branding.message.logoUploaded.title": "Logo uploaded",
+  "page.branding.message.logoUploaded.description": "Your logo has been uploaded successfully. Click 'Save Profile' to save changes.",
+  "page.branding.message.profileSaved.title": "Profile saved",
+  "page.branding.message.profileSaved.description": "Your branding profile has been saved successfully",
+  "page.branding.message.profileDeleted.title": "Profile deleted",
+  "page.branding.message.profileDeleted.description": "Your branding profile has been deleted",
+  
+  // Errors
+  "page.branding.error.invalidFile.title": "Invalid file type",
+  "page.branding.error.invalidFile.description": "Please select an image file",
+  "page.branding.error.fileTooLarge.title": "File too large",
+  "page.branding.error.fileTooLarge.description": "Please select an image smaller than 5MB",
+  "page.branding.error.uploadFailed.title": "Upload failed",
+  "page.branding.error.uploadFailed.description": "Failed to upload logo",
+  "page.branding.error.saveFailed.title": "Save failed",
+  "page.branding.error.saveFailed.description": "Failed to save profile",
+  "page.branding.error.deleteFailed.title": "Delete failed",
+  "page.branding.error.deleteFailed.description": "Failed to delete profile",
+  "page.branding.error.missingUser.title": "Error",
+  "page.branding.error.missingUser.description": "User information is missing",
+  
+  // Confirmations
+  "page.branding.confirm.delete": "Are you sure you want to delete your branding profile? This will also remove your uploaded logo.",
+  
+  // Creation Dashboard Page
+  "page.creationsDashboard.title": "My Creations",
+  "page.creationsDashboard.description": "View and download all your saved AI-generated content",
+  "page.creationsDashboard.loading": "Loading your creations...",
+  "page.creationsDashboard.loginRequired.title": "Login Required",
+  "page.creationsDashboard.loginRequired.description": "Please log in to view your saved creations.",
+  "page.creationsDashboard.error.title": "Error",
+  "page.creationsDashboard.error.tryAgain": "Try Again",
+  "page.creationsDashboard.noCreations.title": "No Creations Yet",
+  "page.creationsDashboard.noCreations.description": "Start using our AI tools to create content, and your saved creations will appear here.",
+  
+  // Tool Names
+  "page.creationsDashboard.tool.ideahub": "IdeaHub AI",
+  "page.creationsDashboard.tool.scriptit": "ScriptIt AI",
+  "page.creationsDashboard.tool.listit": "ListIt AI",
+  "page.creationsDashboard.tool.realbio": "RealBio",
+  "page.creationsDashboard.tool.action": "Action AI",
+  "page.creationsDashboard.tool.bizplan": "BizPlan AI",
+  "page.creationsDashboard.tool.goalscreen": "GoalScreen AI",
+  "page.creationsDashboard.tool.quickcma": "QuickCMA AI",
+  "page.creationsDashboard.tool.whoswho": "WhosWho AI",
+  "page.creationsDashboard.tool.propbot": "PropBot AI",
+  "page.creationsDashboard.tool.realcoach": "RealCoach AI",
+  "page.creationsDashboard.tool.realdeal": "RealDeal AI",
+  
+  // Actions
+  "page.creationsDashboard.action.view": "View",
+  "page.creationsDashboard.action.download": "Download",
+  "page.creationsDashboard.action.downloadPDF": "Download PDF",
+  "page.creationsDashboard.action.generatingPDF": "Generating PDF...",
+  "page.creationsDashboard.action.close": "Close",
+  
+  // Modal Sections
+  "page.creationsDashboard.modal.content": "Content",
+  "page.creationsDashboard.modal.additionalDetails": "Additional Details",
+  "page.creationsDashboard.modal.formData": "Form Data",
+  
+  // Metadata
+  "page.creationsDashboard.metadata.contentType": "Content Type",
+  "page.creationsDashboard.metadata.language": "Language",
+  "page.creationsDashboard.metadata.hasImage": "Has Image",
+  
+  // Date Format
+  "page.creationsDashboard.dateFormat": "en-US",
 }

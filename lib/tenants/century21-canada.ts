@@ -10,8 +10,8 @@ export const century21CanadaConfig: TenantConfig = {
   ],
   branding: {
     name: "Century 21 Canada",
-    logo: "/images/century21-canada-main-logo.png",
-    logoDark: "/images/century21-canada-main-logo.png",
+    logo: "/images/century21-canada-logo.svg",
+    logoDark: "/images/century21-canada-logo.svg",
     colors: {
       primary: "#B6A888", // Vegas Gold
       secondary: "#000000", // Black
