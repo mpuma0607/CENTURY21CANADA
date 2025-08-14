@@ -275,6 +275,14 @@ export const frenchTranslations = {
   "validation.minLength": "Doit contenir au moins {min} caractères",
   "validation.maxLength": "Ne peut pas dépasser {max} caractères",
 
+  // Portal
+  "portal.welcome": "Bienvenue dans Votre Portail",
+  "portal.motto": "AUTONOMISER • ÉDUQUER • ENCOURAGER",
+  "portal.description": "Accédez à votre suite complète de superpouvoirs immobiliers. Choisissez votre hub et commencez à transformer votre entreprise aujourd'hui.",
+  "portal.chooseHub": "Choisissez Votre Hub",
+  "portal.hubDescription": "Chaque hub est conçu pour élever différents aspects de votre entreprise immobilière",
+  "portal.enterHub": "Entrer dans {hubName}",
+
   // Page Titles
   "page.home": "Accueil",
   "page.portal": "Portail",

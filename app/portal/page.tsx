@@ -8,40 +8,44 @@ import { useTenantConfig } from "@/contexts/tenant-context"
 import { isFeatureHidden } from "@/lib/tenant-config"
 import { useEffect } from "react"
 import { useMemberSpaceUser } from "@/hooks/use-memberspace-user"
+import { useTranslation } from "@/contexts/translation-context"
+import LanguageSwitcher from "@/components/language-switcher"
 
 export default function PortalPage() {
   const tenantConfig = useTenantConfig()
-  const { user, loading, isLoggedIn } = useMemberSpaceUser()
+  const { t } = useTranslation()
+  // Temporarily disable authentication check until MemberSpace is working
+  // const { user, loading, isLoggedIn } = useMemberSpaceUser()
 
   // Check authentication and redirect if not logged in
-  useEffect(() => {
-    if (!loading && !isLoggedIn) {
-      console.log("User not authenticated, redirecting to Century 21 Canada MemberSpace sign-in")
-      
-      // Always redirect to Century 21 Canada MemberSpace sign-in
-      const signInUrl = "https://empowerc21canada.com?msopen=/member/sign_in"
-      
-      console.log("Redirecting to:", signInUrl)
-      window.location.href = signInUrl
-    }
-  }, [loading, isLoggedIn])
+  // useEffect(() => {
+  //   if (!loading && !isLoggedIn) {
+  //     console.log("User not authenticated, redirecting to Century 21 Canada MemberSpace sign-in")
+  //     
+  //     // Always redirect to Century 21 Canada MemberSpace sign-in
+  //     const signInUrl = "https://empowerc21canada.com?msopen=/member/sign_in"
+  //     
+  //     console.log("Redirecting to:", signInUrl)
+  //     window.location.href = signInUrl
+  //   }
+  // }, [loading, isLoggedIn])
 
   // Show loading while checking authentication
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#b6a888] mx-auto mb-4"></div>
-          <p className="text-gray-600">Checking authentication...</p>
-        </div>
-      </div>
-    )
-  }
+  // if (loading) {
+  //   return (
+  //   <div className="min-h-screen bg-white flex items-center justify-center">
+  //     <div className="text-center">
+  //       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#b6a888] mx-auto mb-4"></div>
+  //       <p className="text-gray-600">Checking authentication...</p>
+  //     </div>
+  //   </div>
+  // )
+  // }
 
   // If not logged in, don't render anything (will redirect)
-  if (!isLoggedIn) {
-    return null
-  }
+  // if (!isLoggedIn) {
+  //   return null
+  // }
 
   const hubs = [
     {
@@ -125,15 +129,19 @@ export default function PortalPage() {
       <section className="relative bg-gradient-to-br from-gray-900 via-black to-indigo-900 text-white py-24">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">Welcome to Your Portal</h1>
+          {/* Language Switcher */}
+          <div className="absolute top-4 right-4">
+            <LanguageSwitcher />
+          </div>
+          
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">{t('portal.welcome')}</h1>
           <div className="flex items-center justify-center gap-4 mb-8">
             <div className="h-px bg-[#b6a888] w-16"></div>
-            <p className="text-xl text-[#b6a888] font-medium tracking-wide">EMPOWER • EDUCATE • ENCOURAGE</p>
+            <p className="text-xl text-[#b6a888] font-medium tracking-wide">{t('portal.motto')}</p>
             <div className="h-px bg-[#b6a888] w-16"></div>
           </div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Access your complete suite of real estate superpowers. Choose your hub and start transforming your business
-            today.
+            {t('portal.description')}
           </p>
         </div>
       </section>
@@ -159,9 +167,9 @@ export default function PortalPage() {
           )}
           
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-black mb-4">Choose Your Hub</h2>
+            <h2 className="text-4xl font-bold text-black mb-4">{t('portal.chooseHub')}</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Each hub is designed to elevate different aspects of your real estate business
+              {t('portal.hubDescription')}
             </p>
           </div>
 
@@ -185,9 +193,9 @@ export default function PortalPage() {
 
                     <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">{hub.description}</p>
 
-                    <Link href={hub.href} className="w-full mt-auto">
-                      <Button className="w-full bg-[#b6a888] hover:bg-[#a39577] text-white">Enter {hub.title}</Button>
-                    </Link>
+                                         <Link href={hub.href} className="w-full mt-auto">
+                       <Button className="w-full bg-[#b6a888] hover:bg-[#a39577] text-white">{t('portal.enterHub', { hubName: hub.title })}</Button>
+                     </Link>
                   </div>
                 </CardContent>
               </Card>

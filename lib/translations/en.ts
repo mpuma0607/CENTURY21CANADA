@@ -250,6 +250,14 @@ export const englishTranslations = {
   "ui.errorState": "Error State",
   "ui.successState": "Success State",
 
+  // Portal
+  "portal.welcome": "Welcome to Your Portal",
+  "portal.motto": "EMPOWER • EDUCATE • ENCOURAGE",
+  "portal.description": "Access your complete suite of real estate superpowers. Choose your hub and start transforming your business today.",
+  "portal.chooseHub": "Choose Your Hub",
+  "portal.hubDescription": "Each hub is designed to elevate different aspects of your real estate business",
+  "portal.enterHub": "Enter {hubName}",
+
   // Validation
   "validation.required": "This field is required",
   "validation.email": "Please enter a valid email address",

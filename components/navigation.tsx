@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react"
-import { useTenantConfig, useTranslation } from "@/contexts/tenant-context"
+import { useTenantConfig } from "@/contexts/tenant-context"
+import { useTranslation } from "@/contexts/translation-context"
 import { isFeatureHidden } from "@/lib/tenant-config"
 
 const navigationItems = [
@@ -358,9 +359,25 @@ export default function Navigation() {
       }
 
       // Get translated title, fallback to original if no translation
-      const translationKey = `${hubKey}.title`
-      const translatedTitle = t(translationKey)
-      const displayTitle = translatedTitle !== translationKey ? translatedTitle : item.title
+      let translatedTitle = item.title
+      if (item.title === "AI Hub") {
+        translatedTitle = t('nav.ai-hub')
+      } else if (item.title === "Marketing Hub") {
+        translatedTitle = t('nav.marketing-hub')
+      } else if (item.title === "Prospecting Hub") {
+        translatedTitle = t('nav.prospecting-hub')
+      } else if (item.title === "Training Hub") {
+        translatedTitle = t('nav.training-hub')
+      } else if (item.title === "Services Hub") {
+        translatedTitle = t('nav.services-hub')
+      } else if (item.title === "Networking Hub") {
+        translatedTitle = t('nav.networking-hub')
+      } else if (item.title === "Gear Hub") {
+        translatedTitle = t('nav.gear-hub')
+      } else if (item.title === "Profile") {
+        translatedTitle = t('nav.profile')
+      }
+      const displayTitle = translatedTitle
 
       // Translate submenu items if they have translation keys
       const translatedSubmenu = filteredSubmenu.map(subItem => {

@@ -40,7 +40,7 @@ export default function RootLayout({
                       strategy="beforeInteractive"
                       dangerouslySetInnerHTML={{
                         __html: `
-                          var MemberSpace = window.MemberSpace || {"subdomain":"empower21canada"};
+                          var MemberSpace = window.MemberSpace || {"subdomain":"empowerc21canada"};
                           (function(d){
                             var s = d.createElement("script");
                             s.src = "https://cdn.memberspace.com/scripts/widgets.js";
