@@ -5,6 +5,12 @@ export const frenchTranslations = {
   "hero.description": "Libérez votre potentiel avec nos outils alimentés par l'IA, une formation complète, des ressources marketing et une communauté florissante de professionnels immobiliers.",
   "hero.startJourney": "Commencez Votre Voyage",
   "hero.watchDemo": "Regarder la Démo",
+  "hero.everythingYouNeed": "Tout Ce Dont Vous Avez Besoin Pour Réussir",
+  "hero.platformDescription": "Notre plateforme complète fournit tous les outils, la formation et les ressources dont vous avez besoin pour faire passer votre entreprise immobilière au niveau supérieur",
+  "button.signIn": "Se Connecter",
+  "button.getStarted": "Commencer",
+  "button.getStartedMonthly": "Commencer Mensuel",
+  "button.getStartedAnnual": "Commencer Annuel",
 
   // Navigation
   "navigation.features": "Fonctionnalités",

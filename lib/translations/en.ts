@@ -5,6 +5,12 @@ export const englishTranslations = {
   "hero.description": "Unlock your potential with our AI-powered tools, comprehensive training, marketing resources, and a thriving community of real estate professionals.",
   "hero.startJourney": "Start Your Journey",
   "hero.watchDemo": "Watch Demo",
+  "hero.everythingYouNeed": "Everything You Need to Succeed",
+  "hero.platformDescription": "Our comprehensive platform provides all the tools, training, and resources you need to take your real estate business to the next level.",
+  "button.signIn": "Sign In",
+  "button.getStarted": "Get Started",
+  "button.getStartedMonthly": "Get Started Monthly",
+  "button.getStartedAnnual": "Get Started Annual",
 
   // Navigation
   "navigation.features": "Features",
