@@ -264,6 +264,26 @@ export const englishTranslations = {
   "portal.hubDescription": "Each hub is designed to elevate different aspects of your real estate business",
   "portal.enterHub": "Enter {hubName}",
 
+  // Hub Titles and Descriptions
+  "hub.ai.title": "AI Hub",
+  "hub.ai.description": "Leverage artificial intelligence to supercharge your real estate business",
+  "hub.marketing.title": "Marketing Hub",
+  "hub.marketing.description": "Professional marketing materials and social media content",
+  "hub.prospecting.title": "Prospecting Hub",
+  "hub.prospecting.description": "Find and convert leads with proven prospecting strategies",
+  "hub.training.title": "Training Hub",
+  "hub.training.description": "Comprehensive training programs to elevate your skills",
+  "hub.onboarding.title": "Onboarding Hub",
+  "hub.onboarding.description": "Get started with comprehensive onboarding and setup guides",
+  "hub.services.title": "Services Hub",
+  "hub.services.description": "Professional services to grow your business",
+  "hub.networking.title": "Networking Hub",
+  "hub.networking.description": "Connect with other real estate professionals",
+  "hub.gear.title": "Gear Hub",
+  "hub.gear.description": "Essential tools and equipment for real estate professionals",
+  "hub.profile.title": "Profile",
+  "hub.profile.description": "Manage your profile and view your AI creations",
+
   // Validation
   "validation.required": "This field is required",
   "validation.email": "Please enter a valid email address",

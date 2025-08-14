@@ -21,31 +21,51 @@ const translations = {
 
 export function TranslationProvider({ children }: { children: React.ReactNode }) {
   const [currentLanguage, setCurrentLanguage] = useState("fr") // Default to French
+  const [isClient, setIsClient] = useState(false)
 
-  // Load language preference from localStorage on mount
+  // Ensure we're on the client side before accessing localStorage
   useEffect(() => {
-    const savedLanguage = localStorage.getItem("preferred-language")
-    if (savedLanguage && (savedLanguage === "en" || savedLanguage === "fr")) {
-      setCurrentLanguage(savedLanguage)
+    setIsClient(true)
+    
+    try {
+      const savedLanguage = localStorage.getItem("preferred-language")
+      if (savedLanguage && (savedLanguage === "en" || savedLanguage === "fr")) {
+        setCurrentLanguage(savedLanguage)
+      }
+    } catch (error) {
+      console.warn("Could not access localStorage:", error)
+      // Keep default language (French)
     }
   }, [])
 
   const translate = (key: string, params?: Record<string, string | number>): string => {
-    const translation = translations[currentLanguage as keyof typeof translations]?.[key] || key
-    
-    if (params) {
-      return Object.entries(params).reduce((result, [param, value]) => {
-        return result.replace(new RegExp(`{${param}}`, 'g'), String(value))
-      }, translation)
+    try {
+      const translation = translations[currentLanguage as keyof typeof translations]?.[key] || key
+      
+      if (params) {
+        return Object.entries(params).reduce((result, [param, value]) => {
+          return result.replace(new RegExp(`{${param}}`, 'g'), String(value))
+        }, translation)
+      }
+      
+      return translation
+    } catch (error) {
+      console.warn("Translation error:", error)
+      return key // Fallback to the key if translation fails
     }
-    
-    return translation
   }
 
   const setLanguage = (language: string) => {
     if (language === "en" || language === "fr") {
       setCurrentLanguage(language)
-      localStorage.setItem("preferred-language", language)
+      
+      if (isClient) {
+        try {
+          localStorage.setItem("preferred-language", language)
+        } catch (error) {
+          console.warn("Could not save language preference:", error)
+        }
+      }
     }
   }
 

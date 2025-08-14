@@ -289,6 +289,26 @@ export const frenchTranslations = {
   "portal.hubDescription": "Chaque hub est conçu pour élever différents aspects de votre entreprise immobilière",
   "portal.enterHub": "Entrer dans {hubName}",
 
+  // Hub Titles and Descriptions
+  "hub.ai.title": "Centre IA",
+  "hub.ai.description": "Exploitez l'intelligence artificielle pour dynamiser votre entreprise immobilière",
+  "hub.marketing.title": "Centre Marketing",
+  "hub.marketing.description": "Matériaux marketing professionnels et contenu pour réseaux sociaux",
+  "hub.prospecting.title": "Centre Prospection",
+  "hub.prospecting.description": "Trouvez et convertissez des prospects avec des stratégies de prospection éprouvées",
+  "hub.training.title": "Centre Formation",
+  "hub.training.description": "Programmes de formation complets pour élever vos compétences",
+  "hub.onboarding.title": "Centre Intégration",
+  "hub.onboarding.description": "Commencez avec des guides d'intégration et de configuration complets",
+  "hub.services.title": "Centre Services",
+  "hub.services.description": "Services professionnels pour développer votre entreprise",
+  "hub.networking.title": "Centre Réseautage",
+  "hub.networking.description": "Connectez-vous avec d'autres professionnels immobiliers",
+  "hub.gear.title": "Centre Équipement",
+  "hub.gear.description": "Outils et équipements essentiels pour les professionnels immobiliers",
+  "hub.profile.title": "Profil",
+  "hub.profile.description": "Gérez votre profil et consultez vos créations IA",
+
   // Page Titles
   "page.home": "Accueil",
   "page.portal": "Portail",

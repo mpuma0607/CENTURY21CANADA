@@ -49,29 +49,29 @@ export default function PortalPage() {
 
   const hubs = [
     {
-      title: "AI Hub",
-      description: "Leverage artificial intelligence to supercharge your real estate business",
+      title: t('hub.ai.title'),
+      description: t('hub.ai.description'),
       icon: Brain,
       href: "/ai-hub",
       color: "bg-gradient-to-br from-purple-600 to-indigo-600",
     },
     {
-      title: "Marketing Hub",
-      description: "Professional marketing materials and social media content",
+      title: t('hub.marketing.title'),
+      description: t('hub.marketing.description'),
       icon: Megaphone,
       href: "/marketing-hub",
       color: "bg-gradient-to-br from-pink-600 to-rose-600",
     },
     {
-      title: "Prospecting Hub",
-      description: "Find and convert leads with proven prospecting strategies",
+      title: t('hub.prospecting.title'),
+      description: t('hub.prospecting.description'),
       icon: Target,
       href: "/prospecting-hub",
       color: "bg-gradient-to-br from-green-600 to-emerald-600",
     },
     {
-      title: "Training Hub",
-      description: "Comprehensive training programs to elevate your skills",
+      title: t('hub.training.title'),
+      description: t('hub.training.description'),
       icon: GraduationCap,
       href: "/training-hub",
       color: "bg-gradient-to-br from-blue-600 to-cyan-600",
@@ -79,8 +79,8 @@ export default function PortalPage() {
     ...(tenantConfig.id === "century21-beggins"
       ? [
           {
-            title: "Onboarding Hub",
-            description: "Get started with comprehensive onboarding and setup guides",
+            title: t('hub.onboarding.title'),
+            description: t('hub.onboarding.description'),
             icon: BookOpen,
             href: "/onboarding-hub",
             color: "bg-gradient-to-br from-orange-600 to-amber-600",
@@ -88,29 +88,29 @@ export default function PortalPage() {
         ]
       : []),
     {
-      title: "Services Hub",
-      description: "Professional services to grow your business",
+      title: t('hub.services.title'),
+      description: t('hub.services.description'),
       icon: Briefcase,
       href: "/services-hub",
       color: "bg-gradient-to-br from-teal-600 to-green-600",
     },
     {
-      title: "Networking Hub",
-      description: "Connect with other real estate professionals",
+      title: t('hub.networking.title'),
+      description: t('hub.networking.description'),
       icon: Users,
       href: "/networking-hub",
       color: "bg-gradient-to-br from-indigo-600 to-purple-600",
     },
     {
-      title: "Gear Hub",
-      description: "Essential tools and equipment for real estate professionals",
+      title: t('hub.gear.title'),
+      description: t('hub.gear.description'),
       icon: ShoppingBag,
       href: "/gear-hub",
       color: "bg-gradient-to-br from-gray-600 to-slate-600",
     },
     {
-      title: "Profile",
-      description: "Manage your profile and view your AI creations",
+      title: t('hub.profile.title'),
+      description: t('hub.profile.description'),
       icon: User,
       href: "/profile",
       color: "bg-gradient-to-br from-amber-600 to-orange-600",
