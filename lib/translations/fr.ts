@@ -606,4 +606,162 @@ export const frenchTranslations = {
   "page.onboarding.tool.zoom.title": "Configuration Zoom",
   "page.onboarding.tool.zoom.description": "Configurez Zoom pour les réunions clients",
   "page.onboarding.access": "Accéder à",
+  
+  // AI Hub Main Page
+  "page.aiHub.title": "Centre d'Outils IA",
+  "page.aiHub.description": "Découvrez notre suite complète d'outils alimentés par l'IA conçus pour rationaliser votre entreprise immobilière, de la création de contenu à l'analyse de contrats et tout le reste.",
+  "page.aiHub.search.placeholder": "Que voulez-vous accomplir ? (ex: 'écrire ma bio', 'créer du contenu', 'trouver des infos propriétaire', 'faire un plan')",
+  "page.aiHub.search.showing": "Affichage des outils pour :",
+  "page.aiHub.search.noResults.title": "Aucun outil trouvé",
+  "page.aiHub.search.noResults.description": "Essayez de rechercher des termes comme :",
+  "page.aiHub.search.suggestions.write": "écrire",
+  "page.aiHub.search.suggestions.create": "créer",
+  "page.aiHub.search.suggestions.find": "trouver",
+  "page.aiHub.search.suggestions.analyze": "analyser",
+  "page.aiHub.search.suggestions.plan": "planifier",
+  "page.aiHub.search.suggestions.generate": "générer",
+  "page.aiHub.button.openTool": "Ouvrir l'Outil",
+  
+  // AI Tool Categories
+  "page.aiHub.category.marketingProspecting": "Outils IA Marketing et Prospection",
+  "page.aiHub.category.planningCoaching": "Outils IA Planification et Coaching",
+  "page.aiHub.category.analysisContract": "Outils IA Analyse et Contrats",
+  
+  // AI Tool Descriptions
+  "page.aiHub.tool.ideahub.description": "Générez des idées de contenu et des publications engageantes pour les réseaux sociaux adaptés à votre entreprise immobilière et votre public cible avec une créativité alimentée par l'IA.",
+  "page.aiHub.tool.ideahubV2.description": "Génération avancée de contenu pour réseaux sociaux avec personnalisation de marque, superpositions de logos et informations de contact personnalisées pour des publications professionnelles.",
+  "page.aiHub.tool.ideahubEmpower.description": "Générez du contenu engageant pour réseaux sociaux avec support pour plusieurs marques immobilières. Choisissez parmi 18+ options de marques incluant Keller Williams, RE/MAX, Coldwell Banker et plus.",
+  "page.aiHub.tool.realbio.description": "Créez des biographies d'agent convaincantes et professionnelles qui mettent en valeur votre expertise, expérience et proposition de valeur unique pour attirer plus de clients.",
+  "page.aiHub.tool.listit.description": "Générez des descriptions de propriétés convaincantes qui mettent en valeur les caractéristiques clés et attirent les acheteurs potentiels avec un langage persuasif et professionnel.",
+  "page.aiHub.tool.scriptit.description": "Créez des scripts personnalisés pour les appels de prospection, présentations de ventes, consultations d'acheteurs et gestion des objections pour améliorer vos taux de conversion.",
+  "page.aiHub.tool.roleplay.description": "Pratiquez des conversations immobilières avec une simulation vocale alimentée par l'IA. Perfectionnez vos scripts, gérez les objections et développez la confiance grâce à des scénarios de jeu de rôle réalistes.",
+  "page.aiHub.tool.action.description": "Obtenez des plans d'action quotidiens personnalisés pour les activités de prospection, stratégies de génération de prospects et tâches de développement commercial adaptées à vos objectifs et marché.",
+  "page.aiHub.tool.realcoach.description": "Recevez un coaching commercial personnalisé et des conseils stratégiques alimentés par l'IA. Obtenez des insights sur les tendances du marché, stratégies de croissance commerciale et optimisation des performances.",
+  "page.aiHub.tool.bizplan.description": "Créez un plan commercial personnalisé de 90 jours avec des objectifs quotidiens spécifiques, stratégies de prospection et étapes actionnables pour atteindre vos objectifs financiers.",
+  "page.aiHub.tool.quickcma.description": "Générez des rapports d'analyse comparative de marché complets avec des données de maisons comparables, insights de prix et résumés de marché professionnels alimentés par l'IA.",
+  "page.aiHub.tool.mymarket.description": "Analysez les tendances actuelles du marché immobilier et locatif, identifiez les indicateurs clés et recevez des insights sur les conditions du marché pour informer vos stratégies immobilières.",
+  "page.aiHub.tool.whoswho.description": "Découvrez les informations sur les propriétaires et détails de contact en utilisant la technologie de skip tracing avancée avec des résumés professionnels alimentés par l'IA.",
+  "page.aiHub.tool.propbot.description": "Décrivez les propriétés en langage naturel et laissez l'IA rechercher, analyser et présenter les meilleures correspondances des annonces actives avec des insights détaillés et recherche vocale.",
+  "page.aiHub.tool.goalscreen.description": "Créez des fonds d'écran personnalisés axés sur les objectifs pour vos appareils avec du contenu motivationnel, suivi des objectifs et designs personnalisés pour vous garder concentré.",
+  "page.aiHub.tool.realdeal.description": "Téléchargez et analysez des contrats immobiliers pour des résumés clairs et professionnels avec dates clés, informations financières et clauses importantes mises en évidence.",
+  
+  // RealBio AI Tool
+  "page.realbio.title": "RealBio",
+  "page.realbio.description": "Créez une bio d'agent convaincante et professionnelle qui se connecte avec tous les types de personnalité et met en valeur votre proposition de valeur unique sur le marché immobilier.",
+  "page.realbio.feature.professionalCopy.title": "Copie Professionnelle",
+  "page.realbio.feature.professionalCopy.description": "Copie de bio créée par des experts qui sonne humaine, pas robotique",
+  "page.realbio.feature.emotionallyResonant.title": "Résonance Émotionnelle",
+  "page.realbio.feature.emotionallyResonant.description": "Se connecte avec les types de personnalité visuels, auditifs et kinesthésiques",
+  "page.realbio.feature.uniquePositioning.title": "Positionnement Unique",
+  "page.realbio.feature.uniquePositioning.description": "Met en évidence ce qui vous distingue sur le marché immobilier",
+  "page.realbio.tool.title": "Générateur de Bio d'Agent",
+  "page.realbio.tool.description": "Remplissez vos détails ci-dessous pour générer une bio d'agent professionnelle et convaincante",
+  
+  // RealBio Form
+  "form.realbio.step1.title": "Informations Personnelles",
+  "form.realbio.step2.title": "Contact et Vérification",
+  "form.realbio.step3.title": "Votre Bio est Prête !",
+  
+  // Form Fields
+  "form.realbio.field.name.label": "Votre Nom *",
+  "form.realbio.field.name.placeholder": "Entrez votre nom complet",
+  "form.realbio.field.name.autoFilled": "✓ Rempli automatiquement depuis votre profil",
+  "form.realbio.field.brokerage.label": "Nom de la Courtage *",
+  "form.realbio.field.brokerage.placeholder": "Entrez le nom de votre courtage",
+  "form.realbio.field.timeInIndustry.label": "Temps dans l'Industrie *",
+  "form.realbio.field.timeInIndustry.placeholder": "Sélectionnez depuis combien de temps vous êtes dans l'immobilier",
+  "form.realbio.field.origin.label": "Votre Histoire d'Origine *",
+  "form.realbio.field.origin.placeholder": "Parlez-nous de votre parcours - qu'est-ce qui vous a mené à l'immobilier ? Quelle est votre histoire ? (ex: ancien enseignant, passé militaire, natif local, etc.)",
+  "form.realbio.field.areasServed.label": "Zones que Vous Desservez *",
+  "form.realbio.field.areasServed.placeholder": "Listez les villes, quartiers ou régions que vous desservez (ex: Centre-ville Miami, Coral Gables, Aventura, etc.)",
+  "form.realbio.field.hobbies.label": "Intérêts Personnels et Loisirs *",
+  "form.realbio.field.hobbies.placeholder": "Partagez vos loisirs, intérêts et ce que vous aimez en dehors de l'immobilier (ex: randonnée, cuisine, bénévolat, sports, voyage, etc.)",
+  "form.realbio.field.email.label": "Votre Adresse Email *",
+  "form.realbio.field.email.placeholder": "Entrez votre email pour recevoir votre bio",
+  
+  // Time in Industry Options
+  "form.realbio.timeInIndustry.lessThan1": "Moins d'1 an",
+  "form.realbio.timeInIndustry.1to2": "1-2 ans",
+  "form.realbio.timeInIndustry.3to5": "3-5 ans",
+  "form.realbio.timeInIndustry.6to10": "6-10 ans",
+  "form.realbio.timeInIndustry.11to15": "11-15 ans",
+  "form.realbio.timeInIndustry.16to20": "16-20 ans",
+  "form.realbio.timeInIndustry.over20": "Plus de 20 ans",
+  
+  // Voice Recognition
+  "form.realbio.voice.listening": "Écoute...",
+  "form.realbio.voice.listeningOrigin": "Écoute... Parlez-nous de votre histoire",
+  "form.realbio.voice.listeningAreas": "Écoute... Parlez-nous des zones que vous desservez",
+  "form.realbio.voice.listeningHobbies": "Écoute... Parlez-nous de vos intérêts et loisirs",
+  "form.realbio.voice.tips.title": "Conseils pour l'Entrée Vocale :",
+  "form.realbio.voice.tips.content": "Parlez clairement, tenez le téléphone près de la bouche, assurez une bonne connexion internet",
+  
+  // Form Actions
+  "form.realbio.button.next": "Suivant",
+  "form.realbio.button.back": "Retour",
+  "form.realbio.button.generate": "Générer Ma Bio",
+  "form.realbio.button.generating": "Génération de la Bio...",
+  "form.realbio.button.createAnother": "Créer Une Autre Bio",
+  
+  // Preview Section
+  "form.realbio.preview.title": "Aperçu des Informations de Bio",
+  "form.realbio.preview.name": "Nom :",
+  "form.realbio.preview.brokerage": "Courtage :",
+  "form.realbio.preview.experience": "Expérience :",
+  "form.realbio.preview.areasServed": "Zones Desservies :",
+  "form.realbio.preview.background": "Parcours :",
+  "form.realbio.preview.interests": "Intérêts :",
+  
+  // Results Section
+  "form.realbio.results.title": "Votre Bio Professionnelle est Prête !",
+  "form.realbio.results.description": "Voici votre bio d'agent convaincante et créée professionnellement",
+  "form.realbio.results.bioTitle": "Votre Bio d'Agent :",
+  
+  // Action Buttons
+  "form.realbio.action.copy": "Copier",
+  "form.realbio.action.download": "Télécharger",
+  "form.realbio.action.email": "Email",
+  "form.realbio.action.save": "Sauvegarder",
+  "form.realbio.action.loginToSave": "Connexion pour Sauvegarder",
+  
+  // Usage Tips
+  "form.realbio.usage.title": "💡 Comment Utiliser Votre Bio :",
+  "form.realbio.usage.website": "• Ajoutez-la à la page 'À Propos' de votre site web",
+  "form.realbio.usage.social": "• Utilisez-la dans vos profils de réseaux sociaux",
+  "form.realbio.usage.marketing": "• Incluez-la dans les matériaux marketing et brochures",
+  "form.realbio.usage.signature": "• Ajoutez-la à votre signature email",
+  "form.realbio.usage.networking": "• Utilisez-la pour les engagements de prise de parole et événements de réseautage",
+  "form.realbio.usage.pdf": "• Imprimez le PDF pour les présentations professionnelles",
+  
+  // Toast Messages
+  "form.realbio.toast.bioGenerated.title": "Bio Générée avec Succès",
+  "form.realbio.toast.bioGenerated.description": "Votre bio d'agent professionnelle est prête !",
+  "form.realbio.toast.copied.title": "Copié dans le Presse-papiers",
+  "form.realbio.toast.copied.description": "Votre bio a été copiée dans le presse-papiers.",
+  "form.realbio.toast.pdfDownloaded.title": "PDF Téléchargé",
+  "form.realbio.toast.pdfDownloaded.description": "Votre bio PDF a été téléchargée avec succès.",
+  "form.realbio.toast.emailSent.title": "Email Envoyé avec Succès",
+  "form.realbio.toast.emailSent.description": "Vérifiez votre boîte de réception pour votre bio professionnelle !",
+  "form.realbio.toast.saved.title": "Sauvegardé dans le Profil !",
+  "form.realbio.toast.saved.description": "Votre bio a été sauvegardée dans votre tableau de bord de contenu.",
+  
+  // Error Messages
+  "form.realbio.error.generation.title": "Erreur de Génération de Bio",
+  "form.realbio.error.generation.description": "Échec de la génération de la bio. Veuillez réessayer.",
+  "form.realbio.error.pdf.title": "Échec de Génération PDF",
+  "form.realbio.error.pdf.description": "Échec de la génération du PDF. Veuillez réessayer.",
+  "form.realbio.error.email.title": "Échec d'Envoi d'Email",
+  "form.realbio.error.email.description": "Échec de l'envoi de l'email. Veuillez réessayer.",
+  "form.realbio.error.save.title": "Échec de Sauvegarde",
+  "form.realbio.error.save.description": "Échec de la sauvegarde de la bio dans votre profil. Veuillez réessayer.",
+  "form.realbio.error.voice.title": "Erreur de Reconnaissance Vocale",
+  "form.realbio.error.voice.noSpeech": "Aucune parole détectée. Veuillez réessayer.",
+  "form.realbio.error.voice.audioCapture": "Microphone non accessible. Veuillez vérifier les permissions.",
+  "form.realbio.error.voice.notAllowed": "Permission microphone refusée. Veuillez activer l'accès au microphone.",
+  "form.realbio.error.voice.network": "Erreur réseau. Veuillez vérifier votre connexion.",
+  "form.realbio.error.voice.default": "Veuillez essayer de taper votre réponse à la place.",
+  "form.realbio.error.voice.notSupported.title": "Reconnaissance Vocale Non Supportée",
+  "form.realbio.error.voice.notSupported.description": "La reconnaissance vocale n'est pas supportée dans votre navigateur. Veuillez essayer Chrome ou Safari.",
+  "form.realbio.error.microphone.title": "Accès Microphone Requis",
+  "form.realbio.error.microphone.description": "Veuillez autoriser l'accès au microphone pour utiliser la saisie vocale.",
 }

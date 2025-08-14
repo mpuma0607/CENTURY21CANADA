@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import { useTenant } from "@/contexts/tenant-context"
+import { useTranslation } from "@/contexts/translation-context"
 import {
   FileText,
   Lightbulb,
@@ -21,7 +22,7 @@ import {
 } from "lucide-react"
 
 const aiTools = {
-  "AI Marketing & Prospecting Tools": [
+  "page.aiHub.category.marketingProspecting": [
     {
       title: "IdeaHub AI",
       href: (config: any) => (config.id === "century21-beggins" ? "/ai-hub/ideahub-beggins" : "/ai-hub/ideahub-ai"),
@@ -457,7 +458,7 @@ const aiTools = {
       ],
     },
   ],
-  "AI Planning & Coaching Tools": [
+  "page.aiHub.category.planningCoaching": [
     {
       title: "Action AI",
       href: "/ai-hub/action-ai",
@@ -568,7 +569,7 @@ const aiTools = {
       ],
     },
   ],
-  "AI Analysis & Contract Tools": [
+  "page.aiHub.category.analysisContract": [
     {
       title: "RealDeal AI",
       href: "/ai-hub/realdeal-ai",
@@ -598,104 +599,53 @@ const aiTools = {
         "document analysis",
         "legal analysis",
         "contract help",
+        "contract assistance",
+        "contract support",
+        "legal document",
+        "contract document",
         "document review",
         "legal review",
-        "contract assistance",
-        "document help",
-        "contract interpretation",
-        "legal document",
-        "agreement analysis",
-        "contract breakdown",
       ],
     },
   ],
 }
 
-const colorClasses = {
-  yellow: "border-yellow-200 hover:border-yellow-400 bg-yellow-100 text-yellow-600 bg-yellow-600 hover:bg-yellow-700",
-  green: "border-green-200 hover:border-green-400 bg-green-100 text-green-600 bg-green-600 hover:bg-green-700",
-  purple: "border-purple-200 hover:border-purple-400 bg-purple-100 text-purple-600 bg-purple-600 hover:bg-purple-700",
-  red: "border-red-200 hover:border-red-400 bg-red-100 text-red-600 bg-red-600 hover:bg-red-700",
-  slate: "border-slate-200 hover:border-slate-400 bg-slate-100 text-slate-600 bg-slate-600 hover:bg-slate-700",
-  indigo: "border-indigo-200 hover:border-indigo-400 bg-indigo-100 text-indigo-600 bg-indigo-600 hover:bg-indigo-700",
-  cyan: "border-cyan-200 hover:border-cyan-400 bg-cyan-100 text-cyan-600 bg-cyan-600 hover:bg-cyan-700",
-  violet: "border-violet-200 hover:border-violet-400 bg-violet-100 text-violet-600 bg-violet-600 hover:bg-violet-700",
-  pink: "border-pink-200 hover:border-pink-400 bg-pink-100 text-pink-600 bg-pink-600 hover:bg-pink-700",
-  orange: "border-orange-200 hover:border-orange-400 bg-orange-100 text-orange-600 bg-orange-600 hover:bg-orange-700",
-  teal: "border-teal-200 hover:border-teal-400 bg-teal-100 text-teal-600 bg-teal-600 hover:bg-teal-700",
-  emerald:
-    "border-emerald-200 hover:border-emerald-400 bg-emerald-100 text-emerald-600 bg-emerald-600 hover:bg-emerald-700",
-  blue: "border-blue-200 hover:border-blue-400 bg-blue-100 text-blue-600 bg-blue-600 hover:bg-blue-700",
-}
-
 export default function AIHubPage() {
+  const { t } = useTranslation()
+  const tenant = useTenant()
   const [searchQuery, setSearchQuery] = useState("")
-  const { config } = useTenant()
 
   const filteredTools = useMemo(() => {
-    // First filter by tenant configuration
-    const tenantFilteredTools: any = {}
-
-    Object.entries(aiTools).forEach(([category, tools]) => {
-      const enabledTools = tools.filter((tool: any) => {
-        // If no enabledTools array exists, show all tools (backward compatibility)
-        if (!config.features.enabledTools) return true
-        // Otherwise, only show tools that are in the enabledTools array
-        return config.features.enabledTools.includes(tool.toolId)
-      })
-
-      if (enabledTools.length > 0) {
-        tenantFilteredTools[category] = enabledTools
-      }
-    })
-
-    // Then filter by search query
-    if (!searchQuery.trim()) {
-      return tenantFilteredTools
-    }
+    if (!searchQuery.trim()) return aiTools
 
     const query = searchQuery.toLowerCase()
-    const searchFiltered: any = {}
+    const filtered: typeof aiTools = {}
 
-    Object.entries(tenantFilteredTools).forEach(([category, tools]) => {
-      const matchingTools = tools.filter(
-        (tool: any) =>
-          tool.title.toLowerCase().includes(query) ||
-          tool.description.toLowerCase().includes(query) ||
-          tool.keywords.some((keyword: any) => keyword.toLowerCase().includes(query)),
+    Object.entries(aiTools).forEach(([category, tools]) => {
+      const matchingTools = tools.filter((tool) =>
+        tool.keywords.some((keyword) => keyword.toLowerCase().includes(query)) ||
+        tool.title.toLowerCase().includes(query) ||
+        tool.description.toLowerCase().includes(query)
       )
 
       if (matchingTools.length > 0) {
-        searchFiltered[category] = matchingTools
+        filtered[category] = matchingTools
       }
     })
 
-    return searchFiltered
-  }, [searchQuery, config.features.enabledTools, config.id])
+    return filtered
+  }, [searchQuery])
 
-  const renderToolCard = (tool: any) => {
-    const Icon = tool.icon
-    const borderColor =
-      colorClasses[tool.color as keyof typeof colorClasses].split(" ")[0] +
-      " " +
-      colorClasses[tool.color as keyof typeof colorClasses].split(" ")[1]
-    const iconBg =
-      colorClasses[tool.color as keyof typeof colorClasses].split(" ")[2] +
-      " " +
-      colorClasses[tool.color as keyof typeof colorClasses].split(" ")[3]
-    const buttonColor =
-      colorClasses[tool.color as keyof typeof colorClasses].split(" ")[4] +
-      " " +
-      colorClasses[tool.color as keyof typeof colorClasses].split(" ")[5]
-
-    const toolHref = typeof tool.href === "function" ? tool.href(config) : tool.href
+  const renderToolCard = (tool: any, index: number) => {
+    const toolHref = typeof tool.href === "function" ? tool.href(tenant) : tool.href
+    const buttonColor = `bg-${tool.color}-500 hover:bg-${tool.color}-600`
 
     return (
-      <Card key={tool.href} className={`h-full flex flex-col ${borderColor} transition-colors`}>
+      <Card key={index} className="h-full hover:shadow-lg transition-shadow duration-300">
         <CardHeader>
-          <div className="flex items-center gap-3 mb-2">
-            <div className={`p-2 ${iconBg} rounded-lg`}>
-              <Icon className="h-6 w-6" />
+          <div className="flex items-start gap-4">
+            <div className={`w-12 h-12 bg-${tool.color}-100 rounded-lg flex items-center justify-center flex-shrink-0`}>
+              <tool.icon className={`h-6 w-6 text-${tool.color}-600`} />
             </div>
             <div>
               <CardTitle className="text-xl">{tool.title}</CardTitle>
@@ -705,43 +655,27 @@ export default function AIHubPage() {
         </CardHeader>
         <CardContent className="flex-grow">
           <p className="text-sm text-muted-foreground">
-            {tool.title === "RealDeal AI" &&
-              "Upload and analyze real estate contracts for clear, professional summaries with key dates, financials, and important clauses highlighted."}
-            {tool.title === "IdeaHub AI" &&
-              "Generate engaging social media content ideas and posts tailored to your real estate business and target audience with AI-powered creativity."}
-            {tool.title === "IdeaHub V2" &&
-              "Advanced social media content generation with custom branding, logo overlays, and personalized contact information for professional social media posts."}
-            {tool.title === "IdeaHub Empower" &&
-              "Generate engaging social media content with support for multiple real estate brands. Choose from 18+ brand options including Keller Williams, RE/MAX, Coldwell Banker, and more."}
-            {tool.title === "RealBio" &&
-              "Create compelling, professional agent biographies that showcase your expertise, experience, and unique value proposition to attract more clients."}
-            {tool.title === "ListIT" &&
-              "Generate compelling property listing descriptions that highlight key features and attract potential buyers with persuasive, professional language."}
-            {tool.title === "ScriptIT" &&
-              "Create personalized scripts for prospecting calls, listing presentations, buyer consultations, and objection handling to improve your conversion rates."}
-            {tool.title === "RolePlay AI" &&
-              "Practice real estate conversations with AI-powered voice simulation. Perfect your scripts, handle objections, and build confidence through realistic roleplay scenarios."}
-            {tool.title === "Action AI" &&
-              "Get personalized daily action plans for prospecting activities, lead generation strategies, and business development tasks tailored to your goals and market."}
-            {tool.title === "RealCoach AI" &&
-              "Receive personalized business coaching and strategic advice powered by AI. Get insights on market trends, business growth strategies, and performance optimization."}
-            {tool.title === "BizPlan AI" &&
-              "Create a personalized 90-day business plan with specific daily targets, prospecting strategies, and actionable steps to reach your financial goals."}
-            {tool.title === "QuickCMA AI" &&
-              "Generate comprehensive comparative market analysis reports with comparable homes data, pricing insights, and professional AI-powered market summaries."}
-            {tool.title === "MyMarket AI" &&
-              "Analyze current housing and rental market trends, identify key indicators, and receive insights on market conditions to inform your real estate strategies."}
-            {tool.title === "Who's Who AI" &&
-              "Discover property owner information and contact details using advanced skip tracing technology with AI-powered professional summaries."}
-            {tool.title === "PropBot AI" &&
-              "Describe properties in natural language and let AI search, analyze, and present the best matches from active listings with detailed insights and voice search."}
-            {tool.title === "GoalScreen AI" &&
-              "Create personalized goal-focused wallpapers for your devices with motivational content, target tracking, and custom designs to keep you focused."}
+            {tool.title === "RealDeal AI" && t('page.aiHub.tool.realdeal.description')}
+            {tool.title === "IdeaHub AI" && t('page.aiHub.tool.ideahub.description')}
+            {tool.title === "IdeaHub V2" && t('page.aiHub.tool.ideahubV2.description')}
+            {tool.title === "IdeaHub Empower" && t('page.aiHub.tool.ideahubEmpower.description')}
+            {tool.title === "RealBio" && t('page.aiHub.tool.realbio.description')}
+            {tool.title === "ListIT" && t('page.aiHub.tool.listit.description')}
+            {tool.title === "ScriptIT" && t('page.aiHub.tool.scriptit.description')}
+            {tool.title === "RolePlay AI" && t('page.aiHub.tool.roleplay.description')}
+            {tool.title === "Action AI" && t('page.aiHub.tool.action.description')}
+            {tool.title === "RealCoach AI" && t('page.aiHub.tool.realcoach.description')}
+            {tool.title === "BizPlan AI" && t('page.aiHub.tool.bizplan.description')}
+            {tool.title === "QuickCMA AI" && t('page.aiHub.tool.quickcma.description')}
+            {tool.title === "MyMarket AI" && t('page.aiHub.tool.mymarket.description')}
+            {tool.title === "Who's Who AI" && t('page.aiHub.tool.whoswho.description')}
+            {tool.title === "PropBot AI" && t('page.aiHub.tool.propbot.description')}
+            {tool.title === "GoalScreen AI" && t('page.aiHub.tool.goalscreen.description')}
           </p>
         </CardContent>
         <CardFooter>
           <Link href={toolHref} className="w-full">
-            <Button className={`w-full ${buttonColor}`}>Open Tool</Button>
+            <Button className={`w-full ${buttonColor}`}>{t('page.aiHub.button.openTool')}</Button>
           </Link>
         </CardFooter>
       </Card>
@@ -751,10 +685,9 @@ export default function AIHubPage() {
   return (
     <div className="container mx-auto py-10">
       <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold mb-4">AI Tools Hub</h1>
+        <h1 className="text-4xl font-bold mb-4">{t('page.aiHub.title')}</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-          Discover our complete suite of AI-powered tools designed to streamline your real estate business, from content
-          creation to contract analysis and everything in between.
+          {t('page.aiHub.description')}
         </p>
 
         {/* Search Bar */}
@@ -763,20 +696,20 @@ export default function AIHubPage() {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             <Input
               type="text"
-              placeholder="What are you trying to accomplish? (e.g., 'write my bio', 'create content', 'find owner info', 'make a plan')"
+              placeholder={t('page.aiHub.search.placeholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10 pr-4 py-3 text-lg border-2 border-gray-200 focus:border-green-500 rounded-lg"
             />
           </div>
-          {searchQuery && <p className="text-sm text-gray-600 mt-2">Showing tools for: "{searchQuery}"</p>}
+          {searchQuery && <p className="text-sm text-gray-600 mt-2">{t('page.aiHub.search.showing')} "{searchQuery}"</p>}
         </div>
       </div>
 
       {/* Tool Categories */}
       {Object.entries(filteredTools).map(([category, tools]) => (
         <div key={category} className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b-2 border-green-500 pb-2">{category}</h2>
+          <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b-2 border-green-500 pb-2">{t(category)}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">{tools.map(renderToolCard)}</div>
         </div>
       ))}
@@ -784,15 +717,15 @@ export default function AIHubPage() {
       {Object.keys(filteredTools).length === 0 && searchQuery && (
         <div className="text-center py-12">
           <Search className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-          <h3 className="text-xl font-semibold text-gray-600 mb-2">No tools found</h3>
-          <p className="text-gray-500 mb-4">Try searching for terms like:</p>
+          <h3 className="text-xl font-semibold text-gray-600 mb-2">{t('page.aiHub.search.noResults.title')}</h3>
+          <p className="text-gray-500 mb-4">{t('page.aiHub.search.noResults.description')}</p>
           <div className="flex flex-wrap justify-center gap-2 text-sm">
-            <span className="bg-gray-100 px-3 py-1 rounded-full">"write"</span>
-            <span className="bg-gray-100 px-3 py-1 rounded-full">"create"</span>
-            <span className="bg-gray-100 px-3 py-1 rounded-full">"find"</span>
-            <span className="bg-gray-100 px-3 py-1 rounded-full">"analyze"</span>
-            <span className="bg-gray-100 px-3 py-1 rounded-full">"plan"</span>
-            <span className="bg-gray-100 px-3 py-1 rounded-full">"generate"</span>
+            <span className="bg-gray-100 px-3 py-1 rounded-full">"{t('page.aiHub.search.suggestions.write')}"</span>
+            <span className="bg-gray-100 px-3 py-1 rounded-full">"{t('page.aiHub.search.suggestions.create')}"</span>
+            <span className="bg-gray-100 px-3 py-1 rounded-full">"{t('page.aiHub.search.suggestions.find')}"</span>
+            <span className="bg-gray-100 px-3 py-1 rounded-full">"{t('page.aiHub.search.suggestions.analyze')}"</span>
+            <span className="bg-gray-100 px-3 py-1 rounded-full">"{t('page.aiHub.search.suggestions.plan')}"</span>
+            <span className="bg-gray-100 px-3 py-1 rounded-full">"{t('page.aiHub.search.suggestions.generate')}"</span>
           </div>
         </div>
       )}

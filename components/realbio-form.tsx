@@ -13,6 +13,7 @@ import { useToast } from "@/hooks/use-toast"
 import { useMemberSpaceUser } from "@/hooks/use-memberspace-user"
 import { saveUserCreation, generateCreationTitle } from "@/lib/auto-save-creation"
 import { generateAgentBio } from "../lib/realbio-actions"
+import { useTranslation } from "@/contexts/translation-context"
 
 type BioFormState = {
   name: string
@@ -29,18 +30,19 @@ type BioResult = {
 }
 
 const timeInIndustryOptions = [
-  "Less than 1 year",
-  "1-2 years",
-  "3-5 years",
-  "6-10 years",
-  "11-15 years",
-  "16-20 years",
-  "Over 20 years",
+  "form.realbio.timeInIndustry.lessThan1",
+  "form.realbio.timeInIndustry.1to2",
+  "form.realbio.timeInIndustry.3to5",
+  "form.realbio.timeInIndustry.6to10",
+  "form.realbio.timeInIndustry.11to15",
+  "form.realbio.timeInIndustry.16to20",
+  "form.realbio.timeInIndustry.over20",
 ]
 
 export default function RealBioForm() {
+  const { t } = useTranslation()
   const { toast } = useToast()
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState<number>(1)
   const [isGenerating, setIsGenerating] = useState(false)
   const [isSendingEmail, setIsSendingEmail] = useState(false)
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false)
@@ -58,7 +60,7 @@ export default function RealBioForm() {
     email: "",
   })
   const [result, setResult] = useState<BioResult | null>(null)
-  const { user, isLoading: userLoading } = useMemberSpaceUser()
+  const { user, loading: userLoading } = useMemberSpaceUser()
 
   // Auto-populate user data when available
   useEffect(() => {
@@ -138,27 +140,27 @@ export default function RealBioForm() {
         setIsListeningAreas(false)
         setIsListeningHobbies(false)
 
-        let errorMessage = "Voice recognition failed. "
+        let errorMessage = t('form.realbio.error.voice.title') + " "
         switch (event.error) {
           case "no-speech":
-            errorMessage += "No speech detected. Please try again."
+            errorMessage += t('form.realbio.error.voice.noSpeech')
             break
           case "audio-capture":
-            errorMessage += "Microphone not accessible. Please check permissions."
+            errorMessage += t('form.realbio.error.voice.audioCapture')
             break
           case "not-allowed":
-            errorMessage += "Microphone permission denied. Please enable microphone access."
+            errorMessage += t('form.realbio.error.voice.notAllowed')
             break
           case "network":
-            errorMessage += "Network error. Please check your connection."
+            errorMessage += t('form.realbio.error.voice.network')
             break
           default:
-            errorMessage += "Please try typing your response instead."
+            errorMessage += t('form.realbio.error.voice.default')
         }
 
         if (event.error !== "aborted") {
           toast({
-            title: "Voice Recognition Error",
+            title: t('form.realbio.error.voice.title'),
             description: errorMessage,
             variant: "destructive",
           })
@@ -181,8 +183,8 @@ export default function RealBioForm() {
           .catch((err) => {
             console.error("Microphone permission error:", err)
             toast({
-              title: "Microphone Access Required",
-              description: "Please allow microphone access to use voice input.",
+              title: t('form.realbio.error.microphone.title'),
+              description: t('form.realbio.error.microphone.description'),
               variant: "destructive",
             })
           })
@@ -191,8 +193,8 @@ export default function RealBioForm() {
       }
     } else {
       toast({
-        title: "Voice Recognition Not Supported",
-        description: "Voice recognition is not supported in your browser. Please try Chrome or Safari.",
+        title: t('form.realbio.error.voice.notSupported.title'),
+        description: t('form.realbio.error.voice.notSupported.description'),
         variant: "destructive",
       })
     }
@@ -207,14 +209,14 @@ export default function RealBioForm() {
       setResult(generatedBio)
       setStep(3)
       toast({
-        title: "Bio Generated Successfully",
-        description: "Your professional agent bio is ready!",
+        title: t('form.realbio.toast.bioGenerated.title'),
+        description: t('form.realbio.toast.bioGenerated.description'),
       })
     } catch (error) {
       console.error("Error generating bio:", error)
       toast({
-        title: "Error Generating Bio",
-        description: "Failed to generate bio. Please try again.",
+        title: t('form.realbio.error.generation.title'),
+        description: t('form.realbio.error.generation.description'),
         variant: "destructive",
       })
     } finally {
@@ -226,8 +228,8 @@ export default function RealBioForm() {
     if (result?.bio) {
       navigator.clipboard.writeText(result.bio)
       toast({
-        title: "Copied to Clipboard",
-        description: "Your bio has been copied to clipboard.",
+        title: t('form.realbio.toast.copied.title'),
+        description: t('form.realbio.toast.copied.description'),
       })
     }
   }
@@ -264,14 +266,14 @@ export default function RealBioForm() {
         window.URL.revokeObjectURL(url)
 
         toast({
-          title: "PDF Downloaded",
-          description: "Your bio PDF has been downloaded successfully.",
+          title: t('form.realbio.toast.pdfDownloaded.title'),
+          description: t('form.realbio.toast.pdfDownloaded.description'),
         })
       } catch (error) {
         console.error("Error generating PDF:", error)
         toast({
-          title: "PDF Generation Failed",
-          description: error instanceof Error ? error.message : "Failed to generate PDF. Please try again.",
+          title: t('form.realbio.error.pdf.title'),
+          description: error instanceof Error ? error.message : t('form.realbio.error.pdf.description'),
           variant: "destructive",
         })
       } finally {
@@ -305,8 +307,8 @@ export default function RealBioForm() {
 
         if (data.success) {
           toast({
-            title: "Email Sent Successfully",
-            description: "Check your inbox for your professional bio!",
+            title: t('form.realbio.toast.emailSent.title'),
+            description: t('form.realbio.toast.emailSent.description'),
           })
         } else {
           throw new Error(data.error || "Failed to send email")
@@ -314,8 +316,8 @@ export default function RealBioForm() {
       } catch (error) {
         console.error("Error sending email:", error)
         toast({
-          title: "Email Sending Failed",
-          description: error instanceof Error ? error.message : "Failed to send email. Please try again.",
+          title: t('form.realbio.error.email.title'),
+          description: error instanceof Error ? error.message : t('form.realbio.error.email.description'),
           variant: "destructive",
         })
       } finally {
@@ -332,7 +334,7 @@ export default function RealBioForm() {
       const title = generateCreationTitle("realbio", { agentName: formData.name })
 
       const success = await saveUserCreation({
-        userId: user.id,
+        userId: String(user.id),
         userEmail: user.email || "",
         toolType: "realbio",
         title,
@@ -351,8 +353,8 @@ export default function RealBioForm() {
 
       if (success.success) {
         toast({
-          title: "Saved to Profile!",
-          description: "Your bio has been saved to your content dashboard.",
+          title: t('form.realbio.toast.saved.title'),
+          description: t('form.realbio.toast.saved.description'),
         })
       } else {
         throw new Error("Save operation returned false")
@@ -360,8 +362,8 @@ export default function RealBioForm() {
     } catch (error) {
       console.error("Error saving bio:", error)
       toast({
-        title: "Save Failed",
-        description: "Failed to save bio to your profile. Please try again.",
+        title: t('form.realbio.error.save.title'),
+        description: t('form.realbio.error.save.description'),
         variant: "destructive",
       })
     } finally {
@@ -374,27 +376,27 @@ export default function RealBioForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <Label htmlFor="name" className="flex items-center gap-2">
-            Your Name *{user && <UserCheck className="h-4 w-4 text-green-600" title="Auto-filled from your profile" />}
+            {t('form.realbio.field.name.label')}{user && <UserCheck className="h-4 w-4 text-green-600" />}
           </Label>
           <Input
             id="name"
             name="name"
-            placeholder="Enter your full name"
+            placeholder={t('form.realbio.field.name.placeholder')}
             value={formData.name}
             onChange={handleInputChange}
             required
           />
           {user && formData.name === (user.name || `${user.firstName || ""} ${user.lastName || ""}`.trim()) && (
-            <p className="text-xs text-green-600">✓ Auto-filled from your profile</p>
+            <p className="text-xs text-green-600">{t('form.realbio.field.name.autoFilled')}</p>
           )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="brokerage">Brokerage Name *</Label>
+          <Label htmlFor="brokerage">{t('form.realbio.field.brokerage.label')}</Label>
           <Input
             id="brokerage"
             name="brokerage"
-            placeholder="Enter your brokerage name"
+            placeholder={t('form.realbio.field.brokerage.placeholder')}
             value={formData.brokerage}
             onChange={handleInputChange}
             required
@@ -403,15 +405,15 @@ export default function RealBioForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="timeInIndustry">Time in Industry *</Label>
+        <Label htmlFor="timeInIndustry">{t('form.realbio.field.timeInIndustry.label')}</Label>
         <Select value={formData.timeInIndustry} onValueChange={(value) => handleSelectChange("timeInIndustry", value)}>
           <SelectTrigger id="timeInIndustry">
-            <SelectValue placeholder="Select how long you've been in real estate" />
+            <SelectValue placeholder={t('form.realbio.field.timeInIndustry.placeholder')} />
           </SelectTrigger>
           <SelectContent>
             {timeInIndustryOptions.map((option, index) => (
               <SelectItem key={index} value={option}>
-                {option}
+                {t(option)}
               </SelectItem>
             ))}
           </SelectContent>
@@ -419,12 +421,12 @@ export default function RealBioForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="origin">Your Origin Story *</Label>
+        <Label htmlFor="origin">{t('form.realbio.field.origin.label')}</Label>
         <div className="relative">
           <Textarea
             id="origin"
             name="origin"
-            placeholder="Tell us about your background - what led you to real estate? What's your story? (e.g., former teacher, military background, local native, etc.)"
+            placeholder={t('form.realbio.field.origin.placeholder')}
             value={formData.origin}
             onChange={handleInputChange}
             className="min-h-[100px] pr-12"
@@ -444,18 +446,18 @@ export default function RealBioForm() {
         {isListeningOrigin && (
           <div className="flex items-center gap-2 text-sm text-blue-600">
             <div className="animate-pulse w-2 h-2 bg-red-500 rounded-full"></div>
-            Listening... Tell us your story
+            {t('form.realbio.voice.listeningOrigin')}
           </div>
         )}
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="areasServed">Areas You Serve *</Label>
+        <Label htmlFor="areasServed">{t('form.realbio.field.areasServed.label')}</Label>
         <div className="relative">
           <Textarea
             id="areasServed"
             name="areasServed"
-            placeholder="List the cities, neighborhoods, or regions you serve (e.g., Downtown Miami, Coral Gables, Aventura, etc.)"
+            placeholder={t('form.realbio.field.areasServed.placeholder')}
             value={formData.areasServed}
             onChange={handleInputChange}
             className="min-h-[80px] pr-12"
@@ -475,18 +477,18 @@ export default function RealBioForm() {
         {isListeningAreas && (
           <div className="flex items-center gap-2 text-sm text-blue-600">
             <div className="animate-pulse w-2 h-2 bg-red-500 rounded-full"></div>
-            Listening... Tell us the areas you serve
+            {t('form.realbio.voice.listeningAreas')}
           </div>
         )}
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="hobbies">Personal Interests & Hobbies *</Label>
+        <Label htmlFor="hobbies">{t('form.realbio.field.hobbies.label')}</Label>
         <div className="relative">
           <Textarea
             id="hobbies"
             name="hobbies"
-            placeholder="Share your hobbies, interests, and what you enjoy outside of real estate (e.g., hiking, cooking, volunteering, sports, travel, etc.)"
+            placeholder={t('form.realbio.field.hobbies.placeholder')}
             value={formData.hobbies}
             onChange={handleInputChange}
             className="min-h-[80px] pr-12"
@@ -506,14 +508,14 @@ export default function RealBioForm() {
         {isListeningHobbies && (
           <div className="flex items-center gap-2 text-sm text-blue-600">
             <div className="animate-pulse w-2 h-2 bg-red-500 rounded-full"></div>
-            Listening... Tell us about your interests and hobbies
+            {t('form.realbio.voice.listeningHobbies')}
           </div>
         )}
       </div>
 
       {/iPhone|iPad|iPod|Android/i.test(navigator.userAgent) && (
         <div className="text-xs text-muted-foreground mt-2 p-2 bg-blue-50 rounded">
-          <strong>Voice Input Tips:</strong> Speak clearly, hold phone close to mouth, ensure good internet connection
+          <strong>{t('form.realbio.voice.tips.title')}</strong> {t('form.realbio.voice.tips.content')}
         </div>
       )}
 
@@ -529,7 +531,7 @@ export default function RealBioForm() {
         }
         className="w-full bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-700 hover:to-yellow-800 text-white"
       >
-        Next
+        {t('form.realbio.button.next')}
       </Button>
     </div>
   )
@@ -538,20 +540,20 @@ export default function RealBioForm() {
     <div className="space-y-6">
       <div className="space-y-2">
         <Label htmlFor="email" className="flex items-center gap-2">
-          Your Email Address *
-          {user && <UserCheck className="h-4 w-4 text-green-600" title="Auto-filled from your profile" />}
+          {t('form.realbio.field.email.label')}
+          {user && <UserCheck className="h-4 w-4 text-green-600" />}
         </Label>
         <Input
           id="email"
           name="email"
           type="email"
-          placeholder="Enter your email to receive your bio"
+          placeholder={t('form.realbio.field.email.placeholder')}
           value={formData.email}
           onChange={handleInputChange}
           required
         />
         {user && formData.email === user.email && (
-          <p className="text-xs text-green-600">✓ Auto-filled from your profile</p>
+          <p className="text-xs text-green-600">{t('form.realbio.field.name.autoFilled')}</p>
         )}
       </div>
 
@@ -560,27 +562,27 @@ export default function RealBioForm() {
         <CardContent className="p-6">
           <h4 className="font-semibold text-black mb-4 flex items-center gap-2">
             <User className="h-4 w-4" />
-            Bio Preview Information
+            {t('form.realbio.preview.title')}
           </h4>
           <div className="space-y-2 text-sm">
             <p>
-              <span className="font-medium">Name:</span> {formData.name}
+              <span className="font-medium">{t('form.realbio.preview.name')}</span> {formData.name}
             </p>
             <p>
-              <span className="font-medium">Brokerage:</span> {formData.brokerage}
+              <span className="font-medium">{t('form.realbio.preview.brokerage')}</span> {formData.brokerage}
             </p>
             <p>
-              <span className="font-medium">Experience:</span> {formData.timeInIndustry}
+              <span className="font-medium">{t('form.realbio.preview.experience')}</span> {formData.timeInIndustry}
             </p>
             <p>
-              <span className="font-medium">Areas Served:</span> {formData.areasServed}
+              <span className="font-medium">{t('form.realbio.preview.areasServed')}</span> {formData.areasServed}
             </p>
             <p>
-              <span className="font-medium">Background:</span> {formData.origin.substring(0, 100)}
+              <span className="font-medium">{t('form.realbio.preview.background')}</span> {formData.origin.substring(0, 100)}
               {formData.origin.length > 100 && "..."}
             </p>
             <p>
-              <span className="font-medium">Interests:</span> {formData.hobbies.substring(0, 100)}
+              <span className="font-medium">{t('form.realbio.preview.interests')}</span> {formData.hobbies.substring(0, 100)}
               {formData.hobbies.length > 100 && "..."}
             </p>
           </div>
@@ -589,7 +591,7 @@ export default function RealBioForm() {
 
       <div className="flex gap-4">
         <Button variant="outline" onClick={() => setStep(1)} className="flex-1">
-          Back
+          {t('form.realbio.button.back')}
         </Button>
         <Button
           onClick={handleSubmit}
@@ -598,10 +600,10 @@ export default function RealBioForm() {
         >
           {isGenerating ? (
             <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Generating Bio...
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {t('form.realbio.button.generating')}
             </>
           ) : (
-            "Generate My Bio"
+            t('form.realbio.button.generate')
           )}
         </Button>
       </div>
@@ -611,14 +613,14 @@ export default function RealBioForm() {
   const renderStepThree = () => (
     <div className="space-y-6">
       <div className="text-center mb-6">
-        <h3 className="text-xl font-bold text-black">Your Professional Bio is Ready!</h3>
-        <p className="text-gray-600">Here's your compelling, professionally crafted agent bio</p>
+        <h3 className="text-xl font-bold text-black">{t('form.realbio.results.title')}</h3>
+        <p className="text-gray-600">{t('form.realbio.results.description')}</p>
       </div>
 
       <Card className="border-0 shadow-md">
         <CardContent className="p-6">
           <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-6 rounded-lg border border-yellow-200">
-            <h4 className="font-semibold text-black mb-4">Your Agent Bio:</h4>
+            <h4 className="font-semibold text-black mb-4">{t('form.realbio.results.bioTitle')}</h4>
             <div className="prose prose-gray max-w-none">
               <p className="whitespace-pre-wrap text-gray-800 leading-relaxed">{result?.bio}</p>
             </div>
@@ -632,7 +634,7 @@ export default function RealBioForm() {
           onClick={copyToClipboard}
           className="flex items-center justify-center gap-2 bg-transparent"
         >
-          <Copy className="h-4 w-4" /> <span className="whitespace-nowrap">Copy</span>
+          <Copy className="h-4 w-4" /> <span className="whitespace-nowrap">{t('form.realbio.action.copy')}</span>
         </Button>
         <Button
           variant="outline"
@@ -641,7 +643,7 @@ export default function RealBioForm() {
           className="flex items-center justify-center gap-2 bg-transparent"
         >
           {isGeneratingPDF ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
-          <span className="whitespace-nowrap">Download</span>
+          <span className="whitespace-nowrap">{t('form.realbio.action.download')}</span>
         </Button>
         <Button
           variant="outline"
@@ -649,8 +651,8 @@ export default function RealBioForm() {
           disabled={isSendingEmail}
           className="flex items-center justify-center gap-2 bg-transparent"
         >
-          {isSendingEmail ? <Loader2 className="h-4 w-4 animate-spin" /> : <Mail className="h-4 w-4" />}
-          <span className="whitespace-nowrap">Email</span>
+          {isSendingEmail ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Mail className="h-4 w-4" />}
+          <span className="whitespace-nowrap">{t('form.realbio.action.email')}</span>
         </Button>
         <Button
           variant="outline"
@@ -658,22 +660,22 @@ export default function RealBioForm() {
           disabled={!user || isSaving}
           className="flex items-center justify-center gap-2 bg-transparent"
         >
-          {isSaving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
-          <span className="whitespace-nowrap">{user ? "Save" : "Login to Save"}</span>
+          {isSaving ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
+          <span className="whitespace-nowrap">{user ? t('form.realbio.action.save') : t('form.realbio.action.loginToSave')}</span>
         </Button>
       </div>
 
       <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
         <h5 className="font-medium text-blue-900 mb-2 flex items-center gap-2">
-          <FileText className="h-4 w-4" />💡 How to Use Your Bio:
+          <FileText className="h-4 w-4" />{t('form.realbio.usage.title')}
         </h5>
         <ul className="text-sm text-blue-800 space-y-1">
-          <li>• Add it to your website's "About" page</li>
-          <li>• Use it in your social media profiles</li>
-          <li>• Include it in marketing materials and brochures</li>
-          <li>• Add it to your email signature</li>
-          <li>• Use it for speaking engagements and networking events</li>
-          <li>• Print the PDF for professional presentations</li>
+          <li>{t('form.realbio.usage.website')}</li>
+          <li>{t('form.realbio.usage.social')}</li>
+          <li>{t('form.realbio.usage.marketing')}</li>
+          <li>{t('form.realbio.usage.signature')}</li>
+          <li>{t('form.realbio.usage.networking')}</li>
+          <li>{t('form.realbio.usage.pdf')}</li>
         </ul>
       </div>
 
@@ -693,7 +695,7 @@ export default function RealBioForm() {
         }}
         className="w-full bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-700 hover:to-yellow-800 text-white"
       >
-        Create Another Bio
+        {t('form.realbio.button.createAnother')}
       </Button>
     </div>
   )

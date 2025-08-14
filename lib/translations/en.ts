@@ -594,4 +594,162 @@ export const englishTranslations = {
   "page.onboarding.tool.zoom.title": "Zoom Set Up",
   "page.onboarding.tool.zoom.description": "Configure Zoom for client meetings",
   "page.onboarding.access": "Access",
+  
+  // AI Hub Main Page
+  "page.aiHub.title": "AI Tools Hub",
+  "page.aiHub.description": "Discover our complete suite of AI-powered tools designed to streamline your real estate business, from content creation to contract analysis and everything in between.",
+  "page.aiHub.search.placeholder": "What are you trying to accomplish? (e.g., 'write my bio', 'create content', 'find owner info', 'make a plan')",
+  "page.aiHub.search.showing": "Showing tools for:",
+  "page.aiHub.search.noResults.title": "No tools found",
+  "page.aiHub.search.noResults.description": "Try searching for terms like:",
+  "page.aiHub.search.suggestions.write": "write",
+  "page.aiHub.search.suggestions.create": "create",
+  "page.aiHub.search.suggestions.find": "find",
+  "page.aiHub.search.suggestions.analyze": "analyze",
+  "page.aiHub.search.suggestions.plan": "plan",
+  "page.aiHub.search.suggestions.generate": "generate",
+  "page.aiHub.button.openTool": "Open Tool",
+  
+  // AI Tool Categories
+  "page.aiHub.category.marketingProspecting": "AI Marketing & Prospecting Tools",
+  "page.aiHub.category.planningCoaching": "AI Planning & Coaching Tools",
+  "page.aiHub.category.analysisContract": "AI Analysis & Contract Tools",
+  
+  // AI Tool Descriptions
+  "page.aiHub.tool.ideahub.description": "Generate engaging social media content ideas and posts tailored to your real estate business and target audience with AI-powered creativity.",
+  "page.aiHub.tool.ideahubV2.description": "Advanced social media content generation with custom branding, logo overlays, and personalized contact information for professional social media posts.",
+  "page.aiHub.tool.ideahubEmpower.description": "Generate engaging social media content with support for multiple real estate brands. Choose from 18+ brand options including Keller Williams, RE/MAX, Coldwell Banker, and more.",
+  "page.aiHub.tool.realbio.description": "Create compelling, professional agent biographies that showcase your expertise, experience, and unique value proposition to attract more clients.",
+  "page.aiHub.tool.listit.description": "Generate compelling property listing descriptions that highlight key features and attract potential buyers with persuasive, professional language.",
+  "page.aiHub.tool.scriptit.description": "Create personalized scripts for prospecting calls, listing presentations, buyer consultations, and objection handling to improve your conversion rates.",
+  "page.aiHub.tool.roleplay.description": "Practice real estate conversations with AI-powered voice simulation. Perfect your scripts, handle objections, and build confidence through realistic roleplay scenarios.",
+  "page.aiHub.tool.action.description": "Get personalized daily action plans for prospecting activities, lead generation strategies, and business development tasks tailored to your goals and market.",
+  "page.aiHub.tool.realcoach.description": "Receive personalized business coaching and strategic advice powered by AI. Get insights on market trends, business growth strategies, and performance optimization.",
+  "page.aiHub.tool.bizplan.description": "Create a personalized 90-day business plan with specific daily targets, prospecting strategies, and actionable steps to reach your financial goals.",
+  "page.aiHub.tool.quickcma.description": "Generate comprehensive comparative market analysis reports with comparable homes data, pricing insights, and professional AI-powered market summaries.",
+  "page.aiHub.tool.mymarket.description": "Analyze current housing and rental market trends, identify key indicators, and receive insights on market conditions to inform your real estate strategies.",
+  "page.aiHub.tool.whoswho.description": "Discover property owner information and contact details using advanced skip tracing technology with AI-powered professional summaries.",
+  "page.aiHub.tool.propbot.description": "Describe properties in natural language and let AI search, analyze, and present the best matches from active listings with detailed insights and voice search.",
+  "page.aiHub.tool.goalscreen.description": "Create personalized goal-focused wallpapers for your devices with motivational content, target tracking, and custom designs to keep you focused.",
+  "page.aiHub.tool.realdeal.description": "Upload and analyze real estate contracts for clear, professional summaries with key dates, financials, and important clauses highlighted.",
+  
+  // RealBio AI Tool
+  "page.realbio.title": "RealBio",
+  "page.realbio.description": "Create a compelling, professional agent bio that connects with all personality types and showcases your unique value proposition in the real estate market.",
+  "page.realbio.feature.professionalCopy.title": "Professional Copy",
+  "page.realbio.feature.professionalCopy.description": "Expert-crafted bio copy that sounds human, not robotic",
+  "page.realbio.feature.emotionallyResonant.title": "Emotionally Resonant",
+  "page.realbio.feature.emotionallyResonant.description": "Connects with visual, auditory, and kinesthetic personality types",
+  "page.realbio.feature.uniquePositioning.title": "Unique Positioning",
+  "page.realbio.feature.uniquePositioning.description": "Highlights what sets you apart in the real estate market",
+  "page.realbio.tool.title": "Agent Bio Generator",
+  "page.realbio.tool.description": "Fill out your details below to generate a professional, compelling agent bio",
+  
+  // RealBio Form
+  "form.realbio.step1.title": "Personal Information",
+  "form.realbio.step2.title": "Contact & Verification",
+  "form.realbio.step3.title": "Your Bio is Ready!",
+  
+  // Form Fields
+  "form.realbio.field.name.label": "Your Name *",
+  "form.realbio.field.name.placeholder": "Enter your full name",
+  "form.realbio.field.name.autoFilled": "✓ Auto-filled from your profile",
+  "form.realbio.field.brokerage.label": "Brokerage Name *",
+  "form.realbio.field.brokerage.placeholder": "Enter your brokerage name",
+  "form.realbio.field.timeInIndustry.label": "Time in Industry *",
+  "form.realbio.field.timeInIndustry.placeholder": "Select how long you've been in real estate",
+  "form.realbio.field.origin.label": "Your Origin Story *",
+  "form.realbio.field.origin.placeholder": "Tell us about your background - what led you to real estate? What's your story? (e.g., former teacher, military background, local native, etc.)",
+  "form.realbio.field.areasServed.label": "Areas You Serve *",
+  "form.realbio.field.areasServed.placeholder": "List the cities, neighborhoods, or regions you serve (e.g., Downtown Miami, Coral Gables, Aventura, etc.)",
+  "form.realbio.field.hobbies.label": "Personal Interests & Hobbies *",
+  "form.realbio.field.hobbies.placeholder": "Share your hobbies, interests, and what you enjoy outside of real estate (e.g., hiking, cooking, volunteering, sports, travel, etc.)",
+  "form.realbio.field.email.label": "Your Email Address *",
+  "form.realbio.field.email.placeholder": "Enter your email to receive your bio",
+  
+  // Time in Industry Options
+  "form.realbio.timeInIndustry.lessThan1": "Less than 1 year",
+  "form.realbio.timeInIndustry.1to2": "1-2 years",
+  "form.realbio.timeInIndustry.3to5": "3-5 years",
+  "form.realbio.timeInIndustry.6to10": "6-10 years",
+  "form.realbio.timeInIndustry.11to15": "11-15 years",
+  "form.realbio.timeInIndustry.16to20": "16-20 years",
+  "form.realbio.timeInIndustry.over20": "Over 20 years",
+  
+  // Voice Recognition
+  "form.realbio.voice.listening": "Listening...",
+  "form.realbio.voice.listeningOrigin": "Listening... Tell us your story",
+  "form.realbio.voice.listeningAreas": "Listening... Tell us the areas you serve",
+  "form.realbio.voice.listeningHobbies": "Listening... Tell us about your interests and hobbies",
+  "form.realbio.voice.tips.title": "Voice Input Tips:",
+  "form.realbio.voice.tips.content": "Speak clearly, hold phone close to mouth, ensure good internet connection",
+  
+  // Form Actions
+  "form.realbio.button.next": "Next",
+  "form.realbio.button.back": "Back",
+  "form.realbio.button.generate": "Generate My Bio",
+  "form.realbio.button.generating": "Generating Bio...",
+  "form.realbio.button.createAnother": "Create Another Bio",
+  
+  // Preview Section
+  "form.realbio.preview.title": "Bio Preview Information",
+  "form.realbio.preview.name": "Name:",
+  "form.realbio.preview.brokerage": "Brokerage:",
+  "form.realbio.preview.experience": "Experience:",
+  "form.realbio.preview.areasServed": "Areas Served:",
+  "form.realbio.preview.background": "Background:",
+  "form.realbio.preview.interests": "Interests:",
+  
+  // Results Section
+  "form.realbio.results.title": "Your Professional Bio is Ready!",
+  "form.realbio.results.description": "Here's your compelling, professionally crafted agent bio",
+  "form.realbio.results.bioTitle": "Your Agent Bio:",
+  
+  // Action Buttons
+  "form.realbio.action.copy": "Copy",
+  "form.realbio.action.download": "Download",
+  "form.realbio.action.email": "Email",
+  "form.realbio.action.save": "Save",
+  "form.realbio.action.loginToSave": "Login to Save",
+  
+  // Usage Tips
+  "form.realbio.usage.title": "💡 How to Use Your Bio:",
+  "form.realbio.usage.website": "• Add it to your website's 'About' page",
+  "form.realbio.usage.social": "• Use it in your social media profiles",
+  "form.realbio.usage.marketing": "• Include it in marketing materials and brochures",
+  "form.realbio.usage.signature": "• Add it to your email signature",
+  "form.realbio.usage.networking": "• Use it for speaking engagements and networking events",
+  "form.realbio.usage.pdf": "• Print the PDF for professional presentations",
+  
+  // Toast Messages
+  "form.realbio.toast.bioGenerated.title": "Bio Generated Successfully",
+  "form.realbio.toast.bioGenerated.description": "Your professional agent bio is ready!",
+  "form.realbio.toast.copied.title": "Copied to Clipboard",
+  "form.realbio.toast.copied.description": "Your bio has been copied to clipboard.",
+  "form.realbio.toast.pdfDownloaded.title": "PDF Downloaded",
+  "form.realbio.toast.pdfDownloaded.description": "Your bio PDF has been downloaded successfully.",
+  "form.realbio.toast.emailSent.title": "Email Sent Successfully",
+  "form.realbio.toast.emailSent.description": "Check your inbox for your professional bio!",
+  "form.realbio.toast.saved.title": "Saved to Profile!",
+  "form.realbio.toast.saved.description": "Your bio has been saved to your content dashboard.",
+  
+  // Error Messages
+  "form.realbio.error.generation.title": "Error Generating Bio",
+  "form.realbio.error.generation.description": "Failed to generate bio. Please try again.",
+  "form.realbio.error.pdf.title": "PDF Generation Failed",
+  "form.realbio.error.pdf.description": "Failed to generate PDF. Please try again.",
+  "form.realbio.error.email.title": "Email Sending Failed",
+  "form.realbio.error.email.description": "Failed to send email. Please try again.",
+  "form.realbio.error.save.title": "Save Failed",
+  "form.realbio.error.save.description": "Failed to save bio to your profile. Please try again.",
+  "form.realbio.error.voice.title": "Voice Recognition Error",
+  "form.realbio.error.voice.noSpeech": "No speech detected. Please try again.",
+  "form.realbio.error.voice.audioCapture": "Microphone not accessible. Please check permissions.",
+  "form.realbio.error.voice.notAllowed": "Microphone permission denied. Please enable microphone access.",
+  "form.realbio.error.voice.network": "Network error. Please check your connection.",
+  "form.realbio.error.voice.default": "Please try typing your response instead.",
+  "form.realbio.error.voice.notSupported.title": "Voice Recognition Not Supported",
+  "form.realbio.error.voice.notSupported.description": "Voice recognition is not supported in your browser. Please try Chrome or Safari.",
+  "form.realbio.error.microphone.title": "Microphone Access Required",
+  "form.realbio.error.microphone.description": "Please allow microphone access to use voice input.",
 }
