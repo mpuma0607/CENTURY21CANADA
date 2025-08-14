@@ -9,7 +9,7 @@ import { isFeatureHidden } from "@/lib/tenant-config"
 import { useEffect } from "react"
 import { useMemberSpaceUser } from "@/hooks/use-memberspace-user"
 import { useTranslation } from "@/contexts/translation-context"
-import LanguageSwitcher from "@/components/language-switcher"
+import { LanguageSwitcher } from "@/components/language-switcher"
 
 export default function PortalPage() {
   const tenantConfig = useTenantConfig()

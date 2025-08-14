@@ -8,28 +8,44 @@ import { getAllTenants, getTenantConfig } from "@/lib/tenant-config"
 export default function TenantSwitcher() {
   const [isOpen, setIsOpen] = useState(false)
   const [shouldShow, setShouldShow] = useState(false)
+  const [isClient, setIsClient] = useState(false)
   const tenants = getAllTenants()
   const currentTenant = getTenantConfig()
 
   useEffect(() => {
-    const hostname = window.location.hostname
-    const isV0Preview = hostname.includes("vusercontent.net")
-    const isLocalhost = hostname.includes("localhost")
-    const isDev = process.env.NODE_ENV === "development"
-    setShouldShow(isV0Preview || isLocalhost || isDev)
+    setIsClient(true)
   }, [])
 
-  if (!shouldShow) {
+  useEffect(() => {
+    if (!isClient) return
+
+    try {
+      const hostname = window.location.hostname
+      const isV0Preview = hostname.includes("vusercontent.net")
+      const isLocalhost = hostname.includes("localhost")
+      const isDev = process.env.NODE_ENV === "development"
+      setShouldShow(isV0Preview || isLocalhost || isDev)
+    } catch (error) {
+      console.warn("Could not determine hostname:", error)
+      setShouldShow(false)
+    }
+  }, [isClient])
+
+  if (!shouldShow || !isClient) {
     return null
   }
 
   const switchTenant = (tenantId: string) => {
-    if (tenantId === "default") {
-      localStorage.removeItem("preview-tenant")
-    } else {
-      localStorage.setItem("preview-tenant", tenantId)
+    try {
+      if (tenantId === "default") {
+        localStorage.removeItem("preview-tenant")
+      } else {
+        localStorage.setItem("preview-tenant", tenantId)
+      }
+      window.location.reload()
+    } catch (error) {
+      console.warn("Could not switch tenant:", error)
     }
-    window.location.reload()
   }
 
   return (

@@ -1,12 +1,19 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 
 export function useTracking() {
   const pathname = usePathname()
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isClient) return
+
     // Generate a session ID if it doesn't exist
     let sessionId = localStorage.getItem("session_id")
     if (!sessionId) {
@@ -40,9 +47,11 @@ export function useTracking() {
     }
 
     trackPageView()
-  }, [pathname])
+  }, [pathname, isClient])
 
   const trackEvent = async (eventType: string, eventData?: any) => {
+    if (!isClient) return
+
     try {
       let sessionId = localStorage.getItem("session_id")
       if (!sessionId) {

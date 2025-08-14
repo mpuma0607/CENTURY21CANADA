@@ -15,6 +15,7 @@ import { Loader2, Copy, Download, Mail, Mic, MicOff, Save } from "lucide-react"
 import Image from "next/image"
 import { useMemberSpaceUser } from "@/hooks/use-memberspace-user"
 import { saveUserCreation, generateCreationTitle } from "@/lib/auto-save-creation"
+import { useTranslation } from "@/contexts/translation-context"
 
 const topicOptions = [
   "The benefits of working with a real estate agent",
@@ -326,42 +327,62 @@ const tonalityOptions = [
   {
     value: "Professional & Authoritative",
     description: "Tone: Confident, knowledgeable, clear",
+    translationKey: "form.ideahub.tonality.professional",
+    descKey: "form.ideahub.tonality.professional.desc"
   },
   {
     value: "Friendly & Approachable",
     description: "Tone: Warm, conversational, down-to-earth",
+    translationKey: "form.ideahub.tonality.friendly",
+    descKey: "form.ideahub.tonality.friendly.desc"
   },
   {
     value: "Witty & Playful",
     description: "Tone: Lighthearted, tongue-in-cheek, surprising twists",
+    translationKey: "form.ideahub.tonality.witty",
+    descKey: "form.ideahub.tonality.witty.desc"
   },
   {
     value: "Inspirational & Motivational",
     description: "Tone: Uplifting, aspirational, empowering",
+    translationKey: "form.ideahub.tonality.inspirational",
+    descKey: "form.ideahub.tonality.inspirational.desc"
   },
   {
     value: "Educational & Informative",
     description: "Tone: Clear, explanatory, step-by-step",
+    translationKey: "form.ideahub.tonality.educational",
+    descKey: "form.ideahub.tonality.educational.desc"
   },
   {
     value: "Conversational & Story-Driven",
     description: "Tone: Narrative, personal anecdotes, dialogue style",
+    translationKey: "form.ideahub.tonality.conversational",
+    descKey: "form.ideahub.tonality.conversational.desc"
   },
   {
     value: "Urgent & Action-Oriented",
     description: 'Tone: Direct, brisk, focused on "now"',
+    translationKey: "form.ideahub.tonality.urgent",
+    descKey: "form.ideahub.tonality.urgent.desc"
   },
   {
     value: "Empathetic & Supportive",
     description: "Tone: Compassionate, understanding, reassuring",
+    translationKey: "form.ideahub.tonality.empathetic",
+    descKey: "form.ideahub.tonality.empathetic.desc"
   },
   {
     value: "Visionary & Futuristic",
     description: "Tone: Forward-looking, trend-spotting, big-picture",
+    translationKey: "form.ideahub.tonality.visionary",
+    descKey: "form.ideahub.tonality.visionary.desc"
   },
   {
     value: "Bold & Disruptive",
     description: "Tone: Challenging conventions, strong opinions, confident declarations",
+    translationKey: "form.ideahub.tonality.bold",
+    descKey: "form.ideahub.tonality.bold.desc"
   },
 ]
 
@@ -382,6 +403,7 @@ type ContentResult = {
 }
 
 export default function IdeaHubForm() {
+  const { t } = useTranslation()
   const [step, setStep] = useState(1)
   const [isGenerating, setIsGenerating] = useState(false)
   const [isSendingEmail, setIsSendingEmail] = useState(false)
@@ -589,10 +611,10 @@ export default function IdeaHubForm() {
   const renderStepOne = () => (
     <div className="space-y-6">
       <div className="space-y-2">
-        <Label htmlFor="primaryTopic">Choose a Topic (Optional)</Label>
+        <Label htmlFor="primaryTopic">{t('form.ideahub.topic.label')}</Label>
         <Select value={formData.primaryTopic} onValueChange={(value) => handleSelectChange("primaryTopic", value)}>
           <SelectTrigger id="primaryTopic">
-            <SelectValue placeholder="Select a topic from our library" />
+            <SelectValue placeholder={t('form.ideahub.topic.placeholder')} />
           </SelectTrigger>
           <SelectContent className="max-h-[300px]">
             {topicOptions.map((topic, index) => (
@@ -605,12 +627,12 @@ export default function IdeaHubForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="alternateTopic">Custom Topic or Additional Details</Label>
+        <Label htmlFor="alternateTopic">{t('form.ideahub.customTopic.label')}</Label>
         <div className="relative">
           <Textarea
             id="alternateTopic"
             name="alternateTopic"
-            placeholder="Enter any custom topic or additional details you'd like to include"
+            placeholder={t('form.ideahub.customTopic.placeholder')}
             value={formData.alternateTopic}
             onChange={handleInputChange}
             className="min-h-[100px] pr-12"
@@ -629,32 +651,32 @@ export default function IdeaHubForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="contentType">Content Type *</Label>
+        <Label htmlFor="contentType">{t('form.ideahub.contentType.label')}</Label>
         <Select value={formData.contentType} onValueChange={(value) => handleSelectChange("contentType", value)}>
           <SelectTrigger id="contentType">
-            <SelectValue placeholder="Select content type" />
+            <SelectValue placeholder={t('form.ideahub.contentType.placeholder')} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="Social post">Social Post</SelectItem>
-            <SelectItem value="Email">Email</SelectItem>
-            <SelectItem value="Blog article">Blog Article</SelectItem>
-            <SelectItem value="Text message">Text Message</SelectItem>
+            <SelectItem value="Social post">{t('form.ideahub.contentType.socialPost')}</SelectItem>
+            <SelectItem value="Email">{t('form.ideahub.contentType.email')}</SelectItem>
+            <SelectItem value="Blog article">{t('form.ideahub.contentType.blogArticle')}</SelectItem>
+            <SelectItem value="Text message">{t('form.ideahub.contentType.textMessage')}</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="tonality">Tonality</Label>
+        <Label htmlFor="tonality">{t('form.ideahub.tonality.label')}</Label>
         <Select value={formData.tonality} onValueChange={(value) => handleSelectChange("tonality", value)}>
           <SelectTrigger id="tonality">
-            <SelectValue placeholder="Select tonality" />
+            <SelectValue placeholder={t('form.ideahub.tonality.placeholder')} />
           </SelectTrigger>
           <SelectContent>
             {tonalityOptions.map((option, index) => (
               <SelectItem key={index} value={option.value}>
                 <div>
-                  <div className="font-medium">{option.value}</div>
-                  <div className="text-sm text-gray-500">{option.description}</div>
+                  <div className="font-medium">{t(option.translationKey)}</div>
+                  <div className="text-sm text-gray-500">{t(option.descKey)}</div>
                 </div>
               </SelectItem>
             ))}
@@ -663,18 +685,18 @@ export default function IdeaHubForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="language">Language</Label>
+        <Label htmlFor="language">{t('form.ideahub.language.label')}</Label>
         <Select value={formData.language} onValueChange={(value) => handleSelectChange("language", value)}>
           <SelectTrigger id="language">
-            <SelectValue placeholder="Select language" />
+            <SelectValue placeholder={t('form.ideahub.language.placeholder')} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="English">English</SelectItem>
-            <SelectItem value="Spanish">Spanish</SelectItem>
-            <SelectItem value="French">French</SelectItem>
-            <SelectItem value="German">German</SelectItem>
-            <SelectItem value="Italian">Italian</SelectItem>
-            <SelectItem value="Portuguese">Portuguese</SelectItem>
+            <SelectItem value="English">{t("English")}</SelectItem>
+            <SelectItem value="Spanish">{t("Spanish")}</SelectItem>
+            <SelectItem value="French">{t("French")}</SelectItem>
+            <SelectItem value="German">{t("German")}</SelectItem>
+            <SelectItem value="Italian">{t("Italian")}</SelectItem>
+            <SelectItem value="Portuguese">{t("Portuguese")}</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -684,7 +706,7 @@ export default function IdeaHubForm() {
         disabled={!formData.primaryTopic && !formData.alternateTopic}
         className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white"
       >
-        Next
+        {t("Next")}
       </Button>
     </div>
   )
@@ -692,11 +714,11 @@ export default function IdeaHubForm() {
   const renderStepTwo = () => (
     <div className="space-y-6">
       <div className="space-y-2">
-        <Label htmlFor="name">Your Name *</Label>
+        <Label htmlFor="name">{t('form.ideahub.name.label')}</Label>
         <Input
           id="name"
           name="name"
-          placeholder="Enter your name"
+          placeholder={t('form.ideahub.name.placeholder')}
           value={formData.name}
           onChange={handleInputChange}
           required
@@ -704,12 +726,12 @@ export default function IdeaHubForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="email">Your Email *</Label>
+        <Label htmlFor="email">{t('form.ideahub.email.label')}</Label>
         <Input
           id="email"
           name="email"
           type="email"
-          placeholder="Enter your email"
+          placeholder={t('form.ideahub.email.placeholder')}
           value={formData.email}
           onChange={handleInputChange}
           required
@@ -718,7 +740,7 @@ export default function IdeaHubForm() {
 
       <div className="flex gap-4">
         <Button variant="outline" onClick={() => setStep(1)} className="flex-1">
-          Back
+          {t('form.ideahub.backButton')}
         </Button>
         <Button
           onClick={handleSubmit}
@@ -727,10 +749,10 @@ export default function IdeaHubForm() {
         >
           {isGenerating ? (
             <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Generating...
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {t('form.ideahub.generateButtonLoading')}
             </>
           ) : (
-            "Generate Content"
+            t('form.ideahub.generateButton')
           )}
         </Button>
       </div>
@@ -740,16 +762,16 @@ export default function IdeaHubForm() {
   const renderStepThree = () => (
     <div ref={resultsRef} className="space-y-6">
       <div className="text-center mb-6">
-        <h3 className="text-xl font-bold text-black">Your Content is Ready!</h3>
+        <h3 className="text-xl font-bold text-black">{t("Your Content is Ready!")}</h3>
         <p className="text-gray-600">
-          Here's your professionally generated social media content with Century 21 branding
+          {t("Here's your professionally generated social media content with Century 21 branding")}
         </p>
       </div>
 
       <Tabs defaultValue="preview" className="w-full">
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="preview">Preview</TabsTrigger>
-          <TabsTrigger value="text">Text Only</TabsTrigger>
+          <TabsTrigger value="preview">{t("Preview")}</TabsTrigger>
+          <TabsTrigger value="text">{t("Text Only")}</TabsTrigger>
         </TabsList>
         <TabsContent value="preview" className="space-y-4">
           <Card className="border-0 shadow-md overflow-hidden">
@@ -758,7 +780,7 @@ export default function IdeaHubForm() {
                 <div className="relative w-full h-[300px]">
                   <Image
                     src={result.imageUrl || "/placeholder.svg"}
-                    alt="Generated content image with Century 21 branding"
+                    alt={t("Generated content image with Century 21 branding")}
                     fill
                     className="object-cover"
                   />
@@ -785,14 +807,14 @@ export default function IdeaHubForm() {
           onClick={copyToClipboard}
           className="flex items-center justify-center gap-2 bg-transparent"
         >
-          <Copy className="h-4 w-4" /> <span className="whitespace-nowrap">Copy</span>
+          <Copy className="h-4 w-4" /> <span className="whitespace-nowrap">{t("Copy")}</span>
         </Button>
         <Button
           variant="outline"
           onClick={downloadImage}
           className="flex items-center justify-center gap-2 bg-transparent"
         >
-          <Download className="h-4 w-4" /> <span className="whitespace-nowrap">Download</span>
+          <Download className="h-4 w-4" /> <span className="whitespace-nowrap">{t("Download")}</span>
         </Button>
         <Button
           variant="outline"
@@ -801,7 +823,7 @@ export default function IdeaHubForm() {
           className="flex items-center justify-center gap-2 bg-transparent"
         >
           {isSendingEmail ? <Loader2 className="h-4 w-4 animate-spin" /> : <Mail className="h-4 w-4" />}
-          <span className="whitespace-nowrap">Email</span>
+          <span className="whitespace-nowrap">{t("Email")}</span>
         </Button>
         <Button
           variant="outline"
@@ -810,7 +832,7 @@ export default function IdeaHubForm() {
           className="flex items-center justify-center gap-2 bg-transparent"
         >
           {isSaving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
-          <span className="whitespace-nowrap">Save</span>
+          <span className="whitespace-nowrap">{t("Save")}</span>
         </Button>
       </div>
 
@@ -830,7 +852,7 @@ export default function IdeaHubForm() {
         }}
         className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white"
       >
-        Create New Content
+        {t("Create New Content")}
       </Button>
     </div>
   )

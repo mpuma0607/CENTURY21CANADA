@@ -9,6 +9,7 @@ import { Menu, X, ChevronDown, ChevronRight } from "lucide-react"
 import { useTenantConfig } from "@/contexts/tenant-context"
 import { useTranslation } from "@/contexts/translation-context"
 import { isFeatureHidden } from "@/lib/tenant-config"
+import { LanguageSwitcher } from "@/components/language-switcher"
 
 const navigationItems = [
   {
@@ -50,14 +51,18 @@ const navigationItems = [
     href: "/marketing-hub",
     submenu: [
       {
-        title: "Real Estate Hot Takes",
+        title: "submenu.hot-takes",
         href: "/marketing-hub/hot-takes",
-        description: "Industry news and trending topics",
+        description: "submenu.hot-takes.description",
+        translationKey: "submenu.hot-takes",
+        descriptionKey: "submenu.hot-takes.description",
       },
       {
-        title: "Brokerage Logos",
+        title: "submenu.brokerage-logos",
         href: "/marketing-hub/brokerage-logos",
-        description: "Access Century 21 Beggins logos and branding assets",
+        description: "submenu.brokerage-logos.description",
+        translationKey: "submenu.brokerage-logos",
+        descriptionKey: "submenu.brokerage-logos.description",
       },
     ],
   },
@@ -65,22 +70,26 @@ const navigationItems = [
     title: "Prospecting Hub",
     href: "/prospecting-hub",
     submenu: [
-      { title: "For Sale By Owners", href: "/prospecting-hub/fsbo", description: "FSBO lead generation strategies" },
+      { title: "submenu.fsbo", href: "/prospecting-hub/fsbo", description: "submenu.fsbo.description", translationKey: "submenu.fsbo", descriptionKey: "submenu.fsbo.description" },
       {
-        title: "Absentee Owners",
+        title: "submenu.absentee-owners",
         href: "/prospecting-hub/absentee-owners",
-        description: "Target absentee property owners",
+        description: "submenu.absentee-owners.description",
+        translationKey: "submenu.absentee-owners",
+        descriptionKey: "submenu.absentee-owners.description",
       },
-      { title: "Expired Listings", href: "/prospecting-hub/expired-listings", description: "Convert expired listings" },
-      { title: "Probate", href: "/prospecting-hub/probate", description: "Probate property opportunities" },
-      { title: "SOI", href: "/prospecting-hub/soi", description: "Sphere of influence cultivation" },
+      { title: "submenu.expired-listings", href: "/prospecting-hub/expired-listings", description: "submenu.expired-listings.description", translationKey: "submenu.expired-listings", descriptionKey: "submenu.expired-listings.description" },
+      { title: "submenu.probate", href: "/prospecting-hub/probate", description: "submenu.probate.description", translationKey: "submenu.probate", descriptionKey: "submenu.probate.description" },
+      { title: "submenu.soi", href: "/prospecting-hub/soi", description: "submenu.soi.description", translationKey: "submenu.soi", descriptionKey: "submenu.soi.description" },
       {
-        title: "First Time Home Buyers",
+        title: "submenu.first-time-buyers",
         href: "/prospecting-hub/first-time-buyers",
-        description: "First-time buyer programs",
+        description: "submenu.first-time-buyers.description",
+        translationKey: "submenu.first-time-buyers",
+        descriptionKey: "submenu.first-time-buyers.description",
       },
-      { title: "Real Estate Investors", href: "/prospecting-hub/investors", description: "Investment property leads" },
-      { title: "Divorce", href: "/prospecting-hub/divorce", description: "Divorce-related property sales" },
+      { title: "submenu.investors", href: "/prospecting-hub/investors", description: "submenu.investors.description", translationKey: "submenu.investors", descriptionKey: "submenu.investors.description" },
+      { title: "submenu.divorce", href: "/prospecting-hub/divorce", description: "submenu.divorce.description", translationKey: "submenu.divorce", descriptionKey: "submenu.divorce.description" },
     ],
   },
   {
@@ -88,22 +97,28 @@ const navigationItems = [
     href: "/training-hub",
     submenu: [
       {
-        title: "Moxi Works Training",
+        title: "submenu.moxi-works",
         href: "/training-hub/moxi-works",
-        description: "Complete Moxi platform training",
+        description: "submenu.moxi-works.description",
+        translationKey: "submenu.moxi-works",
+        descriptionKey: "submenu.moxi-works.description",
       },
-      { title: "Script Mastery", href: "/training-hub/script-mastery", description: "Master your sales scripts" },
+      { title: "submenu.script-mastery", href: "/training-hub/script-mastery", description: "submenu.script-mastery.description", translationKey: "submenu.script-mastery", descriptionKey: "submenu.script-mastery.description" },
       {
-        title: "Buyer Process (6P's)",
+        title: "submenu.buyer-process",
         href: "/training-hub/buyer-process",
-        description: "6-step buyer consultation process",
+        description: "submenu.buyer-process.description",
+        translationKey: "submenu.buyer-process",
+        descriptionKey: "submenu.buyer-process.description",
       },
       {
-        title: "Listing Process (7P's)",
+        title: "submenu.listing-process",
         href: "/training-hub/listing-process",
-        description: "7-step listing consultation and presentation process",
+        description: "submenu.listing-process.description",
+        translationKey: "submenu.listing-process",
+        descriptionKey: "submenu.listing-process.description",
       },
-      { title: "DISC/VAK Connection", href: "/training-hub/disc-vak", description: "Personality-based communication" },
+      { title: "submenu.disc-vak", href: "/training-hub/disc-vak", description: "submenu.disc-vak.description", translationKey: "submenu.disc-vak", descriptionKey: "submenu.disc-vak.description" },
     ],
   },
   {
@@ -137,14 +152,18 @@ const navigationItems = [
     href: "/services-hub",
     submenu: [
       {
-        title: "Moxi Design Services",
+        title: "submenu.moxi-design",
         href: "/services-hub/moxi-design",
-        description: "Professional design and marketing",
+        description: "submenu.moxi-design.description",
+        translationKey: "submenu.moxi-design",
+        descriptionKey: "submenu.moxi-design.description",
       },
       {
-        title: "Brokerage Consulting",
+        title: "submenu.brokerage-consulting",
         href: "/services-hub/brokerage-consulting",
-        description: "Business growth consulting",
+        description: "submenu.brokerage-consulting.description",
+        translationKey: "submenu.brokerage-consulting",
+        descriptionKey: "submenu.brokerage-consulting.description",
       },
     ],
   },
@@ -203,7 +222,7 @@ export default function Navigation() {
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
   const pathname = usePathname()
   const tenantConfig = useTenantConfig()
-  const t = useTranslation()
+  const { t } = useTranslation()
 
   const toggleSubmenu = (title: string) => {
     setActiveSubmenu(activeSubmenu === title ? null : title)
@@ -260,19 +279,44 @@ export default function Navigation() {
       ) {
         // Add Dynamic Branded Content as the first item
         filteredSubmenu.unshift({
-          title: "Dynamic Branded Content",
+          title: "submenu.dynamic-branded-content",
           href: "/marketing-hub/dynamic-branded-content",
-          description: "Create custom branded content for any topic",
+          description: "submenu.dynamic-branded-content.description",
+          translationKey: "submenu.dynamic-branded-content",
+          descriptionKey: "submenu.dynamic-branded-content.description",
         })
+      }
+
+      // For Century 21 Canada, only show Dynamic Branded Content and Real Estate Hot Takes
+      if (item.title === "Marketing Hub" && tenantConfig.id === "century21-canada") {
+        // Clear existing submenu and only show the two items
+        filteredSubmenu = [
+          {
+            title: "submenu.dynamic-branded-content",
+            href: "/marketing-hub/dynamic-branded-content",
+            description: "submenu.dynamic-branded-content.description",
+            translationKey: "submenu.dynamic-branded-content",
+            descriptionKey: "submenu.dynamic-branded-content.description",
+          },
+          {
+            title: "submenu.hot-takes",
+            href: "/marketing-hub/hot-takes",
+            description: "submenu.hot-takes.description",
+            translationKey: "submenu.hot-takes",
+            descriptionKey: "submenu.hot-takes.description",
+          }
+        ]
       }
 
       // Add Beggins-specific marketing items
       if (item.title === "Marketing Hub" && tenantConfig.id === "century21-beggins") {
         // Add Beach Project Toolkits
         filteredSubmenu.push({
-          title: "Beach Project Toolkits",
+          title: "submenu.beach-project-toolkits",
           href: "/marketing-hub/beach-project-toolkits",
-          description: "Marketing materials for premium beach development projects",
+          description: "submenu.beach-project-toolkits.description",
+          translationKey: "submenu.beach-project-toolkits",
+          descriptionKey: "submenu.beach-project-toolkits.description",
         })
       }
 
@@ -410,7 +454,7 @@ export default function Navigation() {
       return "/images/beggins-university-black.png" // Black logo for light background
     }
     if (tenantConfig.id === "century21-canada") {
-      return "/images/century21-canada-logo.svg" // Century 21 Canada logo
+      return "/images/century21-logo.png" // Century 21 Canada logo
     }
     if (tenantConfig.id === "default") {
       return "/images/nlu-logo-dark-new.png"
@@ -520,9 +564,12 @@ export default function Navigation() {
             )}
 
             {/* Get Support Link */}
-            <Link href="/support" className="text-gray-700 hover:text-green-600 font-medium transition-colors">
-              Get Support
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link href="/support" className="text-gray-700 hover:text-green-600 font-medium transition-colors">
+                {t('navigation.support')}
+              </Link>
+              <LanguageSwitcher />
+            </div>
           </div>
 
           {/* Mobile Menu Button */}

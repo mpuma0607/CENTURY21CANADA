@@ -20,6 +20,7 @@ import { getUserBrandingProfile } from "@/app/profile/branding/actions"
 import type { UserBrandingProfile } from "@/app/profile/branding/actions"
 import { getBrandOptionsForTenant } from "@/lib/tenant-brand-options"
 import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible"
+import { useTranslation } from "@/contexts/translation-context"
 
 const topicOptions = [
   "The benefits of working with a real estate agent",
@@ -118,6 +119,13 @@ type ContentResult = {
 }
 
 export default function IdeaHubEmpowerForm() {
+  const { t } = useTranslation()
+  const { user, loading: userLoading } = useMemberSpaceUser()
+  const tenantConfig = useTenantConfig()
+
+  // Get tenant-aware brand options
+  const brandOptions = tenantConfig ? getBrandOptionsForTenant(tenantConfig) : []
+
   const [step, setStep] = useState(1)
   const [isGenerating, setIsGenerating] = useState(false)
   const [isSendingEmail, setIsSendingEmail] = useState(false)
@@ -129,12 +137,6 @@ export default function IdeaHubEmpowerForm() {
   const [showLogoHelp, setShowLogoHelp] = useState(false)
   const resultsRef = useRef<HTMLDivElement>(null)
   const recognitionRef = useRef<any>(null)
-
-  const { user, loading: userLoading } = useMemberSpaceUser()
-  const tenantConfig = useTenantConfig()
-
-  // Get tenant-aware brand options
-  const brandOptions = tenantConfig ? getBrandOptionsForTenant(tenantConfig) : []
 
   const [formData, setFormData] = useState<FormState>({
     primaryTopic: "",
@@ -410,57 +412,33 @@ export default function IdeaHubEmpowerForm() {
 
     return (
       <div className="space-y-4">
-        <Label>Choose your branding option:</Label>
-        <RadioGroup
-          value={formData.brandingChoice}
-          onValueChange={(value: "saved-brand" | "saved-logo" | "dropdown" | "upload") =>
-            handleSelectChange("brandingChoice", value)
-          }
-        >
-          {hasProfile && userBrandingProfile?.brand && (
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="saved-brand" id="saved-brand" />
-              <Label htmlFor="saved-brand">
-                Use your saved brand: <strong>{userBrandingProfile.brand}</strong>
-              </Label>
-            </div>
-          )}
-          {hasProfile && userBrandingProfile?.custom_logo_url && (
+        <Label>{t('form.ideahub.empower.brandingOption')}</Label>
+        <RadioGroup value={formData.brandingChoice} onValueChange={(value) => handleInputChange("brandingChoice", value)}>
+          <div className="space-y-3">
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="saved-logo" id="saved-logo" />
-              <Label htmlFor="saved-logo">Use your custom logo from profile</Label>
-              {userBrandingProfile.custom_logo_url && (
-                <div className="ml-4">
-                  <Image
-                    src={userBrandingProfile.custom_logo_url || "/placeholder.svg"}
-                    alt="Saved logo"
-                    width={50}
-                    height={50}
-                    className="object-contain border rounded"
-                  />
-                </div>
-              )}
+              <Label htmlFor="saved-logo">{t('form.ideahub.empower.useCustomLogo')}</Label>
             </div>
-          )}
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="dropdown" id="dropdown" />
-            <Label htmlFor="dropdown">Select brand from list</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="upload" id="upload" />
-            <Label htmlFor="upload">Upload a new logo</Label>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="dropdown" id="dropdown" />
+              <Label htmlFor="dropdown">{t('form.ideahub.empower.selectBrandFromList')}</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="upload" id="upload" />
+              <Label htmlFor="upload">{t('form.ideahub.empower.uploadNewLogo')}</Label>
+            </div>
           </div>
         </RadioGroup>
 
         {formData.brandingChoice === "dropdown" && (
           <div className="space-y-2">
-            <Label htmlFor="selectedBrand">Select a brand</Label>
+            <Label htmlFor="selectedBrand">{t('form.ideahub.empower.selectBrand')}</Label>
             <Select
               value={formData.selectedBrand}
               onValueChange={(value) => handleSelectChange("selectedBrand", value)}
             >
               <SelectTrigger id="selectedBrand">
-                <SelectValue placeholder="Choose a brand" />
+                <SelectValue placeholder={t('form.ideahub.empower.placeholder.chooseBrand')} />
               </SelectTrigger>
               <SelectContent>
                 {brandOptions.map((brand) => (
@@ -475,7 +453,7 @@ export default function IdeaHubEmpowerForm() {
 
         {formData.brandingChoice === "upload" && (
           <div className="space-y-2">
-            <Label htmlFor="customLogo">Upload your logo</Label>
+            <Label htmlFor="customLogo">{t('form.ideahub.empower.uploadLogo')}</Label>
             <p className="text-sm text-gray-600">Accepts: JPEG, PNG, WebP | Max size: 10MB</p>
             <div className="flex items-center gap-2">
               <Input
@@ -554,10 +532,10 @@ export default function IdeaHubEmpowerForm() {
     <div className="space-y-6">
       {/* Topic Selection */}
       <div className="space-y-2">
-        <Label htmlFor="primaryTopic">Choose a Topic from our list</Label>
+        <Label htmlFor="primaryTopic">{t('form.ideahub.empower.chooseTopic')}</Label>
         <Select value={formData.primaryTopic} onValueChange={(value) => handleSelectChange("primaryTopic", value)}>
           <SelectTrigger id="primaryTopic">
-            <SelectValue placeholder="Select a topic from our library" />
+            <SelectValue placeholder={t('form.ideahub.empower.placeholder.selectTopic')} />
           </SelectTrigger>
           <SelectContent className="max-h-[300px]">
             {topicOptions.map((topic, index) => (
@@ -570,12 +548,12 @@ export default function IdeaHubEmpowerForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="alternateTopic">Or enter custom topic below</Label>
+        <Label htmlFor="alternateTopic">{t('form.ideahub.empower.enterCustomTopic')}</Label>
         <div className="relative">
           <Textarea
             id="alternateTopic"
             name="alternateTopic"
-            placeholder="Enter any custom topic or additional details you'd like to include"
+            placeholder={t('form.ideahub.empower.placeholder.customTopic')}
             value={formData.alternateTopic}
             onChange={handleInputChange}
             className="min-h-[100px] pr-12"
@@ -594,200 +572,197 @@ export default function IdeaHubEmpowerForm() {
       </div>
 
       {/* Image Choice */}
-      <div className="space-y-4">
-        <Label>Would you like to use your own image or have one generated?</Label>
-        <RadioGroup
-          value={formData.imageChoice}
-          onValueChange={(value: "own" | "generate") => handleSelectChange("imageChoice", value)}
-        >
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="own" id="own" />
-            <Label htmlFor="own">Use my own image</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="generate" id="generate" />
-            <Label htmlFor="generate">Generate one for me</Label>
+      <div className="space-y-2">
+        <Label>{t('form.ideahub.empower.imageChoice')}</Label>
+        <RadioGroup value={formData.imageChoice} onValueChange={(value) => handleInputChange("imageChoice", value)}>
+          <div className="space-y-3">
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="own" id="own" />
+              <Label htmlFor="own">{t('form.ideahub.empower.useOwnImage')}</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="generate" id="generate" />
+              <Label htmlFor="generate">{t('form.ideahub.empower.generateImage')}</Label>
+            </div>
           </div>
         </RadioGroup>
+      </div>
 
-        {formData.imageChoice === "own" && (
-          <div className="space-y-2">
-            <Label htmlFor="customImage">Upload your image</Label>
-            <p className="text-sm text-gray-600">Accepts: JPEG, PNG, WebP | Max size: 10MB</p>
-            <div className="flex items-center gap-2">
-              <Input
-                id="customImage"
-                type="file"
-                accept="image/*"
-                onChange={(e) => handleFileChange(e, "customImage")}
-                className="flex-1"
-              />
-              <Upload className="h-4 w-4 text-gray-500" />
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                onClick={() => setShowImageHelp(!showImageHelp)}
-                className="p-1"
-              >
-                <Info className="h-4 w-4 text-blue-500" />
-              </Button>
-            </div>
-            {formData.customImage && (
-              <p className="text-sm text-green-600">✓ Image selected: {formData.customImage.name}</p>
-            )}
+      {formData.imageChoice === "own" && (
+        <div className="space-y-2">
+          <Label htmlFor="customImage">{t('form.ideahub.empower.uploadImage')}</Label>
+          <p className="text-sm text-gray-600">Accepts: JPEG, PNG, WebP | Max size: 10MB</p>
+          <div className="flex items-center gap-2">
+            <Input
+              id="customImage"
+              type="file"
+              accept="image/*"
+              onChange={(e) => handleFileChange(e, "customImage")}
+              className="flex-1"
+            />
+            <Upload className="h-4 w-4 text-gray-500" />
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowImageHelp(!showImageHelp)}
+              className="p-1"
+            >
+              <Info className="h-4 w-4 text-blue-500" />
+            </Button>
+          </div>
+          {formData.customImage && (
+            <p className="text-sm text-green-600">✓ Image selected: {formData.customImage.name}</p>
+          )}
 
-            <Collapsible open={showImageHelp} onOpenChange={setShowImageHelp}>
-              <CollapsibleContent className="space-y-2">
-                <div className="bg-blue-50 p-4 rounded-lg text-sm">
-                  <h4 className="font-semibold text-blue-800 mb-2">Mobile Upload Issues? Try These Solutions:</h4>
+          <Collapsible open={showImageHelp} onOpenChange={setShowImageHelp}>
+            <CollapsibleContent className="space-y-2">
+              <div className="bg-blue-50 p-4 rounded-lg text-sm">
+                <h4 className="font-semibold text-blue-800 mb-2">Mobile Upload Issues? Try These Solutions:</h4>
 
-                  <div className="space-y-3">
-                    <div>
-                      <p className="font-medium text-blue-700">iPhone Settings Change:</p>
-                      <p className="text-blue-600">
-                        Settings → Camera → Formats → Choose "Most Compatible" instead of "High Efficiency"
-                      </p>
-                      <p className="text-blue-600">
-                        This makes iPhone save photos as JPEG instead of HEIC by default - One-time setting change fixes
-                        it permanently
-                      </p>
-                    </div>
+                <div className="space-y-3">
+                  <div>
+                    <p className="font-medium text-blue-700">iPhone Settings Change:</p>
+                    <p className="text-blue-600">
+                      Settings → Camera → Formats → Choose "Most Compatible" instead of "High Efficiency"
+                    </p>
+                    <p className="text-blue-600">
+                      This makes iPhone save photos as JPEG instead of HEIC by default - One-time setting change fixes
+                      it permanently
+                    </p>
+                  </div>
 
-                    <div>
-                      <p className="font-medium text-blue-700">Share/Export Method:</p>
-                      <p className="text-blue-600">Instead of selecting photo directly from camera roll</p>
-                      <p className="text-blue-600">
-                        Use iPhone's "Share" button on the photo → "Save to Files" or "Copy"
-                      </p>
-                      <p className="text-blue-600">This often auto-converts HEIC to JPEG during the share process</p>
-                    </div>
+                  <div>
+                    <p className="font-medium text-blue-700">Share/Export Method:</p>
+                    <p className="text-blue-600">Instead of selecting photo directly from camera roll</p>
+                    <p className="text-blue-600">
+                      Use iPhone's "Share" button on the photo → "Save to Files" or "Copy"
+                    </p>
+                    <p className="text-blue-600">This often auto-converts HEIC to JPEG during the share process</p>
+                  </div>
 
-                    <div>
-                      <p className="font-medium text-blue-700">Use Different Photo Selection:</p>
-                      <p className="text-blue-600">
-                        When the file picker opens, choose "Browse" instead of "Photo Library"
-                      </p>
-                      <p className="text-blue-600">Or select from "Recents" in Files app instead of Photos app</p>
-                      <p className="text-blue-600">Different selection methods handle formats differently</p>
-                    </div>
+                  <div>
+                    <p className="font-medium text-blue-700">Use Different Photo Selection:</p>
+                    <p className="text-blue-600">
+                      When the file picker opens, choose "Browse" instead of "Photo Library"
+                    </p>
+                    <p className="text-blue-600">Or select from "Recents" in Files app instead of Photos app</p>
+                    <p className="text-blue-600">Different selection methods handle formats differently</p>
+                  </div>
 
-                    <div>
-                      <p className="font-medium text-blue-700">Third-Party Apps:</p>
-                      <p className="text-blue-600">Apps like "HEIC Converter" (free) can batch convert</p>
-                      <p className="text-blue-600">Or use built-in "Shortcuts" app to create a conversion workflow</p>
-                    </div>
+                  <div>
+                    <p className="font-medium text-blue-700">Third-Party Apps:</p>
+                    <p className="text-blue-600">Apps like "HEIC Converter" (free) can batch convert</p>
+                    <p className="text-blue-600">Or use built-in "Shortcuts" app to create a conversion workflow</p>
                   </div>
                 </div>
-              </CollapsibleContent>
-            </Collapsible>
-          </div>
-        )}
-      </div>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
+        </div>
+      )}
 
       {/* Branding Question */}
-      <div className="space-y-4">
-        <Label>Would you like to brand this post?</Label>
-        <RadioGroup
-          value={formData.wantBranding.toString()}
-          onValueChange={(value) => handleSelectChange("wantBranding", value === "true")}
-        >
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="true" id="brand-yes" />
-            <Label htmlFor="brand-yes">Yes</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="false" id="brand-no" />
-            <Label htmlFor="brand-no">No</Label>
+      <div className="space-y-2">
+        <Label>{t('form.ideahub.empower.brandPost')}</Label>
+        <RadioGroup value={formData.wantBranding} onValueChange={(value) => handleInputChange("wantBranding", value)}>
+          <div className="space-y-3">
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="yes" id="brand-yes" />
+              <Label htmlFor="brand-yes">{t('form.ideahub.empower.brandYes')}</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="no" id="brand-no" />
+              <Label htmlFor="brand-no">{t('form.ideahub.empower.brandNo')}</Label>
+            </div>
           </div>
         </RadioGroup>
-
-        {loadingProfile && formData.wantBranding && (
-          <p className="text-sm text-gray-500">Loading your branding profile...</p>
-        )}
-
-        {!loadingProfile && renderBrandingOptions()}
       </div>
+
+      {loadingProfile && formData.wantBranding && (
+        <p className="text-sm text-gray-500">Loading your branding profile...</p>
+      )}
+
+      {!loadingProfile && renderBrandingOptions()}
 
       {/* Contact Info Question */}
-      <div className="space-y-4">
-        <Label>Would you like your name and contact info added?</Label>
-        <RadioGroup
-          value={formData.includeContact.toString()}
-          onValueChange={(value) => handleSelectChange("includeContact", value === "true")}
-        >
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="true" id="contact-yes" />
-            <Label htmlFor="contact-yes">Yes</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="false" id="contact-no" />
-            <Label htmlFor="contact-no">No</Label>
+      <div className="space-y-2">
+        <Label>{t('form.ideahub.empower.addContactInfo')}</Label>
+        <RadioGroup value={formData.includeContact} onValueChange={(value) => handleInputChange("includeContact", value)}>
+          <div className="space-y-3">
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="yes" id="contact-yes" />
+              <Label htmlFor="contact-yes">{t('form.ideahub.empower.contactYes')}</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="no" id="contact-no" />
+              <Label htmlFor="contact-no">{t('form.ideahub.empower.contactNo')}</Label>
+            </div>
           </div>
         </RadioGroup>
-
-        {formData.includeContact && (
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="name">Name *</Label>
-              <Input
-                id="name"
-                name="name"
-                placeholder="Enter your name"
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="email">Email *</Label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Enter your email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="phone">Phone</Label>
-              <Input
-                id="phone"
-                name="phone"
-                type="tel"
-                placeholder="Enter your phone number"
-                value={formData.phone}
-                onChange={handleInputChange}
-              />
-            </div>
-          </div>
-        )}
       </div>
+
+      {formData.includeContact && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="name">{t('form.ideahub.empower.name')}</Label>
+            <Input
+              id="name"
+              name="name"
+              placeholder={t('form.ideahub.empower.placeholder.enterName')}
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="email">{t('form.ideahub.empower.email')}</Label>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              placeholder={t('form.ideahub.empower.placeholder.enterEmail')}
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="phone">{t('form.ideahub.empower.phone')}</Label>
+            <Input
+              id="phone"
+              name="phone"
+              type="tel"
+              placeholder={t('form.ideahub.empower.placeholder.enterPhone')}
+              value={formData.phone}
+              onChange={handleInputChange}
+            />
+          </div>
+        </div>
+      )}
 
       {/* Content Type */}
       <div className="space-y-2">
-        <Label htmlFor="contentType">Content Type *</Label>
+        <Label htmlFor="contentType">{t('form.ideahub.empower.contentType')}</Label>
         <Select value={formData.contentType} onValueChange={(value) => handleSelectChange("contentType", value)}>
           <SelectTrigger id="contentType">
-            <SelectValue placeholder="Select content type" />
+            <SelectValue placeholder={t('form.ideahub.empower.placeholder.selectContentType')} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="Social post">Social Post</SelectItem>
-            <SelectItem value="Email">Email</SelectItem>
-            <SelectItem value="Blog article">Blog Article</SelectItem>
-            <SelectItem value="Text message">Text Message</SelectItem>
+            <SelectItem value="Social post">{t('form.ideahub.contentType.socialPost')}</SelectItem>
+            <SelectItem value="Email">{t('form.ideahub.contentType.email')}</SelectItem>
+            <SelectItem value="Blog article">{t('form.ideahub.contentType.blogArticle')}</SelectItem>
+            <SelectItem value="Text message">{t('form.ideahub.contentType.textMessage')}</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       {/* Tonality */}
       <div className="space-y-2">
-        <Label htmlFor="tonality">Tonality</Label>
+        <Label htmlFor="tonality">{t('form.ideahub.empower.tonality')}</Label>
         <Select value={formData.tonality} onValueChange={(value) => handleSelectChange("tonality", value)}>
           <SelectTrigger id="tonality">
-            <SelectValue placeholder="Select tonality" />
+            <SelectValue placeholder={t('form.ideahub.empower.placeholder.selectTonality')} />
           </SelectTrigger>
           <SelectContent>
             {tonalityOptions.map((option, index) => (
@@ -804,18 +779,18 @@ export default function IdeaHubEmpowerForm() {
 
       {/* Language */}
       <div className="space-y-2">
-        <Label htmlFor="language">Language</Label>
+        <Label htmlFor="language">{t('form.ideahub.empower.language')}</Label>
         <Select value={formData.language} onValueChange={(value) => handleSelectChange("language", value)}>
           <SelectTrigger id="language">
-            <SelectValue placeholder="Select language" />
+            <SelectValue placeholder={t('form.ideahub.empower.placeholder.selectLanguage')} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="English">English</SelectItem>
-            <SelectItem value="Spanish">Spanish</SelectItem>
-            <SelectItem value="French">French</SelectItem>
-            <SelectItem value="German">German</SelectItem>
-            <SelectItem value="Italian">Italian</SelectItem>
-            <SelectItem value="Portuguese">Portuguese</SelectItem>
+            <SelectItem value="English">{t("English")}</SelectItem>
+            <SelectItem value="Spanish">{t("Spanish")}</SelectItem>
+            <SelectItem value="French">{t("French")}</SelectItem>
+            <SelectItem value="German">{t("German")}</SelectItem>
+            <SelectItem value="Italian">{t("Italian")}</SelectItem>
+            <SelectItem value="Portuguese">{t("Portuguese")}</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -870,19 +845,19 @@ export default function IdeaHubEmpowerForm() {
 
       <div className="flex gap-4">
         <Button variant="outline" onClick={() => setStep(1)} className="flex-1">
-          Back
+          {t('form.ideahub.empower.button.back')}
         </Button>
         <Button
           onClick={handleSubmit}
-          disabled={isGenerating}
+          disabled={isGenerating || !canProceedToStep2()}
           className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white"
         >
           {isGenerating ? (
             <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Generating...
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {t('form.ideahub.empower.button.generating')}
             </>
           ) : (
-            "Generate Content"
+            t('form.ideahub.empower.button.generate')
           )}
         </Button>
       </div>
