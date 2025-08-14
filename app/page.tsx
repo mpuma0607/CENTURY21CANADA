@@ -16,6 +16,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import TenantSwitcher from "@/components/tenant-switcher"
+import { LanguageSwitcher } from "@/components/language-switcher"
 
 export default function HomePage() {
   const [showVideoModal, setShowVideoModal] = useState(false)
@@ -287,6 +288,7 @@ export default function HomePage() {
               Testimonials
             </a>
             <div className="flex items-center space-x-4">
+              <LanguageSwitcher />
               <button
                 onClick={handleLogin}
                 type="button"
@@ -302,6 +304,7 @@ export default function HomePage() {
 
           {/* Mobile menu */}
           <div className="md:hidden flex items-center space-x-2">
+            <LanguageSwitcher />
             <button
               onClick={handleLogin}
               type="button"

@@ -1,0 +1,10 @@
+[33ma520646[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Add proper Century 21 Canada logo and language toggle to home page - Update logo to match user's design with black background and gold text - Add LanguageSwitcher component to header navigation (desktop and mobile) - Position language toggle next to Sign In button for easy access
+[33m8f6c190[m Implement comprehensive French translation system across entire platform - Default to French for Century 21 Canada - Add translations for all AI tools, prospecting, training, marketing, services - Update navigation to use translation keys - Set French as default language for Century 21 Canada tenant
+[33mb0ff936[m Add Dynamic Branded Content and Branding Profile for Century 21 Canada tenant
+[33m1816010[m Setup Century 21 Canada platform with translation system, branding, and Canadian address forms
+[33m4102c93[m Fix realdeal contract analysis token limits - update from GPT-4 8k to GPT-5 128k context limit
+[33maa2f7a8[m Fix realdeal contract analysis - update max_tokens to max_completion_tokens for GPT-5 compatibility
+[33mb9603e2[m Fix branding profile Other option - replace disappearing input with helpful message
+[33m2adc4a4[m Update changes
+[33me30c1ec[m Update all AI tools to GPT-5 with temperature: 1 fix and resolve linter errors
+[33maf7cfee[m Fix GPT-5 compatibility: remove unsupported temperature parameters from all AI tools
