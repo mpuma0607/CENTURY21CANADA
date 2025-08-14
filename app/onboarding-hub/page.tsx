@@ -4,33 +4,36 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { User, Settings, FileText, Video } from "lucide-react"
 import Link from "next/link"
+import { useTranslation } from "@/contexts/translation-context"
 
 export default function OnboardingHubPage() {
+  const { t } = useTranslation()
+  
   const onboardingResources = [
     {
-      title: "Agent Profile & Set Up",
-      description: "Complete your agent profile and initial setup",
+      title: "page.onboarding.tool.agentProfile.title",
+      description: "page.onboarding.tool.agentProfile.description",
       icon: User,
       href: "/onboarding-hub/agent-profile-setup",
       color: "bg-gradient-to-br from-blue-600 to-cyan-600",
     },
     {
-      title: "Moxi Works Set Up",
-      description: "Configure your Moxi Works platform",
+      title: "page.onboarding.tool.moxiWorks.title",
+      description: "page.onboarding.tool.moxiWorks.description",
       icon: Settings,
       href: "/onboarding-hub/moxi-works-setup",
       color: "bg-gradient-to-br from-green-600 to-teal-600",
     },
     {
-      title: "Dotloop Set Up",
-      description: "Set up your Dotloop transaction management",
+      title: "page.onboarding.tool.dotloop.title",
+      description: "page.onboarding.tool.dotloop.description",
       icon: FileText,
       href: "/onboarding-hub/dotloop-setup",
       color: "bg-gradient-to-br from-purple-600 to-pink-600",
     },
     {
-      title: "Zoom Set Up",
-      description: "Configure Zoom for client meetings",
+      title: "page.onboarding.tool.zoom.title",
+      description: "page.onboarding.tool.zoom.description",
       icon: Video,
       href: "/onboarding-hub/zoom-setup",
       color: "bg-gradient-to-br from-orange-600 to-red-600",
@@ -43,15 +46,14 @@ export default function OnboardingHubPage() {
       <section className="relative bg-gradient-to-br from-gray-900 via-black to-indigo-900 text-white py-24">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">Onboarding Hub</h1>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">{t('page.onboarding.title')}</h1>
           <div className="flex items-center justify-center gap-4 mb-8">
             <div className="h-px bg-[#b6a888] w-16"></div>
-            <p className="text-xl text-[#b6a888] font-medium tracking-wide">START • LEARN • SUCCEED</p>
+            <p className="text-xl text-[#b6a888] font-medium tracking-wide">{t('page.onboarding.subtitle')}</p>
             <div className="h-px bg-[#b6a888] w-16"></div>
           </div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Your comprehensive guide to getting started at Beggins University. Access training modules, setup guides,
-            and everything you need to launch your successful real estate career.
+            {t('page.onboarding.description')}
           </p>
         </div>
       </section>
@@ -60,9 +62,9 @@ export default function OnboardingHubPage() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-black mb-4">Your Onboarding Journey</h2>
+            <h2 className="text-4xl font-bold text-black mb-4">{t('page.onboarding.journey.title')}</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Follow our structured path to real estate success with comprehensive training and support
+              {t('page.onboarding.journey.description')}
             </p>
           </div>
 
@@ -81,14 +83,14 @@ export default function OnboardingHubPage() {
                     </div>
 
                     <h3 className="text-xl font-bold text-black mb-3 group-hover:text-[#b6a888] transition-colors">
-                      {resource.title}
+                      {t(resource.title)}
                     </h3>
 
-                    <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">{resource.description}</p>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">{t(resource.description)}</p>
 
                     <Link href={resource.href} className="w-full mt-auto">
                       <Button className="w-full bg-[#b6a888] hover:bg-[#a39577] text-white">
-                        Access {resource.title}
+                        {t('page.onboarding.access')} {t(resource.title)}
                       </Button>
                     </Link>
                   </div>

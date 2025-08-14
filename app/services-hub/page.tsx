@@ -1,27 +1,30 @@
+"use client"
+
 import { Card, CardContent } from "@/components/ui/card"
 import { Wrench, ArrowRight, Palette, Building } from "lucide-react"
 import Link from "next/link"
+import { useTranslation } from "@/contexts/translation-context"
 
 const serviceOptions = [
   {
-    title: "Moxi Design Services",
+    title: "page.services.tool.moxiDesign.title",
     href: "/services-hub/moxi-design",
-    description:
-      "Professional design services for your Moxi website, landing pages, presentations, and email campaigns",
+    description: "page.services.tool.moxiDesign.description",
     icon: Palette,
     color: "bg-gradient-to-br from-green-500 to-teal-500",
   },
   {
-    title: "Brokerage Consulting",
+    title: "page.services.tool.brokerageConsulting.title",
     href: "/services-hub/brokerage-consulting",
-    description:
-      "Expert consulting and training for brokerages and leadership teams, available in-person or via webinar",
+    description: "page.services.tool.brokerageConsulting.description",
     icon: Building,
     color: "bg-gradient-to-br from-blue-500 to-cyan-500",
   },
 ]
 
 export default function ServicesHubPage() {
+  const { t } = useTranslation()
+
   return (
     <div className="min-h-screen bg-white py-12">
       <div className="container mx-auto px-4">
@@ -30,9 +33,9 @@ export default function ServicesHubPage() {
           <div className="w-20 h-20 bg-gradient-to-br from-green-600 to-teal-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
             <Wrench className="h-10 w-10 text-white" />
           </div>
-          <h1 className="text-4xl font-bold text-black mb-4">Services Hub</h1>
+          <h1 className="text-4xl font-bold text-black mb-4">{t('page.services.title')}</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Professional design services and brokerage consulting to help you and your team reach the next level.
+            {t('page.services.description')}
           </p>
         </div>
 
@@ -49,11 +52,11 @@ export default function ServicesHubPage() {
                       <service.icon className="h-8 w-8 text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-black mb-3 group-hover:text-green-600 transition-colors">
-                      {service.title}
+                      {t(service.title)}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed mb-6">{service.description}</p>
+                    <p className="text-gray-600 leading-relaxed mb-6">{t(service.description)}</p>
                     <div className="flex items-center justify-center text-green-600 font-medium">
-                      <span>Learn More</span>
+                      <span>{t('page.services.learnMore')}</span>
                       <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>

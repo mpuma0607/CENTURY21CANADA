@@ -4,12 +4,13 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Megaphone, ArrowRight, TrendingUp, Building2, Waves } from "lucide-react"
 import Link from "next/link"
 import { useTenantConfig } from "@/contexts/tenant-context"
+import { useTranslation } from "@/contexts/translation-context"
 
 const marketingTools = [
   {
-    title: "Real Estate Hot Takes",
+    title: "page.marketing.tool.hotTakes.title",
     href: "/marketing-hub/hot-takes",
-    description: "RSS feed of the latest real estate news and trends with sharing tools",
+    description: "page.marketing.tool.hotTakes.description",
     icon: TrendingUp,
     color: "bg-gradient-to-br from-blue-500 to-cyan-500",
   },
@@ -17,16 +18,16 @@ const marketingTools = [
 
 const empowerMarketingTools = [
   {
-    title: "Dynamic Branded Content",
+    title: "page.marketing.tool.dynamicBrandedContent.title",
     href: "/marketing-hub/dynamic-branded-content",
-    description: "Create custom branded content for any topic",
+    description: "page.marketing.tool.dynamicBrandedContent.description",
     icon: Megaphone,
     color: "bg-gradient-to-br from-purple-500 to-indigo-500",
   },
   {
-    title: "Real Estate Hot Takes",
+    title: "page.marketing.tool.hotTakes.title",
     href: "/marketing-hub/hot-takes",
-    description: "RSS feed of the latest real estate news and trends with sharing tools",
+    description: "page.marketing.tool.hotTakes.description",
     icon: TrendingUp,
     color: "bg-gradient-to-br from-blue-500 to-cyan-500",
   },
@@ -34,16 +35,16 @@ const empowerMarketingTools = [
 
 const century21CanadaMarketingTools = [
   {
-    title: "Dynamic Branded Content",
+    title: "page.marketing.tool.dynamicBrandedContent.title",
     href: "/marketing-hub/dynamic-branded-content",
-    description: "Create custom branded content for any topic",
+    description: "page.marketing.tool.dynamicBrandedContent.description",
     icon: Megaphone,
     color: "bg-gradient-to-br from-purple-500 to-indigo-500",
   },
   {
-    title: "Real Estate Hot Takes",
+    title: "page.marketing.tool.hotTakes.title",
     href: "/marketing-hub/hot-takes",
-    description: "RSS feed of the latest real estate news and trends with sharing tools",
+    description: "page.marketing.tool.hotTakes.description",
     icon: TrendingUp,
     color: "bg-gradient-to-br from-blue-500 to-cyan-500",
   },
@@ -51,36 +52,37 @@ const century21CanadaMarketingTools = [
 
 const begginsMarketingTools = [
   {
-    title: "Dynamic Branded Content",
+    title: "page.marketing.tool.dynamicBrandedContent.title",
     href: "/marketing-hub/dynamic-branded-content",
-    description: "Create custom branded content for any topic",
+    description: "page.marketing.tool.dynamicBrandedContent.description",
     icon: Megaphone,
     color: "bg-gradient-to-br from-purple-500 to-indigo-500",
   },
   {
-    title: "Real Estate Hot Takes",
+    title: "page.marketing.tool.hotTakes.title",
     href: "/marketing-hub/hot-takes",
-    description: "RSS feed of the latest real estate news and trends with sharing tools",
+    description: "page.marketing.tool.hotTakes.description",
     icon: TrendingUp,
     color: "bg-gradient-to-br from-blue-500 to-cyan-500",
   },
   {
-    title: "Brokerage Logos",
+    title: "page.marketing.tool.brokerageLogos.title",
     href: "/marketing-hub/brokerage-logos",
-    description: "Access Century 21 Beggins logos and branding assets",
+    description: "page.marketing.tool.brokerageLogos.description",
     icon: Building2,
     color: "bg-gradient-to-br from-black to-gray-700",
   },
   {
-    title: "Beach Project Toolkits",
+    title: "page.marketing.tool.beachProjectToolkits.title",
     href: "/marketing-hub/beach-project-toolkits",
-    description: "Marketing materials for premium beach development projects",
+    description: "page.marketing.tool.beachProjectToolkits.description",
     icon: Waves,
     color: "bg-gradient-to-br from-blue-600 to-cyan-600",
   },
 ]
 
 export default function MarketingHubPage() {
+  const { t } = useTranslation()
   const tenantConfig = useTenantConfig()
   const toolsToShow =
     tenantConfig?.id === "century21-beggins"
@@ -99,10 +101,9 @@ export default function MarketingHubPage() {
           <div className="w-20 h-20 bg-gradient-to-br from-pink-600 to-red-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
             <Megaphone className="h-10 w-10 text-white" />
           </div>
-          <h1 className="text-4xl font-bold text-black mb-4">Marketing Hub</h1>
+          <h1 className="text-4xl font-bold text-black mb-4">{t('page.marketing.title')}</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Create compelling content and stay ahead of market trends with our comprehensive marketing tools and
-            resources.
+            {t('page.marketing.description')}
           </p>
         </div>
 
@@ -119,11 +120,11 @@ export default function MarketingHubPage() {
                       <tool.icon className="h-8 w-8 text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-black mb-3 group-hover:text-pink-600 transition-colors">
-                      {tool.title}
+                      {t(tool.title)}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed mb-6">{tool.description}</p>
+                    <p className="text-gray-600 leading-relaxed mb-6">{t(tool.description)}</p>
                     <div className="flex items-center justify-center text-pink-600 font-medium">
-                      <span>Explore Tool</span>
+                      <span>{t('page.marketing.exploreTool')}</span>
                       <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>

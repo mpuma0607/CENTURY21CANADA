@@ -4,40 +4,41 @@ import { Card, CardContent } from "@/components/ui/card"
 import { GraduationCap, ArrowRight, Monitor, BookOpen, Users, Target, Video, FileText, Settings } from "lucide-react"
 import Link from "next/link"
 import { useTenantConfig } from "@/contexts/tenant-context"
+import { useTranslation } from "@/contexts/translation-context"
 
 const trainingModules = [
   {
-    title: "Moxi Works Training",
+    title: "page.training.tool.moxiWorks.title",
     href: "/training-hub/moxi-works",
-    description: "Master the complete Moxi Works platform with comprehensive training modules",
+    description: "page.training.tool.moxiWorks.description",
     icon: Monitor,
     color: "bg-gradient-to-br from-blue-500 to-cyan-500",
   },
   {
-    title: "Script Mastery",
+    title: "page.training.tool.scriptMastery.title",
     href: "/training-hub/script-mastery",
-    description: "Master objection handling and conversion scripts for any situation",
+    description: "page.training.tool.scriptMastery.description",
     icon: BookOpen,
     color: "bg-gradient-to-br from-purple-500 to-indigo-500",
   },
   {
-    title: "Buyer Process (6P's)",
+    title: "page.training.tool.buyerProcess.title",
     href: "/training-hub/buyer-process",
-    description: "Our proven 6P's system for guiding buyers through the purchase process",
+    description: "page.training.tool.buyerProcess.description",
     icon: Target,
     color: "bg-gradient-to-br from-orange-500 to-yellow-500",
   },
   {
-    title: "Listing Process (7P's)",
+    title: "page.training.tool.listingProcess.title",
     href: "/training-hub/listing-process",
-    description: "Complete 7P's system for securing and managing listings from start to finish",
+    description: "page.training.tool.listingProcess.description",
     icon: Target,
     color: "bg-gradient-to-br from-green-500 to-emerald-500",
   },
   {
-    title: "DISC/VAK Connection",
+    title: "page.training.tool.discVak.title",
     href: "/training-hub/disc-vak",
-    description: "Communication training to connect with any personality or learning style",
+    description: "page.training.tool.discVak.description",
     icon: Users,
     color: "bg-gradient-to-br from-pink-500 to-red-500",
   },
@@ -45,25 +46,25 @@ const trainingModules = [
 
 const begginsTenantModules = [
   {
-    title: "Daily Morning Huddles",
+    title: "page.training.tool.dailyHuddles.title",
     href: "/training-hub/daily-morning-huddles",
-    description: "Join our daily team huddles for motivation, updates, and training",
+    description: "page.training.tool.dailyHuddles.description",
     icon: Video,
     color: "bg-gradient-to-br from-yellow-500 to-orange-500",
     tenants: ["century21-beggins"],
   },
   {
-    title: "Buyer Broker Agreement Training",
+    title: "page.training.tool.buyerBrokerAgreement.title",
     href: "/training-hub/buyer-broker-agreement-training",
-    description: "Master the art of presenting and executing buyer broker agreements effectively",
+    description: "page.training.tool.buyerBrokerAgreement.description",
     icon: FileText,
     color: "bg-gradient-to-br from-blue-600 to-indigo-600",
     tenants: ["century21-beggins"],
   },
   {
-    title: "Dotloop Training",
+    title: "page.training.tool.dotloop.title",
     href: "/training-hub/dotloop-training",
-    description: "Complete Dotloop mastery from setup to closing with interactive training modules",
+    description: "page.training.tool.dotloop.description",
     icon: Settings,
     color: "bg-gradient-to-br from-indigo-600 to-purple-600",
     tenants: ["century21-beggins"],
@@ -71,6 +72,7 @@ const begginsTenantModules = [
 ]
 
 export default function TrainingHubPage() {
+  const { t } = useTranslation()
   const tenantConfig = useTenantConfig()
 
   const filteredBegginsTenantModules = begginsTenantModules.filter(
@@ -87,9 +89,9 @@ export default function TrainingHubPage() {
           <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
             <GraduationCap className="h-10 w-10 text-white" />
           </div>
-          <h1 className="text-4xl font-bold text-black mb-4">Training Hub</h1>
+          <h1 className="text-4xl font-bold text-black mb-4">{t('page.training.title')}</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Master your skills with comprehensive training programs designed to elevate your real estate business.
+            {t('page.training.description')}
           </p>
         </div>
 
@@ -106,11 +108,11 @@ export default function TrainingHubPage() {
                       <module.icon className="h-8 w-8 text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-black mb-3 group-hover:text-blue-600 transition-colors">
-                      {module.title}
+                      {t(module.title)}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed mb-6">{module.description}</p>
+                    <p className="text-gray-600 leading-relaxed mb-6">{t(module.description)}</p>
                     <div className="flex items-center justify-center text-blue-600 font-medium">
-                      <span>Start Training</span>
+                      <span>{t('page.training.startTraining')}</span>
                       <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
