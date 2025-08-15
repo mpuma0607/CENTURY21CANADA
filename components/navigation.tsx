@@ -454,7 +454,7 @@ export default function Navigation() {
       return "/images/beggins-university-black.png" // Black logo for light background
     }
     if (tenantConfig.id === "century21-canada") {
-      return "/images/century21-logo.png" // Century 21 Canada logo
+      return tenantConfig.branding.logo || "/images/century21-logo.png" // Use tenant config logo
     }
     if (tenantConfig.id === "default") {
       return "/images/nlu-logo-dark-new.png"
